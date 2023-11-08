@@ -25,6 +25,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
 
+	void MoveForward(float Input);
+	void MoveRight(float Input);
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

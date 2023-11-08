@@ -15,11 +15,22 @@ ATCPlayableCharacter::ATCPlayableCharacter()
 	SpringArmComponent->TargetArmLength = 300.0f;
 	SpringArmComponent->SetRelativeLocation(GetActorLocation() + FVector(0.f, 0.f, BaseEyeHeight));
 	SpringArmComponent->SetRelativeRotation(FRotator(-30.f, 0.f, 0.f));
+	SpringArmComponent->bUsePawnControlRotation = true;
 
 	// Setup the camera
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetupAttachment(SpringArmComponent);
 
+}
+
+void ATCPlayableCharacter::MoveForward(float Input)
+{
+	AddMovementInput(GetActorForwardVector(), Input);
+}
+
+void ATCPlayableCharacter::MoveRight(float Input)
+{
+	AddMovementInput(GetActorRightVector(), Input);
 }
 
 // Called when the game starts or when spawned
@@ -40,6 +51,15 @@ void ATCPlayableCharacter::Tick(float DeltaTime)
 void ATCPlayableCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	// Bind Axis
+	PlayerInputComponent->BindAxis("MoveForward", this, &ATCPlayableCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ATCPlayableCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("YawCamera", this, &ACharacter::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("PitchCamera", this, &ACharacter::AddControllerPitchInput);
+
+	// Bind Action
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 
 }
 
