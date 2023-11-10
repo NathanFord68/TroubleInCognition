@@ -8,7 +8,8 @@ public class TroubleInCognitionTarget : TargetRules
 	public TroubleInCognitionTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "TroubleInCognition" } );
+		DefaultBuildSettings = BuildSettingsVersion.V4;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+        ExtraModuleNames.AddRange( new string[] { "TroubleInCognition" } );
 	}
 }

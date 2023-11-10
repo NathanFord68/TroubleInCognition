@@ -53,10 +53,10 @@ void ATCPlayableCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	// Bind Axis
-	PlayerInputComponent->BindAxis("MoveForward", this, &ATCPlayableCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &ATCPlayableCharacter::MoveRight);
-	PlayerInputComponent->BindAxis("YawCamera", this, &ACharacter::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("PitchCamera", this, &ACharacter::AddControllerPitchInput);
+	//PlayerInputComponent->BindAxis("MoveForward", this, &ATCPlayableCharacter::MoveForward);
+	//PlayerInputComponent->BindAxis("MoveRight", this, &ATCPlayableCharacter::MoveRight);
+	//PlayerInputComponent->BindAxis("YawCamera", this, &ACharacter::AddControllerYawInput);
+	//PlayerInputComponent->BindAxis("PitchCamera", this, &ACharacter::AddControllerPitchInput);
 
 	// Bind Action
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
