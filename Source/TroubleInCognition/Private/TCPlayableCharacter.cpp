@@ -1,7 +1,8 @@
 // Copyright 2023 Nathan Ford. All Right Reserved
 
-
 #include "TCPlayableCharacter.h"
+#include <GameFramework/SpringArmComponent.h>
+#include <Camera/CameraComponent.h>
 
 // Sets default values
 ATCPlayableCharacter::ATCPlayableCharacter()
@@ -23,14 +24,24 @@ ATCPlayableCharacter::ATCPlayableCharacter()
 
 }
 
-void ATCPlayableCharacter::MoveForward(float Input)
+void ATCPlayableCharacter::Move(const FVector2D& InputActionValue)
 {
-	AddMovementInput(GetActorForwardVector(), Input);
-}
+	if (Controller)
+	{
+		const FRotator MovementRotation(0.0f, Controller->GetControlRotation().Yaw, 0.0f);
 
-void ATCPlayableCharacter::MoveRight(float Input)
-{
-	AddMovementInput(GetActorRightVector(), Input);
+		if (InputActionValue.X != 0.0f)
+		{
+			const FVector MovementDirection = MovementRotation.RotateVector(FVector::RightVector);
+			AddMovementInput(MovementDirection, InputActionValue.X);
+		}
+
+		if (InputActionValue.Y != 0.0f)
+		{
+			const FVector MovementDirection = MovementRotation.RotateVector(FVector::ForwardVector);
+			AddMovementInput(MovementDirection, InputActionValue.Y);
+		}
+	}
 }
 
 // Called when the game starts or when spawned
@@ -51,15 +62,6 @@ void ATCPlayableCharacter::Tick(float DeltaTime)
 void ATCPlayableCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	// Bind Axis
-	//PlayerInputComponent->BindAxis("MoveForward", this, &ATCPlayableCharacter::MoveForward);
-	//PlayerInputComponent->BindAxis("MoveRight", this, &ATCPlayableCharacter::MoveRight);
-	//PlayerInputComponent->BindAxis("YawCamera", this, &ACharacter::AddControllerYawInput);
-	//PlayerInputComponent->BindAxis("PitchCamera", this, &ACharacter::AddControllerPitchInput);
-
-	// Bind Action
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 
 }
 

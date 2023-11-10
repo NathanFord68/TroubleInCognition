@@ -4,9 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include <GameFramework/SpringArmComponent.h>
-#include <Camera/CameraComponent.h>
 #include "TCPlayableCharacter.generated.h"
+
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
 class TROUBLEINCOGNITION_API ATCPlayableCharacter : public ACharacter
@@ -25,8 +26,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
 
-	void MoveForward(float Input);
-	void MoveRight(float Input);
+	UFUNCTION(BlueprintCallable)
+	void Move(const FVector2D& InputActionValue);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
