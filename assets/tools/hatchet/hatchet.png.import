@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pb0i5aiygq0u"
-path="res://.godot/imported/Sprite-0001.png-7647bf9f8b536d839277d4b64aee9852.ctex"
+uid="uid://dexoplqghgv0n"
+path="res://.godot/imported/hatchet.png-672034c98721257d2c3e4fe2712137ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-7647bf9f8b536d839277d4b64aee9852.ctex"]
+source_file="res://assets/tools/hatchet/hatchet.png"
+dest_files=["res://.godot/imported/hatchet.png-672034c98721257d2c3e4fe2712137ba.ctex"]
 
 [params]
 
