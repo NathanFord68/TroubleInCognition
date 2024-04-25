@@ -39,8 +39,24 @@ func handle_interact():
 	hit.interact(self)
 
 func handle_main_hand_action():
-	var hit = trace_to_mouse(40, true)
-	print(hit)
+	# Return if nothing is equipped
+	if equipped == null:
+		return
+	
+	# Get the item we're hitting
+	var hit = trace_to_mouse(equipped.range, true)
+	
+	# Checking the two objects are compatible
+	var can_action = false
+	for g in hit.get_groups():
+		if g in equipped.can_action_with:
+			can_action = true
+			break
+			
+	# Calling the action function if they are
+	if can_action:
+		hit.action(self)
+		
 
 func point_to_mouse():
 	# Get world space physics
