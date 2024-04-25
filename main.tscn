@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp3dkq3631ia6"]
+[gd_scene load_steps=7 format=3 uid="uid://cp3dkq3631ia6"]
 
 [ext_resource type="Texture2D" uid="uid://pb0i5aiygq0u" path="res://Sprite-0001.png" id="1_gxsbx"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://player/player.tscn" id="2_rip54"]
 [ext_resource type="PackedScene" uid="uid://djejwpfur26y" path="res://assets/tree/tree.tscn" id="3_d35s3"]
+[ext_resource type="PackedScene" uid="uid://vfhdy5cj554s" path="res://assets/tools/hatchet/hatchet.tscn" id="4_vpejk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqtfm"]
 texture = ExtResource("1_gxsbx")
@@ -23,3 +24,6 @@ position = Vector2(307, 329)
 
 [node name="Tree" parent="." instance=ExtResource("3_d35s3")]
 position = Vector2(249, 335)
+
+[node name="Hatchet" parent="." instance=ExtResource("4_vpejk")]
+position = Vector2(309, 410)
