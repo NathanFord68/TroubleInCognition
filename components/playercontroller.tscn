@@ -4,7 +4,7 @@
 resource_name = "playercontroller"
 script/source = "extends Node2D
 
-@onready var player = get_parent().get_parent()
+@onready var player = get_parent()
 
 func handle_interact():
 	# Get the object at that position
@@ -44,7 +44,7 @@ func handle_main_hand_action():
 	
 	# Calling the action function if they are
 	if can_action:
-		player.get_node(\"Components/Animationcontroller\").handle_swing()
+		player.get_node(\"Animationcontroller\").handle_swing()
 		hit.action(player)
 		
 func point_to_mouse():

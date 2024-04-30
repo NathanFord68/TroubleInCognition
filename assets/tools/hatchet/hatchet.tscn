@@ -1,51 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://vfhdy5cj554s"]
+[gd_scene load_steps=11 format=3 uid="uid://vfhdy5cj554s"]
 
 [ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://assets/tools/hatchet/hatchet.png" id="1_3v86p"]
+[ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="2_jogfn"]
+[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="3_4nxlm"]
 
 [sub_resource type="GDScript" id="GDScript_so5a5"]
 script/source = "extends StaticBody2D
 
-var damage = 10
-var range = 40
-var can_action_with = [ \"Harvest\", \"Attack\" ]
+var damage : float = 10
+var range : float = 40
+var can_action_with : Array = [ \"Harvest\", \"Attack\" ]
+const animation_tree_path : String = \"res://components/animation_tree.tscn\"
 
+# Add ourselvs to the caller inventory TODO currently doing equiped slot. needs changing
 func interact(player):
-	# Add ourselvs to the caller inventory TODO currently doing equiped slot. needs changing
 	
+	# Instantiate a new hatchet
 	var n_hatch = preload(\"res://assets/tools/hatchet/hatchet.tscn\")
 	var in_hatch = n_hatch.instantiate()
+	
+	# Set up hatchet for player use
+	in_hatch.get_node(\"AnimationTree\").active = true
+	in_hatch.get_node(\"WorldGen\").visible = false
+	in_hatch.get_node(\"PlayerGen\").visible = true
+	
+	# Add the hatchet to the equipped slot
 	player.get_node(\"MainHandSlot\").add_child(in_hatch)
 	player.equipped = in_hatch
 	
+	# Clear the free the old one
 	queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxmlb"]
 size = Vector2(8, 20)
 
-[sub_resource type="Animation" id="Animation_apvp2"]
-resource_name = "Walk-Forward"
+[sub_resource type="Animation" id="Animation_m0uix"]
+resource_name = "Idle"
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 3, 5, 3]
-}
-
-[sub_resource type="Animation" id="Animation_3s3rj"]
-resource_name = "World-Render"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerGen:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +57,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerGen:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,45 +67,45 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_m0uix"]
-resource_name = "Idle"
-length = 0.1
+[sub_resource type="Animation" id="Animation_5n7jk"]
+resource_name = "Walk-Forward"
+loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerGen:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [3]
+"values": [2, 0, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_5n7jk"]
+[sub_resource type="Animation" id="Animation_apvp2"]
 resource_name = "Swing"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerGen:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.1, 0.25),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [6, 7]
+"values": [3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ieg8"]
 _data = {
 "Idle": SubResource("Animation_m0uix"),
 "RESET": SubResource("Animation_wj5c8"),
-"Swing": SubResource("Animation_5n7jk"),
-"Walk-Forward": SubResource("Animation_apvp2"),
-"World-Render": SubResource("Animation_3s3rj")
+"Swing": SubResource("Animation_apvp2"),
+"Walk-Forward": SubResource("Animation_5n7jk")
 }
 
 [node name="Hatchet" type="StaticBody2D" groups=["Interact"]]
@@ -116,11 +113,12 @@ texture_filter = 1
 collision_layer = 2
 script = SubResource("GDScript_so5a5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerGen" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture = ExtResource("1_3v86p")
 hframes = 3
-vframes = 3
+vframes = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -131,3 +129,11 @@ shape = SubResource("RectangleShape2D_gxmlb")
 libraries = {
 "": SubResource("AnimationLibrary_0ieg8")
 }
+
+[node name="AnimationTree" parent="." instance=ExtResource("2_jogfn")]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_0ieg8")
+}
+
+[node name="WorldGen" parent="." instance=ExtResource("3_4nxlm")]

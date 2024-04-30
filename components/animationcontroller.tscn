@@ -4,39 +4,26 @@
 resource_name = "animationcontroller"
 script/source = "extends Node
 
-@onready var player = get_parent().get_parent()
-var timer = Timer.new()
-var can_idle = true
+@onready var player = get_parent()
 
-func _ready():
-	timer.timeout.connect(_handle_time_out)
-
-func handle_idle():
-	if !can_idle:
-		return
-		
-	if !is_instance_valid(player.get_node(\"AnimationPlayer\")):
-		return
-	player.get_node(\"AnimationPlayer\").play(\"Idle\")
+func handle_idle():		
+	player.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 0)
 	
 	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"AnimationPlayer\").play(\"Idle\")
+		player.equipped.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 0)
 	
 func handle_walk_forward():
-	player.get_node(\"AnimationPlayer\").play(\"Walk-Forward\")
+	player.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 1)
 	
 	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"AnimationPlayer\").play(\"Walk-Forward\")
+		player.equipped.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 1)
 
 func handle_swing():
 	if !is_instance_valid(player.equipped):
 		return
 		
-	can_idle = false
-	timer.start(.5)
-	
-	player.get_node(\"AnimationPlayer\").play(\"Swing\")
-	player.equipped.get_node(\"AnimationPlayer\").play(\"Swing\")
+	player.get_node(\"AnimationTree\").set(\"parameters/OneShotSwing/request\", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	player.equipped.get_node(\"AnimationTree\").set(\"parameters/OneShotSwing/request\", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func handle_flip(v):
 	# Flip the parent
@@ -48,13 +35,10 @@ func handle_flip(v):
 	
 	# Flip equipped
 	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"Sprite2D\").flip_h = false
+		player.equipped.get_node(\"PlayerGen\").flip_h = false
 	
 	if is_instance_valid(player.equipped) and v.x > 0:
-		player.equipped.get_node(\"Sprite2D\").flip_h = true
-		
-func _handle_time_out():
-	can_idle = true
+		player.equipped.get_node(\"PlayerGen\").flip_h = true
 "
 
 [node name="Animationcontroller" type="Node"]
