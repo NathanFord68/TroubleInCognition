@@ -3,6 +3,54 @@
 [sub_resource type="GDScript" id="GDScript_b0epa"]
 resource_name = "InventoryManager"
 script/source = "extends Node
+
+const backpack_max_size : int = 100
+var backpack : Array[Item] = []
+
+var head
+var chest
+var legs
+var feet
+var ammo
+var cape
+var gloves
+var primary_hand
+var secondary_hand
+
+@export var backpack_node : Node
+
+func add_to_inventory(item, index = -1):
+	var i : int = index
+	
+	if index == -1:
+		# Find the lowest index and set i equal to
+		i = backpack.size()
+	
+	# Check that what we are trying is valid
+	if i >= backpack_max_size:
+		# Let the player know their inventory is full
+		print(\"Inventory is too large\")
+		return
+	
+	# Check if the slot is already taken
+	if backpack.size() > 0 and !is_instance_valid(backpack[i]):
+		__swap_items(item, i)
+		return
+	
+	# Insert the item to last slot
+	backpack.push_back(item)
+	
+	# Update the inventory UI with our image
+	backpack_node.get_children()[i].item = item
+	backpack_node.get_children()[i].update_icon()
+	
+	
+func __swap_items(item : Item, index : int):
+	pass
+	
+func debug_print():
+	for item in backpack:
+		print_debug(item)
 "
 
 [node name="InventoryManager" type="Node"]

@@ -5,31 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
 
 [sub_resource type="GDScript" id="GDScript_so5a5"]
-script/source = "extends StaticBody2D
-
-var damage : float = 10
-var range : float = 40
-var can_action_with : Array = [ \"Harvest\", \"Attack\" ]
-const animation_tree_path : String = \"res://components/animation_tree.tscn\"
-
-# Add ourselvs to the caller inventory TODO currently doing equiped slot. needs changing
-func interact(player):
-	
-	# Instantiate a new hatchet
-	var n_hatch = preload(\"res://assets/tools/hatchet/hatchet.tscn\")
-	var in_hatch = n_hatch.instantiate()
-	
-	# Set up hatchet for player use
-	in_hatch.get_node(\"AnimationTree\").active = true
-	in_hatch.get_node(\"WorldGen\").visible = false
-	in_hatch.get_node(\"PlayerGen\").visible = true
-	
-	# Add the hatchet to the equipped slot
-	player.get_node(\"MainHandSlot\").add_child(in_hatch)
-	player.equipped = in_hatch
-	
-	# Clear the free the old one
-	queue_free()
+script/source = "extends Item
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxmlb"]
@@ -112,6 +88,12 @@ _data = {
 texture_filter = 1
 collision_layer = 2
 script = SubResource("GDScript_so5a5")
+damage = 10.0
+range = 40.0
+can_action_with = Array[String](["Harvest"])
+type = 7
+asset_path = "res://assets/tools/hatchet/hatchet.tscn"
+icon = "res://assets/tools/hatchet/hatchet_world_gen.png"
 
 [node name="PlayerGen" type="Sprite2D" parent="."]
 visible = false

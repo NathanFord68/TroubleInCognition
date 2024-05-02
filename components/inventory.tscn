@@ -52,7 +52,6 @@ alignment = 1
 
 [node name="EquipmentSlot" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_uvit8")]
 layout_mode = 2
-icon = "res://assets/tools/hatchet/hatchet_world_gen.png"
 
 [node name="EquipmentSlot2" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_uvit8")]
 layout_mode = 2
@@ -99,338 +98,339 @@ text = "Defense: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+[node name="Backpack" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 columns = 10
 
-[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot6" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot6" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot7" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot7" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot8" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot8" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot9" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot9" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot10" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot10" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot11" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot11" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot12" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot12" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot13" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot13" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot14" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot14" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot15" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot15" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot16" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot16" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot17" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot17" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot18" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot18" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot19" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot19" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot20" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot20" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot21" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot21" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot22" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot22" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot23" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot23" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot24" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot24" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot25" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot25" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot26" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot26" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot27" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot27" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot28" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot28" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot29" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot29" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot31" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot31" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot32" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot32" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot33" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot33" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot34" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot34" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot35" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot35" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot36" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot36" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot37" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot37" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot38" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot38" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot39" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot39" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot40" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot40" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot41" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot41" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot42" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot42" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot43" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot43" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot44" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot44" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot45" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot45" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot46" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot46" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot47" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot47" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot48" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot48" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot49" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot49" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot50" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot50" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot51" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot51" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot52" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot52" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot53" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot53" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot54" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot54" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot55" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot55" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot56" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot56" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot57" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot57" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot58" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot58" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot59" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot59" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot60" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot60" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot61" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot61" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot62" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot62" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot63" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot63" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot64" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot64" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot65" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot65" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot66" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot66" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot67" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot67" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot68" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot68" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot69" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot69" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot70" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot70" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot71" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot71" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot72" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot72" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot73" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot73" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot74" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot74" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot75" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot75" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot76" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot76" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot77" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot77" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot78" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot78" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot79" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot79" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot80" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot80" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot81" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot81" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot82" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot82" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot83" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot83" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot84" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot84" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot85" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot85" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot86" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot86" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot87" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot87" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot88" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot88" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot89" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot89" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot90" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot90" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot91" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot91" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot92" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot92" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot93" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot93" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot94" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot94" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot95" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot95" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot96" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot96" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot97" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot97" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot98" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot98" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot99" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot99" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot100" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot100" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot101" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot101" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot102" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot102" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot103" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot103" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot104" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot104" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot105" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot105" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot106" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot106" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot107" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot107" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot108" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot108" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot109" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot109" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot110" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot110" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot111" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot111" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot112" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot112" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2
 
-[node name="EquipmentSlot30" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+[node name="EquipmentSlot30" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_uvit8")]
 layout_mode = 2

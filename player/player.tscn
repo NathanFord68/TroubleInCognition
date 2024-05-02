@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=14 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_jc8o0"]
 [ext_resource type="Texture2D" uid="uid://7ndpj8vda888" path="res://player/phil-the-mailman.png" id="2_gcgc6"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://k8h0jvyr87bd" path="res://components/animationcontroller.tscn" id="3_ppl0l"]
 [ext_resource type="PackedScene" uid="uid://j388a8vp1fd6" path="res://components/playercontroller.tscn" id="4_ag5gq"]
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://components/inventory.tscn" id="6_ws2bb"]
-[ext_resource type="PackedScene" uid="uid://dy3qn34tn5uh0" path="res://components/equipment.tscn" id="7_6thgp"]
-[ext_resource type="PackedScene" uid="uid://bamiymard5g5m" path="res://components/backpack.tscn" id="8_u2l8f"]
 [ext_resource type="PackedScene" uid="uid://cb6j8uulg0bya" path="res://components/InventoryManager.tscn" id="9_hmfv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o1y"]
@@ -120,13 +118,12 @@ libraries = {
 "": SubResource("AnimationLibrary_5galq")
 }
 
-[node name="Equipment" parent="." instance=ExtResource("7_6thgp")]
-
-[node name="Backpack" parent="." instance=ExtResource("8_u2l8f")]
-
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="PlayerViewport" instance=ExtResource("6_ws2bb")]
 visible = false
 
-[node name="InventoryManager" parent="." instance=ExtResource("9_hmfv3")]
+[node name="InventoryManager" parent="." node_paths=PackedStringArray("backpack_node") instance=ExtResource("9_hmfv3")]
+backpack_node = NodePath("../PlayerViewport/Inventory/PanelContainer/HBoxContainer/Backpack")
+
+[editable path="PlayerViewport/Inventory"]

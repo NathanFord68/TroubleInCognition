@@ -16,15 +16,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dev_debug"):
 		$Playercontroller.debug()
 		
-	if Input.is_action_just_pressed("player_toggle_inventory"):
-		# Get size of the players vision
-		#var camera_size : Vector2 = get_canvas_transform().affine_inverse().basis_xform(get_viewport_rect().size)
-		
-		# Set the parameters of the inventory screen
-		#$Inventory.position = camera_size / -2
-		#$Inventory.size = camera_size
-		#$Inventory/SplitScreen.split_offset = camera_size.x / 2 
-		
+	if Input.is_action_just_pressed("player_toggle_inventory"):		
 		# Pause game and show inventory
 		$PlayerViewport/Inventory.visible = true
 		get_tree().paused = true
