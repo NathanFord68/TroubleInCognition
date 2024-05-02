@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://assets/tools/hatchet/hatchet.png" id="1_3v86p"]
 [ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="2_jogfn"]
-[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="3_4nxlm"]
+[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
 
 [sub_resource type="GDScript" id="GDScript_so5a5"]
 script/source = "extends StaticBody2D
@@ -67,6 +67,22 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_apvp2"]
+resource_name = "Swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerGen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
 [sub_resource type="Animation" id="Animation_5n7jk"]
 resource_name = "Walk-Forward"
 loop_mode = 1
@@ -82,22 +98,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [2, 0, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_apvp2"]
-resource_name = "Swing"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerGen:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ieg8"]
@@ -136,4 +136,4 @@ libraries = {
 "": SubResource("AnimationLibrary_0ieg8")
 }
 
-[node name="WorldGen" parent="." instance=ExtResource("3_4nxlm")]
+[node name="WorldGen" parent="." instance=ExtResource("3_jxv1o")]

@@ -85,7 +85,7 @@ animation = &"Swing"
 animation = &"Walk-Forward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jpmeg"]
-graph_offset = Vector2(-772.679, 32.3632)
+graph_offset = Vector2(-709, 153)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_wadde")
 nodes/Idle/position = Vector2(-340, 80)
 nodes/Idle-WalkForward/node = SubResource("AnimationNodeBlend2_m5p6j")

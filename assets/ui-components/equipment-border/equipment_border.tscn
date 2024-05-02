@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyh4n2y10xex0"]
-
-[ext_resource type="Texture2D" uid="uid://eqfc72brmwdc" path="res://assets/ui-components/equipment-border/equipment-border.png" id="1_to1al"]
-
-[node name="EquipmentBorder" type="Sprite2D"]
-texture = ExtResource("1_to1al")

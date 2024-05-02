@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://crfiv8kctp6ho"]
+[gd_scene load_steps=3 format=3 uid="uid://xrdvhuuqpbdf"]
 
-[ext_resource type="PackedScene" uid="uid://cyh4n2y10xex0" path="res://assets/ui-components/equipment-border/equipment_border.tscn" id="1_tnvw4"]
-[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="2_fognb"]
+[ext_resource type="PackedScene" uid="uid://c3vbbbwdswsm2" path="res://assets/equipment_slot/equipment_slot.tscn" id="1_uvit8"]
 
-[sub_resource type="GDScript" id="GDScript_w3a4n"]
-resource_name = "Inventory"
-script/source = "extends PanelContainer
+[sub_resource type="GDScript" id="GDScript_d1jkx"]
+resource_name = "inventory"
+script/source = "extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,150 +18,419 @@ func _process(delta):
 		get_tree().paused = false
 "
 
-[node name="Inventory" type="PanelContainer"]
+[node name="InventoryViewport" type="Control"]
 process_mode = 2
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_w3a4n")
+script = SubResource("GDScript_d1jkx")
+metadata/_edit_use_anchors_ = true
 
-[node name="SplitScreen" type="HSplitContainer" parent="."]
-layout_mode = 2
-split_offset = 600
-
-[node name="Equipment" type="Panel" parent="SplitScreen"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="Head" type="Panel" parent="SplitScreen/Equipment"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 31.0
-offset_right = 20.0
-offset_bottom = 71.0
-grow_horizontal = 2
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/Head" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/Head" instance=ExtResource("2_fognb")]
-
-[node name="PrimaryHand" type="Panel" parent="SplitScreen/Equipment"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -20.0
-offset_right = -32.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/PrimaryHand" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/PrimaryHand" instance=ExtResource("2_fognb")]
-
-[node name="SecondaryHand" type="Panel" parent="SplitScreen/Equipment"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 32.0
-offset_top = -21.0
-offset_right = 72.0
-offset_bottom = 19.0
-grow_vertical = 2
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/SecondaryHand" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/SecondaryHand" instance=ExtResource("2_fognb")]
-
-[node name="Feet" type="Panel" parent="SplitScreen/Equipment"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/Feet" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/Feet" instance=ExtResource("2_fognb")]
-
-[node name="CenterEquipmentSlots" type="Panel" parent="SplitScreen/Equipment"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -21.0
-offset_right = 20.0
-offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(7.185, 0)
 
-[node name="Chest" type="Panel" parent="SplitScreen/Equipment/CenterEquipmentSlots"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/CenterEquipmentSlots/Chest" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/CenterEquipmentSlots/Chest" instance=ExtResource("2_fognb")]
-
-[node name="Legs" type="Panel" parent="SplitScreen/Equipment/CenterEquipmentSlots"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -9.0
-offset_right = 20.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(7.185, 0)
-
-[node name="EquipmentBorder" parent="SplitScreen/Equipment/CenterEquipmentSlots/Legs" instance=ExtResource("1_tnvw4")]
-
-[node name="HatchetWorldGen" parent="SplitScreen/Equipment/CenterEquipmentSlots/Legs" instance=ExtResource("2_fognb")]
-
-[node name="Right" type="Label" parent="SplitScreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-text = "Right"
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EquipmentSlot" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+icon = "res://assets/tools/hatchet/hatchet_world_gen.png"
+
+[node name="EquipmentSlot2" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Defense: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 10
+
+[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot6" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot7" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot8" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot9" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot10" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot11" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot12" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot13" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot14" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot15" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot16" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot17" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot18" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot19" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot20" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot21" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot22" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot23" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot24" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot25" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot26" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot27" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot28" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot29" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot31" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot32" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot33" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot34" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot35" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot36" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot37" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot38" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot39" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot40" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot41" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot42" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot43" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot44" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot45" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot46" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot47" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot48" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot49" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot50" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot51" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot52" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot53" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot54" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot55" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot56" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot57" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot58" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot59" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot60" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot61" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot62" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot63" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot64" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot65" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot66" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot67" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot68" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot69" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot70" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot71" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot72" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot73" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot74" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot75" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot76" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot77" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot78" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot79" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot80" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot81" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot82" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot83" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot84" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot85" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot86" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot87" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot88" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot89" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot90" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot91" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot92" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot93" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot94" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot95" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot96" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot97" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot98" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot99" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot100" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot101" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot102" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot103" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot104" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot105" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot106" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot107" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot108" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot109" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot110" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot111" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot112" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2
+
+[node name="EquipmentSlot30" parent="PanelContainer/HBoxContainer/GridContainer" instance=ExtResource("1_uvit8")]
+layout_mode = 2

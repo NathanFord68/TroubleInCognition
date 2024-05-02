@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://eqfc72brmwdc"
-path="res://.godot/imported/equipment-border.png-948309b218bf328f6aac726ed005d48c.ctex"
+path="res://.godot/imported/equipment-border.png-285a54e00708c539e8b4a38ba2eabad4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui-components/equipment-border/equipment-border.png"
-dest_files=["res://.godot/imported/equipment-border.png-948309b218bf328f6aac726ed005d48c.ctex"]
+source_file="res://assets/equipment_slot/equipment-border.png"
+dest_files=["res://.godot/imported/equipment-border.png-285a54e00708c539e8b4a38ba2eabad4.ctex"]
 
 [params]
 
