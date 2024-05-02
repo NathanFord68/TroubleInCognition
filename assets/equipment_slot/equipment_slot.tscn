@@ -11,6 +11,21 @@ script/source = "extends PanelContainer
 func _ready():
 	if !is_same(\"\", icon):
 		$Item.texture = load(icon)
+
+func _get_drag_data(at_position: Vector2):
+	set_drag_preview(make_drag_preview())
+	return self
+	
+func make_drag_preview():
+	var t := TextureRect.new()
+	t.texture = $Item.texture
+	t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	t.custom_minimum_size = size
+	return t
+
+func _can_drop_data(at_position, data):
+	return true
 "
 
 [node name="EquipmentSlot" type="PanelContainer"]
