@@ -7,17 +7,38 @@ script/source = "extends Node
 const backpack_max_size : int = 100
 var backpack : Array[Item] = []
 
-var head
-var chest
-var legs
-var feet
-var ammo
-var cape
-var gloves
-var primary_hand
-var secondary_hand
+var head : Item
+var chest : Item
+var legs : Item
+var feet : Item
+var ammo : Item
+var cape : Item
+var gloves : Item
+var primary_hand : Item
+var secondary_hand : Item
+var ring : Item
 
-@export var backpack_node : Node
+func _ready():
+	%Inventory.item_dropped.connect(handle_item_dropped)
+
+func handle_item_dropped(t: Item.TYPE, item: Item):
+	if t == Item.TYPE.MAIN:
+		equipment_to_inventory()
+		return
+	
+	inventory_to_equipment(t, item)
+	
+func inventory_to_equipment(t: Item.TYPE, item: Item):
+	item.name = str(t)
+	item.get_node(\"AnimationTree\").active = true
+	item.get_node(\"WorldGen\").visible = false
+	item.get_node(\"PlayerGen\").visible = true
+	$\"../Equipment\".add_child(item)
+	
+	
+	
+func equipment_to_inventory():
+	pass
 
 func add_to_inventory(item, index = -1):
 	var i : int = index
@@ -41,8 +62,8 @@ func add_to_inventory(item, index = -1):
 	backpack.push_back(item)
 	
 	# Update the inventory UI with our image
-	backpack_node.get_children()[i].item = item
-	backpack_node.get_children()[i].update_icon()
+	%Inventory.get_backpack().get_children()[i].item = item
+	%Inventory.get_backpack().get_children()[i].update_icon()
 	
 	
 func __swap_items(item : Item, index : int):

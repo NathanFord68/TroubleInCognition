@@ -38,7 +38,7 @@ func handle_main_hand_action():
 	# Checking the two objects are compatible
 	var can_action = false
 	for g in hit.get_groups():
-		if g in player.equipped.can_action_with:
+		if g in $\"../Eqipment\".get_node(str(Item.TYPE.PRIMARY)).can_action_with:
 			can_action = true
 			break
 	

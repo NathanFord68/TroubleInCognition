@@ -91,7 +91,7 @@ script = SubResource("GDScript_so5a5")
 damage = 10.0
 range = 40.0
 can_action_with = Array[String](["Harvest"])
-type = 7
+type = 8
 asset_path = "res://assets/tools/hatchet/hatchet.tscn"
 icon = "res://assets/tools/hatchet/hatchet_world_gen.png"
 

@@ -9,36 +9,39 @@ script/source = "extends Node
 func handle_idle():		
 	player.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 0)
 	
-	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 0)
+	for e in $\"../Equipment\".get_children():
+		e.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 0)
 	
 func handle_walk_forward():
 	player.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 1)
 	
-	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 1)
+	for e in $\"../Equipment\".get_children():
+		e.get_node(\"AnimationTree\").set(\"parameters/Idle-WalkForward/blend_amount\", 1)
 
 func handle_swing():
-	if !is_instance_valid(player.equipped):
+	if !is_instance_valid($\"../Equipment\".get_node(str(Item.TYPE.PRIMARY))):
 		return
 		
 	player.get_node(\"AnimationTree\").set(\"parameters/OneShotSwing/request\", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	player.equipped.get_node(\"AnimationTree\").set(\"parameters/OneShotSwing/request\", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	$\"../Equipment\".get_node(str(Item.TYPE.PRIMARY)).get_node(\"AnimationTree\").set(\"parameters/OneShotSwing/request\", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
+#DEPRICATED going to make animations for each direction
 func handle_flip(v):
 	# Flip the parent
 	if !is_instance_valid(player.get_node(\"Sprite2D\")):
 		return
+		
 	player.get_node(\"Sprite2D\").flip_h = false
 	if v.x > 0:
 		player.get_node(\"Sprite2D\").flip_h = true
 	
 	# Flip equipped
-	if is_instance_valid(player.equipped):
-		player.equipped.get_node(\"PlayerGen\").flip_h = false
+	for e in $\"../Equipment\".get_children():
+		e.get_node(\"PlayerGen\").flip_h = false
 	
-	if is_instance_valid(player.equipped) and v.x > 0:
-		player.equipped.get_node(\"PlayerGen\").flip_h = true
+	if v.x > 0:
+		for e in $\"../Equipment\".get_children():
+			e.get_node(\"PlayerGen\").flip_h = false
 "
 
 [node name="Animationcontroller" type="Node"]

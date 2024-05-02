@@ -107,7 +107,7 @@ libraries = {
 "": SubResource("AnimationLibrary_5galq")
 }
 
-[node name="MainHandSlot" type="Node2D" parent="."]
+[node name="Equipment" type="Node2D" parent="."]
 
 [node name="Playercontroller" parent="." instance=ExtResource("4_ag5gq")]
 
@@ -121,9 +121,8 @@ libraries = {
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="PlayerViewport" instance=ExtResource("6_ws2bb")]
+unique_name_in_owner = true
 visible = false
 
-[node name="InventoryManager" parent="." node_paths=PackedStringArray("backpack_node") instance=ExtResource("9_hmfv3")]
-backpack_node = NodePath("../PlayerViewport/Inventory/PanelContainer/HBoxContainer/Backpack")
-
-[editable path="PlayerViewport/Inventory"]
+[node name="InventoryManager" parent="." instance=ExtResource("9_hmfv3")]
+unique_name_in_owner = true

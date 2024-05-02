@@ -6,6 +6,7 @@
 script/source = "extends PanelContainer
 
 @export var item : Item
+@export var type : Item.TYPE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +15,8 @@ func _ready():
 func update_icon():
 	if is_instance_valid(item):
 		$Item.texture = load(item.icon)
+		return
+	$Item.texture = null
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview())
@@ -28,7 +31,24 @@ func make_drag_preview():
 	return t
 
 func _can_drop_data(at_position, data):
+	if type == Item.TYPE.MAIN:
+		return true
+		
+	if type != data.item.type:
+		return false
 	return true
+	
+func _drop_data(at_position : Vector2, data : Variant):
+	# Update my information
+	item = data.item
+	update_icon()
+	
+	# Update the senders information
+	data.item = null
+	data.update_icon()
+	
+	%InventoryViewportRootChild.get_parent().item_dropped.emit(type, item)
+	
 "
 
 [node name="EquipmentSlot" type="PanelContainer"]

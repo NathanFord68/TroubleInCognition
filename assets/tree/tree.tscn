@@ -9,7 +9,7 @@ script/source = "extends StaticBody2D
 var health = 100
 
 func action(caller):
-	health -= caller.equipped.damage
+	health -= caller.get_node(\"Equipment/\" + str(Item.TYPE.PRIMARY)).damage
 	print(health)
 	if health <= 0:
 		queue_free()
