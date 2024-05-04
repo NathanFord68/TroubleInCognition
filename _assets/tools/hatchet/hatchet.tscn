@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://vfhdy5cj554s"]
 
-[ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://assets/tools/hatchet/hatchet.png" id="1_3v86p"]
+[ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://_assets/tools/hatchet/hatchet.png" id="1_3v86p"]
 [ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="2_jogfn"]
-[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
+[ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://_assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
 
 [sub_resource type="GDScript" id="GDScript_so5a5"]
 script/source = "extends Item

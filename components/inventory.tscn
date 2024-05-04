@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://xrdvhuuqpbdf"]
 
-[ext_resource type="PackedScene" uid="uid://c3vbbbwdswsm2" path="res://assets/equipment_slot/equipment_slot.tscn" id="1_uvit8"]
+[ext_resource type="PackedScene" uid="uid://c3vbbbwdswsm2" path="res://_assets/equipment_slot/equipment_slot.tscn" id="1_uvit8"]
 
 [sub_resource type="GDScript" id="GDScript_d1jkx"]
 resource_name = "inventory"

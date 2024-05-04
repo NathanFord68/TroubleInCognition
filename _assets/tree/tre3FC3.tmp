@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://djejwpfur26y"]
 
-[ext_resource type="Texture2D" uid="uid://c016r6padgn60" path="res://assets/tree/Tree.png" id="1_fvl8a"]
+[ext_resource type="Texture2D" uid="uid://c016r6padgn60" path="res://_assets/tree/Tree.png" id="1_fvl8a"]
 
 [sub_resource type="GDScript" id="GDScript_t84t1"]
 resource_name = "tree"
@@ -9,10 +9,11 @@ script/source = "extends StaticBody2D
 var health = 100
 
 func action(caller):
-	health -= caller.get_node(\"Equipment/\" + str(Item.TYPE.PRIMARY)).damage
-	print(health)
-	if health <= 0:
-		queue_free()
+	#health -= caller.get_node(\"Equipment/\" + str(Item.TYPE.PRIMARY)).damage
+	#print(health)
+	#if health <= 0:
+		#queue_free()
+	pass
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk5ou"]

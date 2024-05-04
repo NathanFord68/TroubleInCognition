@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp3dkq3631ia6"]
 
 [ext_resource type="Texture2D" uid="uid://dk1ma4s6db14l" path="res://Grass.png" id="1_dhngv"]
-[ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://player/player.tscn" id="2_rip54"]
-[ext_resource type="PackedScene" uid="uid://djejwpfur26y" path="res://assets/tree/tree.tscn" id="3_d35s3"]
-[ext_resource type="PackedScene" uid="uid://vfhdy5cj554s" path="res://assets/tools/hatchet/hatchet.tscn" id="4_vpejk"]
+[ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="2_rip54"]
+[ext_resource type="PackedScene" uid="uid://djejwpfur26y" path="res://_assets/tree/tree.tscn" id="3_d35s3"]
+[ext_resource type="PackedScene" uid="uid://vfhdy5cj554s" path="res://_assets/tools/hatchet/hatchet.tscn" id="4_vpejk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30dgq"]
 texture = ExtResource("1_dhngv")

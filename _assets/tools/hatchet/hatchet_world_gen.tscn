@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fsmkno5dkgb7"]
 
-[ext_resource type="Texture2D" uid="uid://bw0ufk76b4sf4" path="res://assets/tools/hatchet/hatchet_world_gen.png" id="1_d0gen"]
+[ext_resource type="Texture2D" uid="uid://bw0ufk76b4sf4" path="res://_assets/tools/hatchet/hatchet_world_gen.png" id="1_d0gen"]
 
 [node name="HatchetWorldGen" type="Sprite2D"]
 texture_filter = 1

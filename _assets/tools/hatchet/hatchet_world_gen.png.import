@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ndpj8vda888"
-path="res://.godot/imported/phil-the-mailman.png-4d438768cea3b06e6b5d50593f464006.ctex"
+uid="uid://bw0ufk76b4sf4"
+path="res://.godot/imported/hatchet_world_gen.png-46f6b94a19bd9bb0a237ef40b449d00d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/phil-the-mailman.png"
-dest_files=["res://.godot/imported/phil-the-mailman.png-4d438768cea3b06e6b5d50593f464006.ctex"]
+source_file="res://_assets/tools/hatchet/hatchet_world_gen.png"
+dest_files=["res://.godot/imported/hatchet_world_gen.png-46f6b94a19bd9bb0a237ef40b449d00d.ctex"]
 
 [params]
 
