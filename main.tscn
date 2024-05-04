@@ -30,3 +30,6 @@ position = Vector2(249, 335)
 
 [node name="Hatchet" parent="." instance=ExtResource("4_vpejk")]
 position = Vector2(309, 410)
+range = 0.0
+can_action_with = Array[String]([])
+damage = 0

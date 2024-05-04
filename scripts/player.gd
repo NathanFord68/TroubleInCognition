@@ -17,16 +17,19 @@ var engine_info : EngineInfo
 
 
 func _input(event) -> void:
-	pass
-	#if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		#$Playercontroller.handle_main_hand_action()
+	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+		$Controller.handle_action(get_target(attributes.base_reach))
 	
 func _physics_process(delta) -> void:
 	if not can_physics_process():
 		return 
 		
+	if Input.is_action_just_pressed("player_toggle_inventory"):
+		$PlayerViewport/InventoryViewport.visible = true
+		get_tree().paused = true
+	
 	if Input.is_action_just_pressed("player_interact"):
-		$Controller.handle_interact(get_interact_target())
+		$Controller.handle_interact(get_target(attributes.base_reach))
 	
 	# Movement
 	$Controller.maneuver(Vector2(
@@ -35,15 +38,17 @@ func _physics_process(delta) -> void:
 	))
 
 	move_and_slide()
-	
+
+## Checks to make sure everything the physics process will need has been instantiated
 func can_physics_process() -> bool:
 	if not is_instance_valid(attributes):
 		return false
 	return true
 
-func get_interact_target() -> Node:
+## Gets the target the player is trying to interact with
+func get_target(range : float) -> Node:
 	var p_hit = point_to_mouse(true)
-	var t_hit = trace_to_mouse(attributes.base_reach, true)
+	var t_hit = trace_to_mouse(range, true)
 	if p_hit == t_hit:
 		return p_hit
 	return null

@@ -1,12 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://vfhdy5cj554s"]
 
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_2xkbx"]
 [ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://_assets/tools/hatchet/hatchet.png" id="1_3v86p"]
 [ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="2_jogfn"]
 [ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://_assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
-
-[sub_resource type="GDScript" id="GDScript_so5a5"]
-script/source = "extends Item
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxmlb"]
 size = Vector2(8, 20)
@@ -87,13 +84,8 @@ _data = {
 [node name="Hatchet" type="StaticBody2D" groups=["Interact"]]
 texture_filter = 1
 collision_layer = 2
-script = SubResource("GDScript_so5a5")
-damage = 10.0
-range = 40.0
-can_action_with = Array[String](["Harvest"])
+script = ExtResource("1_2xkbx")
 type = 8
-asset_path = "res://assets/tools/hatchet/hatchet.tscn"
-icon = "res://assets/tools/hatchet/hatchet_world_gen.png"
 
 [node name="PlayerGen" type="Sprite2D" parent="."]
 visible = false

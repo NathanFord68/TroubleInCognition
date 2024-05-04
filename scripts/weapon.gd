@@ -5,7 +5,7 @@ class_name Weapon
 
 ## How far can the weaon hit
 @export 
-var range: float
+var weapon_reach: float
 
 ## What can the weapon action with
 ##

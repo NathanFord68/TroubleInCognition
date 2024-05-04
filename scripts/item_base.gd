@@ -21,8 +21,8 @@ var attributes: BaseAttributes
 
 ## Processes the action to be done on this item when a caller actions with it
 func action(caller: Node) -> void:
-	pass
+	print(caller)
 
 ## Process the interact to be done on this item when a caller interacts with it
 func interact(caller: Node) -> void:
-	pass
+	print(caller)
