@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=17 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Texture2D" uid="uid://7ndpj8vda888" path="res://assets/objects/player.png" id="2_gcgc6"]
-[ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="3_l6vvq"]
 [ext_resource type="PackedScene" uid="uid://cjuekjs8vop3q" path="res://assets/components/Controller.tscn" id="4_i3jf3"]
 [ext_resource type="PackedScene" uid="uid://jbx0yqr6gwdv" path="res://assets/components/enhanced_attributes.tscn" id="5_8v1cs"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="6_thqr0"]
@@ -85,6 +84,15 @@ _data = {
 "Walk-Forward": SubResource("Animation_q0qej")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wkmdk"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
+graph_offset = Vector2(-339, -20)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_wkmdk")
+nodes/Animation/position = Vector2(120, 140)
+node_connections = [&"output", 0, &"Animation"]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "attributes", "engine_info", "inventory_manager") groups=["Player"]]
 script = ExtResource("1_5ni8o")
 stats = NodePath("Stats")
@@ -115,10 +123,12 @@ libraries = {
 "": SubResource("AnimationLibrary_5galq")
 }
 
-[node name="AnimationTree" parent="." instance=ExtResource("3_l6vvq")]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5galq")
 }
+tree_root = SubResource("AnimationNodeBlendTree_lud6u")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Controller" parent="." instance=ExtResource("4_i3jf3")]
 

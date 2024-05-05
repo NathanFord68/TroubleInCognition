@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp3dkq3631ia6"]
+[gd_scene load_steps=5 format=3 uid="uid://cp3dkq3631ia6"]
 
 [ext_resource type="Texture2D" uid="uid://dk1ma4s6db14l" path="res://Grass.png" id="1_dhngv"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="2_rip54"]
-[ext_resource type="PackedScene" uid="uid://djejwpfur26y" path="res://_assets/tree/tree.tscn" id="3_d35s3"]
-[ext_resource type="PackedScene" uid="uid://vfhdy5cj554s" path="res://_assets/tools/hatchet/hatchet.tscn" id="4_vpejk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30dgq"]
 texture = ExtResource("1_dhngv")
@@ -24,9 +22,3 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 65537, 65536, 1, 1310
 
 [node name="Player" parent="." instance=ExtResource("2_rip54")]
 position = Vector2(307, 329)
-
-[node name="Tree" parent="." instance=ExtResource("3_d35s3")]
-position = Vector2(249, 335)
-
-[node name="Hatchet" parent="." instance=ExtResource("4_vpejk")]
-position = Vector2(309, 410)
