@@ -25,4 +25,11 @@ func action(caller: Node) -> void:
 
 ## Process the interact to be done on this item when a caller interacts with it
 func interact(caller: Node) -> void:
-	print(caller)
+	var n_item := (load(engine_info.asset_path) as PackedScene).instantiate() as ItemBase
+	var can_queue_free = false
+
+	if "Player" in caller.get_groups():
+		can_queue_free = caller.inventory_manager.add_to_inventory(n_item)
+
+	if can_queue_free:
+		queue_free()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://vfhdy5cj554s"]
+[gd_scene load_steps=12 format=3 uid="uid://vfhdy5cj554s"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_2xkbx"]
 [ext_resource type="Texture2D" uid="uid://dexoplqghgv0n" path="res://_assets/tools/hatchet/hatchet.png" id="1_3v86p"]
 [ext_resource type="PackedScene" uid="uid://ddjgqdemq1jdn" path="res://components/animation_tree.tscn" id="2_jogfn"]
 [ext_resource type="PackedScene" uid="uid://fsmkno5dkgb7" path="res://_assets/tools/hatchet/hatchet_world_gen.tscn" id="3_jxv1o"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="5_gvl14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxmlb"]
 size = Vector2(8, 20)
@@ -81,11 +82,12 @@ _data = {
 "Walk-Forward": SubResource("Animation_5n7jk")
 }
 
-[node name="Hatchet" type="StaticBody2D" groups=["Interact"]]
+[node name="Hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info") groups=["Interact"]]
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_2xkbx")
-type = 8
+type = 5
+engine_info = NodePath("EngineInfo")
 
 [node name="PlayerGen" type="Sprite2D" parent="."]
 visible = false
@@ -111,3 +113,7 @@ libraries = {
 }
 
 [node name="WorldGen" parent="." instance=ExtResource("3_jxv1o")]
+
+[node name="EngineInfo" parent="." instance=ExtResource("5_gvl14")]
+asset_path = "res://_assets/tools/hatchet/hatchet.tscn"
+icon_path = "res://_assets/tools/hatchet/hatchet_world_gen.png"

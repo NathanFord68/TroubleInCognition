@@ -4,7 +4,7 @@ class_name EquipmentSlot
 
 ## The item in this slot
 @export 
-var item : Item
+var item : ItemBase
 
 ## The type of items this slot allows
 @export var allowed_type : Enums.ITEM_TYPE
@@ -12,10 +12,12 @@ var item : Item
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_icon()
-		
+
+
+## Updates the icon for this slot
 func update_icon():
 	if is_instance_valid(item):
-		$Item.texture = load(item.icon)
+		$Item.texture = load(item.engine_info.icon_path)
 		return
 	$Item.texture = null
 
@@ -47,3 +49,6 @@ func _drop_data(at_position : Vector2, data : Variant):
 	# Update the senders information
 	data.item = null
 	data.update_icon()
+	
+	# Signal that the item has been dropped in this slot
+	%InventoryViewportRootChild.get_parent().item_dropped.emit(allowed_type, item)

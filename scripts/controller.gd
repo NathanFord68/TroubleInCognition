@@ -10,6 +10,8 @@ func handle_action(target: Node) -> void:
 
 ## Determines if we can handle calling the action of the target
 func can_handle_action(target: Node) -> bool:
+	if not is_instance_valid(target):
+		return false
 	return true
 
 ## Processes the action of this object
@@ -23,6 +25,8 @@ func handle_interact(target: Node) -> void:
 
 ## Determines if we can handle interacting with the target
 func can_handle_interact(target: Node) -> bool:
+	if not is_instance_valid(target):
+		return false
 	if "Interact" not in target.get_groups():
 		return false
 	return true

@@ -15,6 +15,9 @@ var attributes : EnhancedAttributes
 @export
 var engine_info : EngineInfo
 
+## Manages our inventory
+@export
+var inventory_manager : InventoryManager
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
@@ -23,8 +26,10 @@ func _input(event) -> void:
 func _physics_process(delta) -> void:
 	if not can_physics_process():
 		return 
-		
-	if Input.is_action_just_pressed("player_toggle_inventory"):
+	if Input.is_action_just_pressed("dev_debug"):
+		inventory_manager.debug_print()
+
+	if Input.is_action_just_released("player_toggle_inventory"):
 		$PlayerViewport/InventoryViewport.visible = true
 		get_tree().paused = true
 	

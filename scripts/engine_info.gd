@@ -10,3 +10,5 @@ var asset_path: String
 ## The path of the representing icon in the engine
 @export 
 var icon_path: String
+
+const temp: String = "res://_assets/tools/hatchet/hatchet_world_gen.png"
