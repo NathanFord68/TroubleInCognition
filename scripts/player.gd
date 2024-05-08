@@ -21,7 +21,7 @@ var inventory_manager : InventoryManager
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		$Controller.handle_action(get_target(attributes.base_reach))
+		$Controller.handale_action(get_target(attributes.base_reach))
 	
 func _physics_process(delta) -> void:
 	if not can_physics_process():
