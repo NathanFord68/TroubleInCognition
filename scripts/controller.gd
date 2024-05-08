@@ -43,46 +43,25 @@ func interact(caller: Node) -> void:
 
 ## Updates the velocity of the owner
 func maneuver(v: Vector2) -> void:
+	# Add velocity and play animations
 	if v.x > 0: # Player walking Right
-		animate_walk_right()
+		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
+		flip_sprites(false)
 	if v.x < 0: # Player Walking left
-		animate_walk_left()
-	if v.y > 0:
-		animate_walk_toward()
-	if v.y < 0:
-		animate_walk_away()
-	if v == Vector2():
-		animate_idle()
+		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
+		flip_sprites()
+	if v.y > 0: # Player Walk Toward player
+		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Toward")
+		flip_sprites()
+	if v.y < 0: # Player Walk away from player
+		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Away")
+	if v == Vector2(): # Default to idle
+		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
+		flip_sprites()
+		
 	$"..".velocity = v
 
-func animate_idle():	
-	# Reset the flip of each sprite
-	(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
-	
-	# Flip the sprites back to default
+## Flips the sprites for the animations
+func flip_sprites(default: bool = true):
 	for sprite: Sprite2D in $"../Sprite".get_children():
-		sprite.flip_h = false
-
-func animate_walk_right():
-	(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
-	
-	# Flip so sprite is walking right instead of default left
-	for sprite: Sprite2D in $"../Sprite".get_children():
-		sprite.flip_h = true
-		
-func animate_walk_left():
-	(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
-	
-	# Ensure the flip is default
-	for sprite: Sprite2D in $"../Sprite".get_children():
-		sprite.flip_h = false
-	
-func animate_walk_toward():
-	(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Toward")
-	
-	# Ensure the flip is default
-	for sprite: Sprite2D in $"../Sprite".get_children():
-		sprite.flip_h = false
-	
-func animate_walk_away():
-	(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Away")
+		sprite.flip_h = !default
