@@ -9,7 +9,7 @@ var health: int
 
 ## What can this object drop when health is zero
 @export 
-var drop_table: Dictionary
+var drop_table: Array
 
 ## Name of the object for player use
 @export 

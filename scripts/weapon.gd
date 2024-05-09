@@ -12,7 +12,7 @@ var weapon_reach: float
 ## Determines groups that this weapon can call their action method.
 ## For example, a hatchet can interact with a tree that is in group "Harvest"
 @export 
-var can_action_with: Array[String]
+var can_action_with: Array
 
 ## What type of damage does this weapon inflict
 @export 
@@ -32,3 +32,22 @@ var min_damage: int
 @export 
 var is_two_handed: bool
 
+#func _init(
+	#_weapon_reach,
+	#_can_action_with,
+	#_damage_type,
+	#_damage,
+	#_min_damage,
+	#_is_two_handed,
+	#_type,
+	#_recipe,
+	#_engine_info,
+	#_attributes
+#):
+	#super(_type, _recipe, _engine_info, _attributes)
+	#self.weapon_reach = _weapon_reach
+	#self.can_action_with = _can_action_with
+	#self.damage_type = _damage_type
+	#self.damage = _damage
+	#self.min_damage = _min_damage
+	#self.is_two_handed = _is_two_handed
