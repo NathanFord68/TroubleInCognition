@@ -1,48 +1,44 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://xjeepxeu4asf"]
 
-[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_8x5se"]
-[ext_resource type="PackedScene" path="res://assets/components/engine_info.tscn" id="2_f3ybu"]
-[ext_resource type="Script" path="res://scripts/engine_info.gd" id="3_l3em1"]
-[ext_resource type="PackedScene" path="res://assets/components/base_attributes.tscn" id="4_lrrim"]
-[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="5_5lp1j"]
-[ext_resource type="Texture2D" path="res://assets/objects/hatchet_icon.png" id="6_isyjr"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_6f75f"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_w5fle"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_mtpl3"]
+[ext_resource type="Texture2D" uid="uid://bc2vf2yg05a6j" path="res://assets/objects/hatchet_base.png" id="6_hsav6"]
+[ext_resource type="Texture2D" uid="uid://b33wpjgx5p6je" path="res://assets/objects/hatchet_head.png" id="7_v3i6r"]
+[ext_resource type="Texture2D" uid="uid://d23uajf3tudc7" path="res://assets/objects/hatchet_icon.png" id="8_0q1pk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f14cr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur6n4"]
 size = Vector2(4, 11)
 
 [node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes")]
-script = ExtResource("1_8x5se")
+script = ExtResource("1_6f75f")
 weapon_reach = 40.0
 can_action_with = ["Harvest", "Melee"]
-damage_type = 0
 damage = 5
 min_damage = 1
-is_two_handed = false
 type = 5
-recipe = []
 engine_info = NodePath("EngineInfo")
 attributes = NodePath("BaseAttributes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_f14cr")
+shape = SubResource("RectangleShape2D_ur6n4")
 
-[node name="EngineInfo" type="Node" parent="." instance=ExtResource("2_f3ybu")]
-script = ExtResource("3_l3em1")
+[node name="EngineInfo" parent="." instance=ExtResource("2_w5fle")]
 asset_path = "res://assets/objects/hatchet.tscn"
 icon_path = "res://assets/objects/hatchet_icon.png"
 
-[node name="BaseAttributes" type="Node" parent="." instance=ExtResource("4_lrrim")]
-script = ExtResource("5_5lp1j")
+[node name="BaseAttributes" parent="." instance=ExtResource("4_mtpl3")]
 health = 100
-drop_table = []
 object_name = "hatchet_base"
 
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("6_hsav6")
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("7_v3i6r")
 
 [node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("6_isyjr")
+texture = ExtResource("8_0q1pk")

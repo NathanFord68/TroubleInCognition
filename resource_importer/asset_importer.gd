@@ -8,24 +8,29 @@ const object_path: String = "res://assets/objects/%s"
 func _ready():
 	# Get the checksum from the last time we ran the importer
 	var json_checksum = FileAccess.get_md5("res://resource_importer/assets.json")
-	var checksum_file_read = FileAccess.open("res://resource_importer/checksum.txt", FileAccess.READ)
-	var old_checksum = checksum_file_read.get_line()
+	
+	var checksum_json = __get_checksum_json()
 	
 	# If the checksum is different, import the assets
-	if json_checksum != old_checksum or true:
+	if "json" not in checksum_json or checksum_json["json"] != json_checksum:
 		var import_successful = __import_assets()
 		if not import_successful:
 			return
 		
-		# Write back to checksum file to update to new checksum
-		var checksum_file_write = FileAccess.open("res://resource_importer/checksum.txt", FileAccess.WRITE)
-		checksum_file_write.store_line(json_checksum)
+		# Get the json again, as it will have changed during the import
+		checksum_json = __get_checksum_json()
+		
+	
+	# Write back to checksum file to update to new checksum
+	__write_checksum_json("json", json_checksum, checksum_json)
 	
 	get_tree().quit()
 	
 func __import_assets() -> bool:
 	# Get the file
 	var file = FileAccess.open("res://resource_importer/assets.json", FileAccess.READ)
+	var checksum_json = __get_checksum_json()
+	var diff = []
 
 	# Open the file
 	var content = file.get_as_text()
@@ -36,6 +41,9 @@ func __import_assets() -> bool:
 	# Interate through array. 
 	var n
 	for a in assets:
+		if a.name in checksum_json and a.hash() == checksum_json[a.name]:
+			continue
+			
 		match a.type:
 			_:
 				n = __generate_item(a)
@@ -52,7 +60,9 @@ func __import_assets() -> bool:
 		if save_error != OK:
 			print(save_error)
 			return false
-
+		diff.push_back(a.name)
+		checksum_json = __write_checksum_json(a.name, a.hash(), checksum_json)
+	__write_diff_file(diff)
 	return true
 
 func __generate_item(data: Dictionary) -> Node:
@@ -80,7 +90,7 @@ func __generate_item(data: Dictionary) -> Node:
 	var sprite := n.get_node("Sprite") as Node2D
 	for s : String in data.sprites:
 		var m = Sprite2D.new()
-		m.texture = load(object_path % s)
+		m.texture = load(object_path % "%s.png" % s)
 		m.name = s
 		sprite.add_child(m, true)
 		m.owner = n
@@ -120,3 +130,18 @@ func __get_damage_type(t : String) -> Enums.DAMAGE_TYPE:
 		"MELEE": return Enums.DAMAGE_TYPE.MELEE
 		"RANGE": return Enums.DAMAGE_TYPE.RANGE
 		_: return Enums.DAMAGE_TYPE.MAGIC
+
+func __get_checksum_json() -> Dictionary:
+	var checksum_file_read = FileAccess.open("res://resource_importer/checksum.json", FileAccess.READ)
+	var checksum_content = checksum_file_read.get_as_text()
+	return JSON.parse_string(checksum_content)
+
+func __write_checksum_json(param: String, val: Variant, json: Dictionary) -> Dictionary:
+	var checksum_file_write = FileAccess.open("res://resource_importer/checksum.json", FileAccess.WRITE)
+	json[param] = val
+	checksum_file_write.store_string(JSON.stringify(json))
+	return json
+
+func __write_diff_file(json: Array) -> void:
+	var diff_file = FileAccess.open("res://resource_importer/diff.json", FileAccess.WRITE)
+	diff_file.store_string(JSON.stringify(json))

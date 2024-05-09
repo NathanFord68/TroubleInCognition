@@ -371,6 +371,7 @@ states/Walk-Toward/position = Vector2(722, 120)
 graph_offset = Vector2(4, -69)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
+graph_offset = Vector2(527.05, -220.64)
 nodes/locomotion/node = SubResource("AnimationNodeStateMachine_wb0ph")
 nodes/locomotion/position = Vector2(540, -120)
 nodes/output/position = Vector2(840, -120)
