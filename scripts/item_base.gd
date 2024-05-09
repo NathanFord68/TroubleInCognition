@@ -19,17 +19,6 @@ var engine_info: EngineInfo
 @export 
 var attributes: BaseAttributes
 
-#func _init(
-	#_type,
-	#_recipe,
-	#_engine_info,
-	#_attributes
-#):
-	#self.type = _type
-	#self.recipe = _recipe
-	#self.engine_info = _engine_info
-	#self.attributes = _attributes
-
 ## Processes the action to be done on this item when a caller actions with it
 func action(caller: Node) -> void:
 	print(caller)

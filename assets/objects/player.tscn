@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Texture2D" uid="uid://dtlt8yk3j7shd" path="res://assets/objects/player_head.png" id="2_cfw05"]
 [ext_resource type="Texture2D" uid="uid://d3tqx7xltedne" path="res://assets/objects/player_torso.png" id="3_bk78q"]
-[ext_resource type="PackedScene" uid="uid://cjuekjs8vop3q" path="res://assets/components/Controller.tscn" id="4_i3jf3"]
+[ext_resource type="PackedScene" uid="uid://cjuekjs8vop3q" path="res://assets/components/controller.tscn" id="4_i3jf3"]
 [ext_resource type="Texture2D" uid="uid://kv3yslggpqrw" path="res://assets/objects/player_arms.png" id="4_rw1p3"]
 [ext_resource type="PackedScene" uid="uid://jbx0yqr6gwdv" path="res://assets/components/enhanced_attributes.tscn" id="5_8v1cs"]
 [ext_resource type="Texture2D" uid="uid://d11kcfp7eopwt" path="res://assets/objects/player_legs.png" id="5_n22oj"]
@@ -371,7 +371,6 @@ states/Walk-Toward/position = Vector2(722, 120)
 graph_offset = Vector2(4, -69)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
-graph_offset = Vector2(-292.601, -327.962)
 nodes/locomotion/node = SubResource("AnimationNodeStateMachine_wb0ph")
 nodes/locomotion/position = Vector2(540, -120)
 nodes/output/position = Vector2(840, -120)

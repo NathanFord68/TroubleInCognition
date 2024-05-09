@@ -1,0 +1,30 @@
+[
+	{
+		"type": "WEAPON",
+		"name": "hatchet",
+		"recipe": [],
+		"collision": [4, 11],
+		"sprites": [
+			"hatchet_base",
+			"hatchet_head"
+		],
+		"engine_info": {
+			"asset_path": "hatchet.tscn",
+			"icon_path": "hatchet_icon.png"
+		},
+		"attributes": {
+			"health": 100,
+			"drop_table": [],
+			"object_name": "hatchet_base"
+		},
+		"weapon": {
+			"damage": 5,
+			"min_damage": 1,
+			"weapon_reach": 40,
+			"can_action_with": ["Harvest", "Melee"],
+			"damage_type":"MELEE",
+			"is_two_handed": false
+			
+		}
+	}
+]
