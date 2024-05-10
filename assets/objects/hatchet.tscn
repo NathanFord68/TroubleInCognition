@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bue2qk7prghux"]
+[gd_scene load_steps=21 format=3 uid="uid://bue2qk7prghux"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_eufyu"]
@@ -66,14 +66,139 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_m6unt"]
+resource_name = "Walk-Toward"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 3, 2, 5, 6, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 3, 2, 5, 6, 5]
+}
+
+[sub_resource type="Animation" id="Animation_beau5"]
+resource_name = "Walk-Away"
+
+[sub_resource type="Animation" id="Animation_y2q1e"]
+resource_name = "Swing-Toward"
+length = 1.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ib78i"]
+resource_name = "Walk-Sideways"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 48, 13, 48, 12, 14, 15, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 13, 12, 15, 16, 15]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7gl5"]
 _data = {
 "Idle": SubResource("Animation_ei4tq"),
-"RESET": SubResource("Animation_nsndc")
+"RESET": SubResource("Animation_nsndc"),
+"Swing-Toward": SubResource("Animation_y2q1e"),
+"Walk-Away": SubResource("Animation_beau5"),
+"Walk-Sideways": SubResource("Animation_ib78i"),
+"Walk-Toward": SubResource("Animation_m6unt")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_haw6f"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wovqv"]
+animation = &"Walk-Away"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jaklp"]
+animation = &"Walk-Sideways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3b2pt"]
+animation = &"Walk-Toward"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yej1b"]
+states/Idle/node = SubResource("AnimationNodeAnimation_haw6f")
+states/Idle/position = Vector2(359, 59)
+states/Walk-Away/node = SubResource("AnimationNodeAnimation_wovqv")
+states/Walk-Away/position = Vector2(390, 132)
+states/Walk-Sideways/node = SubResource("AnimationNodeAnimation_jaklp")
+states/Walk-Sideways/position = Vector2(484, 189)
+states/Walk-Toward/node = SubResource("AnimationNodeAnimation_3b2pt")
+states/Walk-Toward/position = Vector2(668, 143)
+graph_offset = Vector2(-108, -5)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_we7oh"]
+graph_offset = Vector2(-311, 16)
+nodes/locomotion/node = SubResource("AnimationNodeStateMachine_yej1b")
+nodes/locomotion/position = Vector2(0, 140)
+node_connections = [&"output", 0, &"locomotion"]
+
 [node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_kjlfq")
 weapon_reach = 40.0
 can_action_with = ["Harvest", "Melee"]
@@ -119,3 +244,11 @@ texture = ExtResource("8_ix7kg")
 libraries = {
 "": SubResource("AnimationLibrary_n7gl5")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_n7gl5")
+}
+tree_root = SubResource("AnimationNodeBlendTree_we7oh")
+anim_player = NodePath("../AnimationPlayer")

@@ -46,22 +46,42 @@ func maneuver(v: Vector2) -> void:
 	# Add velocity and play animations
 	if v.x > 0: # Player walking Right
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
+		__animate_equipment_locomotion("Walk-Sideways")
 		flip_sprites(false)
 	if v.x < 0: # Player Walking left
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
+		__animate_equipment_locomotion("Walk-Sideways")
 		flip_sprites()
 	if v.y > 0: # Player Walk Toward player
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Toward")
+		__animate_equipment_locomotion("Walk-Toward")
 		flip_sprites()
 	if v.y < 0: # Player Walk away from player
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Away")
+		__animate_equipment_locomotion("Walk-Away")
 	if v == Vector2(): # Default to idle
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
+		__animate_equipment_locomotion("Idle")
 		flip_sprites()
 		
 	$"..".velocity = v
+
+func __animate_equipment_locomotion(param: String):
+	if ($"../Equipment" as Node2D).get_child_count() == 0:
+		return
+	for equipment: StaticBody2D in $"../Equipment".get_children():
+		(( equipment.get_node("AnimationTree") 
+			as AnimationTree).get("parameters/locomotion/playback")
+				as AnimationNodeStateMachinePlayback ).travel(param)
 
 ## Flips the sprites for the animations
 func flip_sprites(default: bool = true):
 	for sprite: Sprite2D in $"../Sprite".get_children():
 		sprite.flip_h = !default
+		
+	if ($"../Equipment" as Node2D).get_child_count() == 0:
+		return
+	
+	for equipment: StaticBody2D in $"../Equipment".get_children():
+		for sprite : Sprite2D in equipment.get_node("Sprite").get_children():
+			sprite.flip_h = !default

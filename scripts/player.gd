@@ -21,8 +21,8 @@ var inventory_manager : InventoryManager
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		$Controller.handle_action(get_target(attributes.base_reach))
-	
+		__handle_primary_mouse_pressed()
+
 func _physics_process(delta) -> void:
 	if not can_physics_process():
 		return 
@@ -98,3 +98,14 @@ func point_to_mouse(debug: bool) -> Node:
 		return hit[0].collider
 	
 	return null
+
+func __get_weapon_reach() -> float:
+	if is_instance_valid($Equipment.get_node(str(Enums.ITEM_TYPE.PRIMARY))):
+		return ($Equipment.get_node(str(Enums.ITEM_TYPE.PRIMARY)) as Weapon).weapon_reach
+	return -1
+
+func __handle_primary_mouse_pressed() -> void:
+	var reach = __get_weapon_reach()
+	if reach == -1:
+		return
+	$Controller.handle_action(get_target(reach))

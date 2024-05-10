@@ -25,8 +25,11 @@ func handle_item_dropped(t: Enums.ITEM_TYPE, item: ItemBase):
 func inventory_to_equipment(t: Enums.ITEM_TYPE, item: ItemBase):
 	item.name = str(t)
 	item.get_node("AnimationTree").active = true
-	item.get_node("WorldGen").visible = false
-	item.get_node("PlayerGen").visible = true
+	for s : Sprite2D in item.get_node("Sprite").get_children():
+		if "icon" in s.name:
+			s.visible = false
+			continue
+		s.visible = true
 	$"../Equipment".add_child(item)
 	
 	
