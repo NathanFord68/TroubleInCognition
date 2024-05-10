@@ -459,6 +459,7 @@ max_backpack_size = 100
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
 [node name="InventoryViewport" parent="PlayerViewport" instance=ExtResource("8_rq083")]
+process_mode = 3
 visible = false
 
 [node name="Controller" parent="." node_paths=PackedStringArray("animation_tree") instance=ExtResource("4_i3jf3")]

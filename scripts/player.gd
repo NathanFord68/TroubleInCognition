@@ -28,10 +28,6 @@ func _physics_process(delta) -> void:
 		return 
 	if Input.is_action_just_pressed("dev_debug"):
 		inventory_manager.debug_print()
-
-	if Input.is_action_just_released("player_toggle_inventory"):
-		$PlayerViewport/InventoryViewport.visible = true
-		get_tree().paused = true
 	
 	if Input.is_action_just_pressed("player_interact"):
 		$Controller.handle_interact(get_target(attributes.base_reach))
