@@ -72,7 +72,8 @@ _data = {
 "RESET": SubResource("Animation_nsndc")
 }
 
-[node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes")]
+[node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
+collision_layer = 3
 script = ExtResource("1_kjlfq")
 weapon_reach = 40.0
 can_action_with = ["Harvest", "Melee"]
@@ -97,19 +98,20 @@ object_name = "hatchet_base"
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
+visible = false
 texture_filter = 1
 texture = ExtResource("6_wp3ea")
 hframes = 7
 vframes = 7
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
+visible = false
 texture_filter = 1
 texture = ExtResource("7_pbvfr")
 hframes = 7
 vframes = 7
 
 [node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
-visible = false
 texture_filter = 1
 texture = ExtResource("8_ix7kg")
 

@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Enums="*res://scripts/enums.gd"
+Debug="*res://scripts/debugger.gd"
+Env="*res://scripts/env.gd"
 
 [dotnet]
 

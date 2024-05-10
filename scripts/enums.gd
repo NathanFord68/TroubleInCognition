@@ -4,3 +4,6 @@ enum ITEM_TYPE { MAIN, HEAD, CHEST, LEGS, FEET, PRIMARY, SECONDARY, CAPE, AMMO, 
 
 ## Stores the different damage types
 enum DAMAGE_TYPE { MELEE, RANGE, MAGIC }
+
+## Define the different modes that we can use
+enum MODE { DEV, TEST, PROD }

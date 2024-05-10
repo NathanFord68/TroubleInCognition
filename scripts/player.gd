@@ -21,7 +21,7 @@ var inventory_manager : InventoryManager
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		$Controller.handale_action(get_target(attributes.base_reach))
+		$Controller.handle_action(get_target(attributes.base_reach))
 	
 func _physics_process(delta) -> void:
 	if not can_physics_process():
@@ -75,8 +75,8 @@ func trace_to_mouse(range: float, debug: bool) -> Node:
 	var hit = space.intersect_ray(query)
 	
 	# Visualize if true
-	if debug:
-		pass
+	if Env.mode == Enums.MODE.DEV:
+		Debug.visualize_ray_cast(global_position, end, self)
 	
 	# Return collider if hit
 	if "collider" in hit:
