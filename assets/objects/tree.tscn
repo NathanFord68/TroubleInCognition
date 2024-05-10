@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1xqxakfp4txq"]
+
+[ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_6qr3h"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_j4sd8"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_gq2xx"]
+[ext_resource type="Texture2D" uid="uid://dfpw02frby844" path="res://assets/objects/tree_icon.png" id="6_2v84x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qswkg"]
+size = Vector2(30, 56)
+
+[node name="tree" type="StaticBody2D" node_paths=PackedStringArray("attributes", "engine_info")]
+script = ExtResource("1_6qr3h")
+attributes = NodePath("BaseAttributes")
+engine_info = NodePath("EngineInfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qswkg")
+
+[node name="EngineInfo" parent="." instance=ExtResource("2_j4sd8")]
+asset_path = "res://assets/objects/tree.tscn"
+icon_path = "res://assets/objects/tree_icon.png"
+
+[node name="BaseAttributes" parent="." instance=ExtResource("4_gq2xx")]
+health = 150
+object_name = "tree"
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="tree_icon" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("6_2v84x")

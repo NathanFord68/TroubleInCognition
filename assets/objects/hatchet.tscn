@@ -1,44 +1,119 @@
-[gd_scene load_steps=8 format=3 uid="uid://xjeepxeu4asf"]
+[gd_scene load_steps=11 format=3 uid="uid://bue2qk7prghux"]
 
-[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_6f75f"]
-[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_w5fle"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_mtpl3"]
-[ext_resource type="Texture2D" uid="uid://bc2vf2yg05a6j" path="res://assets/objects/hatchet_base.png" id="6_hsav6"]
-[ext_resource type="Texture2D" uid="uid://b33wpjgx5p6je" path="res://assets/objects/hatchet_head.png" id="7_v3i6r"]
-[ext_resource type="Texture2D" uid="uid://d23uajf3tudc7" path="res://assets/objects/hatchet_icon.png" id="8_0q1pk"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_eufyu"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_ye5v8"]
+[ext_resource type="Texture2D" uid="uid://bc2vf2yg05a6j" path="res://assets/objects/hatchet_base.png" id="6_wp3ea"]
+[ext_resource type="Texture2D" uid="uid://b33wpjgx5p6je" path="res://assets/objects/hatchet_head.png" id="7_pbvfr"]
+[ext_resource type="Texture2D" uid="uid://d23uajf3tudc7" path="res://assets/objects/hatchet_icon.png" id="8_ix7kg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur6n4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
 size = Vector2(4, 11)
 
+[sub_resource type="Animation" id="Animation_ei4tq"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_nsndc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7gl5"]
+_data = {
+"Idle": SubResource("Animation_ei4tq"),
+"RESET": SubResource("Animation_nsndc")
+}
+
 [node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes")]
-script = ExtResource("1_6f75f")
+script = ExtResource("1_kjlfq")
 weapon_reach = 40.0
 can_action_with = ["Harvest", "Melee"]
-damage = 5
+damage = 10
 min_damage = 1
 type = 5
 engine_info = NodePath("EngineInfo")
 attributes = NodePath("BaseAttributes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_ur6n4")
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_nytlc")
 
-[node name="EngineInfo" parent="." instance=ExtResource("2_w5fle")]
+[node name="EngineInfo" parent="." instance=ExtResource("2_eufyu")]
 asset_path = "res://assets/objects/hatchet.tscn"
 icon_path = "res://assets/objects/hatchet_icon.png"
 
-[node name="BaseAttributes" parent="." instance=ExtResource("4_mtpl3")]
+[node name="BaseAttributes" parent="." instance=ExtResource("4_ye5v8")]
 health = 100
 object_name = "hatchet_base"
 
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("6_hsav6")
+texture_filter = 1
+texture = ExtResource("6_wp3ea")
+hframes = 7
+vframes = 7
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("7_v3i6r")
+texture_filter = 1
+texture = ExtResource("7_pbvfr")
+hframes = 7
+vframes = 7
 
 [node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("8_0q1pk")
+visible = false
+texture_filter = 1
+texture = ExtResource("8_ix7kg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n7gl5")
+}

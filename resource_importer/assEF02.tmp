@@ -18,7 +18,7 @@
 			"object_name": "hatchet_base"
 		},
 		"weapon": {
-			"damage": 10,
+			"damage": 9,
 			"min_damage": 1,
 			"weapon_reach": 40,
 			"can_action_with": ["Harvest", "Melee"],
@@ -26,21 +26,5 @@
 			"is_two_handed": false
 			
 		}
-	},
-	{
-		"type": "HARVEST",
-		"name": "tree",
-		"recipe": [],
-		"collision": [30, 56],
-		"sprites": [],
-		"engine_info": {
-			"asset_path": "tree.tscn",
-			"icon_path": "tree_icon.png"
-		},
-		"attributes": {
-			"health": 150,
-			"drop_table": [],
-			"object_name": "tree"
-		},
 	}
 ]

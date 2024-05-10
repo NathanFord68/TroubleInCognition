@@ -7,10 +7,13 @@ class_name HarvestNode
 @export
 var attributes: BaseAttributes
 
+## Information about this item for godot
+@export
+var engine_info: EngineInfo
+
 ## Processes the action of this object
 func action(caller: Node) -> void:
 	print(caller)
-
 
 ## Processes the interact of this object
 func interact(caller: Node) -> void:

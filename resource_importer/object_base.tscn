@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ra2v3y1uyol"]
+
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="1_ttjsc"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="2_66qqk"]
+
+[node name="ObjectBase" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="EngineInfo" parent="." instance=ExtResource("1_ttjsc")]
+
+[node name="BaseAttributes" parent="." instance=ExtResource("2_66qqk")]
+
+[node name="Sprite" type="Node2D" parent="."]
