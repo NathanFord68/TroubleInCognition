@@ -38,7 +38,7 @@
 			"icon_path": "tree_icon.png"
 		},
 		"attributes": {
-			"health": 150,
+			"health": 50,
 			"drop_table": [],
 			"object_name": "tree"
 		},
