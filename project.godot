@@ -26,6 +26,10 @@ Env="*res://scripts/env.gd"
 
 project/assembly_name="TroubleInCognition"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 player_left={
