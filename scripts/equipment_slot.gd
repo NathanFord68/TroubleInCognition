@@ -3,6 +3,9 @@ extends PanelContainer
 class_name EquipmentSlot
 
 ## The item in this slot
+@export
+var quantity : int
+
 @export 
 var item : ItemBase
 
@@ -21,7 +24,7 @@ func update_icon():
 		return
 	$Item.texture = null
 
-func _get_drag_data(at_position: Vector2):
+func _get_drag_data(_at_position: Vector2):
 	set_drag_preview(make_drag_preview())
 	return self
 	
@@ -33,7 +36,10 @@ func make_drag_preview():
 	t.custom_minimum_size = size
 	return t
 
-func _can_drop_data(at_position, data):
+func is_empty() -> bool:
+	return quantity == 0
+
+func _can_drop_data(_at_position, data):
 	if allowed_type == Enums.ITEM_TYPE.MAIN:
 		return true
 		
@@ -44,11 +50,14 @@ func _can_drop_data(at_position, data):
 func _drop_data(at_position : Vector2, data : Variant):
 	# Update my information
 	item = data.item
+	quantity += 1
 	update_icon()
 	
 	# Update the senders information
-	data.item = null
+	data.quantity -= 1
+	if data.quantity == 0:
+		data.item = null
 	data.update_icon()
 	
 	# Signal that the item has been dropped in this slot
-	%InventoryViewportRootChild.get_parent().item_dropped.emit(allowed_type, item)
+	%InventoryViewportRootChild.get_parent().item_dropped.emit(allowed_type, self)

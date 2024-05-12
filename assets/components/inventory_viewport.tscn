@@ -100,20 +100,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 columns = 10
 
-[node name="EquipmentSlot1" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_1onyg")]
-layout_mode = 2
-
-[node name="EquipmentSlot2" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_1onyg")]
-layout_mode = 2
-
-[node name="EquipmentSlot3" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_1onyg")]
-layout_mode = 2
-
-[node name="EquipmentSlot4" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_1onyg")]
-layout_mode = 2
-
-[node name="EquipmentSlot5" parent="PanelContainer/HBoxContainer/Backpack" instance=ExtResource("1_1onyg")]
-layout_mode = 2
-
 [node name="InventoryViewportRootChild" type="Node" parent="."]
 unique_name_in_owner = true

@@ -3,6 +3,9 @@ extends StaticBody2D
 ## Base class for all items in the game
 class_name ItemBase
 
+@export
+var stack_size: int
+
 ## Specifies the item type for player and ai equipment and inventories
 @export 
 var type: Enums.ITEM_TYPE
