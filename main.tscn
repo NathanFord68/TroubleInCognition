@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp3dkq3631ia6"]
 
-[ext_resource type="PackedScene" uid="uid://d1xqxakfp4txq" path="res://assets/objects/tree.tscn" id="2_6vaid"]
+[ext_resource type="PackedScene" path="res://assets/objects/tree.tscn" id="2_6vaid"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="2_rip54"]
-[ext_resource type="PackedScene" uid="uid://bue2qk7prghux" path="res://assets/objects/hatchet.tscn" id="3_eiwxy"]
+[ext_resource type="PackedScene" path="res://assets/objects/hatchet.tscn" id="3_eiwxy"]
 
 [node name="Main" type="Node2D"]
 

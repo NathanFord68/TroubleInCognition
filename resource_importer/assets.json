@@ -39,8 +39,29 @@
 		},
 		"attributes": {
 			"health": 50,
-			"drop_table": [],
+			"drop_table": [{
+				"chance": 100.0,
+				"object": "logs",
+				"min": 2,
+				"max": 4
+			}],
 			"object_name": "tree"
+		},
+	},
+	{
+		"type": "ITEM",
+		"name": "logs",
+		"recipe": [],
+		"collision": [15, 16],
+		"sprites": [],
+		"engine_info": {
+			"asset_path": "logs.tscn",
+			"icon_path": "logs_icon.png"
+		},
+		"attributes": {
+			"health": -1,
+			"drop_table": [],
+			"object_name": "logs"
 		},
 	}
 ]

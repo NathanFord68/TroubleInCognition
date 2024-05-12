@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3cypgoptackx"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_qnu1j"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_p4v2r"]
+[ext_resource type="Texture2D" uid="uid://bx3f5qlbxtko7" path="res://assets/objects/logs_icon.pngLogsIcon.png" id="3_mv18i"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_nucg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uk5w"]
+size = Vector2(15, 16)
+
+[node name="Logs" type="StaticBody2D" groups=["Interact"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qnu1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_6uk5w")
+
+[node name="BaseAttributes" parent="." instance=ExtResource("4_nucg2")]
+health = -1
+object_name = "logs"
+
+[node name="EngineInfo" parent="." instance=ExtResource("2_p4v2r")]
+asset_path = "res://assets/objects/logs.tscn"
+icon_path = "res://assets/objects/logs_icon.png"
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="logs_icon" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("3_mv18i")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "LogsIcon",
+"o_ex_p": "",
+"o_folder": "res://assets/objects",
+"o_name": "logs_icon.png",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Sprites.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c1a17c3a8213e1f2ad4934bf6b54162c"

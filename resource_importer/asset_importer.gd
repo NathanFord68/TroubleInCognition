@@ -82,9 +82,9 @@ func update_item(data: Dictionary) -> Node:
 		"WEAPON":
 			__write_weapon_data(n, data, components)
 		"ITEM":
-			pass
+			__write_item_data(n, data, components)
 		"HARVEST":
-			pass
+			__write_harvest_data(n, data, components)
 		_:
 			pass
 	return n
@@ -109,7 +109,8 @@ func generate_object(data: Dictionary) -> Node:
 			n.set_script(load("res://scripts/weapon.gd"))
 			__write_weapon_data(n, data, components)
 		"ITEM":
-			pass
+			n.set_script(load("res://scripts/item.gd"))
+			__write_item_data(n, data, components)
 		_:
 			pass
 	return n
@@ -204,5 +205,9 @@ func __write_weapon_data(n: Node, data: Dictionary, components: Dictionary) -> v
 	n.attributes = components.attributes
 
 func __write_harvest_data(n: Node, data: Dictionary, components: Dictionary) -> void:
+	n.engine_info = components.engine_info
+	n.attributes = components.attributes
+
+func __write_item_data(n: Node, data: Dictionary, components: Dictionary) -> void:
 	n.engine_info = components.engine_info
 	n.attributes = components.attributes
