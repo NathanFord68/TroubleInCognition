@@ -1,12 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=32 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
-[ext_resource type="Texture2D" uid="uid://ca2178npykgv1" path="res://assets/objects/player_head.pngPlayerHead.png" id="2_ss26g"]
-[ext_resource type="Texture2D" uid="uid://cpqeft047s726" path="res://assets/objects/player_torso.pngPlayerTorso.png" id="3_t3njm"]
+[ext_resource type="Texture2D" uid="uid://cgkfwig2yamy8" path="res://assets/objects/PlayerHead.png" id="2_5osfy"]
+[ext_resource type="Texture2D" uid="uid://xr2siv020egq" path="res://assets/objects/PlayerTorso.png" id="3_3jjhu"]
 [ext_resource type="PackedScene" uid="uid://cjuekjs8vop3q" path="res://assets/components/Controller.tscn" id="4_i3jf3"]
-[ext_resource type="Texture2D" uid="uid://dwj7lvhncjoer" path="res://assets/objects/player_arms.pngPlayerArms.png" id="4_ktuej"]
-[ext_resource type="Texture2D" uid="uid://btc21o8h3r31b" path="res://assets/objects/player_legs.pngPlayerLegs.png" id="5_4vevo"]
+[ext_resource type="Texture2D" uid="uid://bfdx2t1msu16p" path="res://assets/objects/PlayerArms.png" id="4_kl7gj"]
 [ext_resource type="PackedScene" uid="uid://jbx0yqr6gwdv" path="res://assets/components/enhanced_attributes.tscn" id="5_8v1cs"]
+[ext_resource type="Texture2D" uid="uid://bkpg6nbuemx3s" path="res://assets/objects/PlayerLegs.png" id="5_hpsul"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="6_thqr0"]
 [ext_resource type="PackedScene" uid="uid://c31htccccdc1g" path="res://assets/components/stats.tscn" id="7_dol6k"]
 [ext_resource type="PackedScene" uid="uid://denul1ebukliu" path="res://assets/components/inventory_manager.tscn" id="8_kdygk"]
@@ -811,9 +811,211 @@ tracks/7/keys = {
 "values": [2, 3, 4, 3, 2, 5, 6, 5]
 }
 
+[sub_resource type="Animation" id="Animation_ci04j"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Head:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Torso:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Torso:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Arms:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/Arms:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 39]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite/Legs:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite/Legs:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 17]
+}
+
+[sub_resource type="Animation" id="Animation_nk7qn"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Head:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Torso:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Torso:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Arms:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/Arms:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite/Legs:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite/Legs:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 18]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5galq"]
 _data = {
 "Idle": SubResource("Animation_h6gty"),
+"Idle-Away": SubResource("Animation_nk7qn"),
+"Idle-Sideways": SubResource("Animation_ci04j"),
 "Swing-Away": SubResource("Animation_bivws"),
 "Swing-Left": SubResource("Animation_dlxfy"),
 "Swing-Right": SubResource("Animation_h5jr4"),
@@ -877,10 +1079,10 @@ inventory_manager = NodePath("InventoryManager")
 
 [node name="Head" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("2_ss26g")
-hframes = 3
+texture = ExtResource("2_5osfy")
+hframes = 4
 vframes = 3
-frame = 1
+frame = 3
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -888,8 +1090,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "PlayerHead",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "player_head.png",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -901,15 +1103,15 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "503571ce9e41a64a7c64c13c82c06e7f"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="Torso" type="Sprite2D" parent="Sprite"]
 z_index = 1
 texture_filter = 1
-texture = ExtResource("3_t3njm")
+texture = ExtResource("3_3jjhu")
 hframes = 3
-vframes = 2
-frame = 1
+vframes = 3
+frame = 2
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -917,8 +1119,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "PlayerTorso",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "player_torso.png",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -930,15 +1132,15 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59753d6999b1a2842e822ef6e850599e"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="Arms" type="Sprite2D" parent="Sprite"]
 z_index = 2
 texture_filter = 1
-texture = ExtResource("4_ktuej")
+texture = ExtResource("4_kl7gj")
 hframes = 7
 vframes = 6
-frame = 1
+frame = 11
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -946,8 +1148,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "PlayerArms",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "player_arms.png",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -958,14 +1160,14 @@ metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59753d6999b1a2842e822ef6e850599e"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="Legs" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("5_4vevo")
+texture = ExtResource("5_hpsul")
 hframes = 5
 vframes = 4
-frame = 1
+frame = 7
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -973,8 +1175,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "PlayerLegs",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "player_legs.png",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -986,7 +1188,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59753d6999b1a2842e822ef6e850599e"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.499999, 0.5)

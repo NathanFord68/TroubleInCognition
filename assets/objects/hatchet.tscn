@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://utqvv155d7g7"]
+[gd_scene load_steps=25 format=3 uid="uid://utqvv155d7g7"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_eufyu"]
-[ext_resource type="Texture2D" uid="uid://x6k327d6k5wq" path="res://assets/objects/hatchet_base.pngToolBase.png" id="4_28w6j"]
+[ext_resource type="Texture2D" uid="uid://rou5x420t0ih" path="res://assets/objects/ToolBase.png" id="4_jykvj"]
 [ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_ye5v8"]
-[ext_resource type="Texture2D" uid="uid://cb87jkhw0i7q3" path="res://assets/objects/hatchet_headHatchetHead.png" id="5_d4sfp"]
-[ext_resource type="Texture2D" uid="uid://d23uajf3tudc7" path="res://assets/objects/hatchet_icon.png" id="8_ix7kg"]
+[ext_resource type="Texture2D" uid="uid://bgvrulfbnjjqe" path="res://assets/objects/HatchetHead.png" id="5_bmeja"]
+[ext_resource type="Texture2D" uid="uid://ut5cdf1y3ulf" path="res://assets/objects/HatchetIcon.png" id="6_304y4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
 size = Vector2(4, 11)
@@ -422,9 +422,115 @@ tracks/3/keys = {
 "values": [2, 3, 4, 3, 2, 5, 6, 5]
 }
 
+[sub_resource type="Animation" id="Animation_lxplq"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 44]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 45]
+}
+
+[sub_resource type="Animation" id="Animation_fpn4o"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 18]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7gl5"]
 _data = {
 "Idle": SubResource("Animation_2sxmq"),
+"Idle-Away": SubResource("Animation_fpn4o"),
+"Idle-Sideways": SubResource("Animation_lxplq"),
 "Swing-Away": SubResource("Animation_qv2mh"),
 "Swing-Left": SubResource("Animation_c64kv"),
 "Swing-Right": SubResource("Animation_6bwuu"),
@@ -492,7 +598,7 @@ object_name = "hatchet_base"
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
 visible = false
 texture_filter = 1
-texture = ExtResource("4_28w6j")
+texture = ExtResource("4_jykvj")
 hframes = 7
 vframes = 7
 metadata/_aseprite_wizard_config_ = {
@@ -501,8 +607,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "ToolBase",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "hatchet_base.png",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -514,12 +620,12 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59753d6999b1a2842e822ef6e850599e"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
 visible = false
 texture_filter = 1
-texture = ExtResource("5_d4sfp")
+texture = ExtResource("5_bmeja")
 hframes = 7
 vframes = 7
 region_rect = Rect2(192, 64, 64, 64)
@@ -529,8 +635,8 @@ metadata/_aseprite_wizard_config_ = {
 "layer": "HatchetHead",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
-"o_name": "hatchet_head",
-"only_visible": true,
+"o_name": "",
+"only_visible": false,
 "player": "AnimationPlayer",
 "set_vis_track": true,
 "slice": "",
@@ -542,11 +648,29 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59753d6999b1a2842e822ef6e850599e"
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("8_ix7kg")
+texture = ExtResource("6_304y4")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "HatchetIcon",
+"o_ex_p": "",
+"o_folder": "res://assets/objects",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Sprites.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

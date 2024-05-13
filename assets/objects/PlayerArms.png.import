@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc2vf2yg05a6j"
-path="res://.godot/imported/hatchet_base.png-dfd177ec3a1e52b46f8dad41489c5e79.ctex"
+uid="uid://bfdx2t1msu16p"
+path="res://.godot/imported/PlayerArms.png-05b97bce3b215b2f560e38d48374cc68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/hatchet_base.png"
-dest_files=["res://.godot/imported/hatchet_base.png-dfd177ec3a1e52b46f8dad41489c5e79.ctex"]
+source_file="res://assets/objects/PlayerArms.png"
+dest_files=["res://.godot/imported/PlayerArms.png-05b97bce3b215b2f560e38d48374cc68.ctex"]
 
 [params]
 

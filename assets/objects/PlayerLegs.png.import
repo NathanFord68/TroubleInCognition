@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b33wpjgx5p6je"
-path="res://.godot/imported/hatchet_head.png-29c28a9f953149182d9b631056dd5963.ctex"
+uid="uid://bkpg6nbuemx3s"
+path="res://.godot/imported/PlayerLegs.png-defd6c309373d7d19d41545419489206.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/hatchet_head.png"
-dest_files=["res://.godot/imported/hatchet_head.png-29c28a9f953149182d9b631056dd5963.ctex"]
+source_file="res://assets/objects/PlayerLegs.png"
+dest_files=["res://.godot/imported/PlayerLegs.png-defd6c309373d7d19d41545419489206.ctex"]
 
 [params]
 
