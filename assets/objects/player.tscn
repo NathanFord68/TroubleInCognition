@@ -1027,8 +1027,9 @@ asset_path = "res://assets/objects/player.tscn"
 
 [node name="Stats" parent="." instance=ExtResource("7_dol6k")]
 
-[node name="InventoryManager" parent="." instance=ExtResource("8_kdygk")]
-max_backpack_size = 100
+[node name="InventoryManager" parent="." node_paths=PackedStringArray("inventory_viewport") instance=ExtResource("8_kdygk")]
+max_backpack_size = 50
+inventory_viewport = NodePath("../PlayerViewport/InventoryViewport")
 
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 

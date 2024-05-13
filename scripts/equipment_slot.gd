@@ -10,7 +10,12 @@ var quantity : int
 var item : ItemBase
 
 ## The type of items this slot allows
-@export var allowed_type : Enums.ITEM_TYPE
+@export 
+var allowed_type : Enums.ITEM_TYPE
+
+## The root of the inventory viewport
+@export
+var inventory_root : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,16 +53,25 @@ func _can_drop_data(_at_position, data):
 	return true
 	
 func _drop_data(at_position : Vector2, data : Variant):
+	# If the slot has something not allowed in our slot return
+	if ( data.allowed_type != Enums.ITEM_TYPE.MAIN 
+		and is_instance_valid(item)
+		and item.type != data.allowed_type ):
+		return
+	
 	# Update my information
 	item = data.item
 	quantity += 1
 	update_icon()
+	( get_node("Count") as Label ).text = "" if quantity == 0 else str(quantity)
 	
 	# Update the senders information
 	data.quantity -= 1
 	if data.quantity == 0:
 		data.item = null
-	data.update_icon()
+		data.update_icon()
+	( data.get_node("Count") as Label ).text = "" if data.quantity == 0 else str(data.quantity)
 	
+	var t = %InventoryViewportRootChild
 	# Signal that the item has been dropped in this slot
-	%InventoryViewportRootChild.get_parent().item_dropped.emit(allowed_type, self)
+	inventory_root.item_dropped.emit(allowed_type, self)

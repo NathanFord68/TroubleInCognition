@@ -7,6 +7,10 @@ class_name InventoryManager
 @export
 var max_backpack_size : int
 
+## Reference to our inventory viewport
+@export
+var inventory_viewport : Control
+
 ## Holds the items of the players backpack
 var backpack : Array[EquipmentSlot] = []
 
@@ -16,6 +20,7 @@ func _ready():
 	backpack.resize(max_backpack_size)
 	for a in range(0, max_backpack_size):
 		var n_equipment_slot := ( load("res://assets/objects/equipment_slot.tscn") as PackedScene ).instantiate() as EquipmentSlot
+		n_equipment_slot.inventory_root = inventory_viewport
 		backpack[a] = n_equipment_slot
 		bp_slots.add_child(n_equipment_slot)
 	$"../PlayerViewport/InventoryViewport".item_dropped.connect(handle_item_dropped)
@@ -61,7 +66,7 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 			
 			# Set it to stack onto a slot if there is room
 			if (!backpack[i].is_empty() # Checks that this slot is not an empty slot
-				and typeof(backpack[i].item) == typeof(item) # Item in slot is of this items type
+				and backpack[i].item.attributes.object_name == item.attributes.object_name # Item in slot is of this items type
 				and backpack[i].quantity < backpack[i].item.stack_size ): # Stack is not full 
 				_index = i
 				break
@@ -76,6 +81,7 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 		backpack[_index].item = item
 	backpack[_index].quantity += 1
 	backpack[_index].update_icon()
+	( backpack[_index].get_node("Count") as Label ).text = str(backpack[_index].quantity)
 
 	return true
 	
@@ -83,8 +89,3 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 ## Swaps the the item dropped with the item in this slot
 func __swap_items(item : Item, index : int) -> bool:
 	return true
-	
-func debug_print():
-	print_debug("Entering debug_print")
-	for item in backpack:
-		print_debug(item)

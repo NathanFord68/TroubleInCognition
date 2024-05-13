@@ -35,57 +35,67 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Cape" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_1onyg")]
+[node name="Cape" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 7
+inventory_root = NodePath("../../../../..")
 
-[node name="Head" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_1onyg")]
+[node name="Head" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 1
+inventory_root = NodePath("../../../../..")
 
-[node name="Ammo" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_1onyg")]
+[node name="Ammo" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 8
+inventory_root = NodePath("../../../../..")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Secondary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_1onyg")]
+[node name="Secondary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 6
+inventory_root = NodePath("../../../../..")
 
-[node name="Chest" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_1onyg")]
+[node name="Chest" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 2
+inventory_root = NodePath("../../../../..")
 
-[node name="Primary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_1onyg")]
+[node name="Primary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 5
+inventory_root = NodePath("../../../../..")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Legs" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_1onyg")]
+[node name="Legs" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 3
+inventory_root = NodePath("../../../../..")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Ring" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_1onyg")]
+[node name="Ring" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 10
+inventory_root = NodePath("../../../../..")
 
-[node name="Feet" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_1onyg")]
+[node name="Feet" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 4
+inventory_root = NodePath("../../../../..")
 
-[node name="Gloves" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_1onyg")]
+[node name="Gloves" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
 layout_mode = 2
 allowed_type = 9
+inventory_root = NodePath("../../../../..")
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

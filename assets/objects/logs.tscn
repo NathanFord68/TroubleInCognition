@@ -12,7 +12,7 @@ size = Vector2(15, 16)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_qnu1j")
-stack_size = 3
+stack_size = 20
 engine_info = NodePath("EngineInfo")
 attributes = NodePath("BaseAttributes")
 
