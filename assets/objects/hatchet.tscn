@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://utqvv155d7g7"]
+[gd_scene load_steps=36 format=3 uid="uid://utqvv155d7g7"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_eufyu"]
@@ -62,6 +62,110 @@ tracks/3/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_fpn4o"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_lxplq"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 40]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 38]
+}
+
 [sub_resource type="Animation" id="Animation_qv2mh"]
 length = 0.9
 tracks/0/type = "value"
@@ -86,7 +190,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 21, 39, 40, 41, 42, 13, 43, 21]
+"values": [17, 21, 35, 36, 37, 38, 13, 39, 21]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -110,7 +214,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 21, 39, 40, 41, 42, 43, 44, 21]
+"values": [17, 21, 32, 33, 34, 35, 36, 37, 21]
 }
 
 [sub_resource type="Animation" id="Animation_c64kv"]
@@ -188,7 +292,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [30, 31, 32, 33, 34, 35, 36, 37, 38]
+"values": [30, 22, 31, 32, 33, 34, 27, 28, 29]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -212,7 +316,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [30, 31, 32, 33, 34, 35, 36, 37, 38]
+"values": [12, 22, 30, 31, 25, 26, 27, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_vrc53"]
@@ -422,110 +526,6 @@ tracks/3/keys = {
 "values": [2, 3, 4, 3, 2, 5, 6, 5]
 }
 
-[sub_resource type="Animation" id="Animation_lxplq"]
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 44]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 45]
-}
-
-[sub_resource type="Animation" id="Animation_fpn4o"]
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [17, 18]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [17, 18]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7gl5"]
 _data = {
 "Idle": SubResource("Animation_2sxmq"),
@@ -540,34 +540,91 @@ _data = {
 "Walk-Toward": SubResource("Animation_0gc2c")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_haw6f"]
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gfs1u"]
+filters = ["Sprite/Arms:frame", "Sprite/Arms:visible"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pweku"]
+animation = &"Swing-Away"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ydlj6"]
+animation = &"Swing-Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jh0kc"]
+animation = &"Swing-Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lffkl"]
+animation = &"Swing-Toward"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_s6jx5"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_rii1k"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_bsjpl"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_10sqh"]
+graph_offset = Vector2(-132, 20.5)
+nodes/Swing-Away/node = SubResource("AnimationNodeAnimation_pweku")
+nodes/Swing-Away/position = Vector2(20, 240)
+nodes/Swing-Left/node = SubResource("AnimationNodeAnimation_ydlj6")
+nodes/Swing-Left/position = Vector2(20, 380)
+nodes/Swing-Right/node = SubResource("AnimationNodeAnimation_jh0kc")
+nodes/Swing-Right/position = Vector2(20, 520)
+nodes/Swing-Toward/node = SubResource("AnimationNodeAnimation_lffkl")
+nodes/Swing-Toward/position = Vector2(20, 100)
+nodes/T-A/node = SubResource("AnimationNodeAdd2_s6jx5")
+nodes/T-A/position = Vector2(260, 60)
+nodes/TA-L/node = SubResource("AnimationNodeAdd2_rii1k")
+nodes/TA-L/position = Vector2(460, 60)
+nodes/TAL-R/node = SubResource("AnimationNodeAdd2_bsjpl")
+nodes/TAL-R/position = Vector2(660, 60)
+nodes/output/position = Vector2(900, 60)
+node_connections = [&"T-A", 0, &"Swing-Toward", &"T-A", 1, &"Swing-Away", &"TA-L", 0, &"T-A", &"TA-L", 1, &"Swing-Left", &"TAL-R", 0, &"TA-L", &"TAL-R", 1, &"Swing-Right", &"output", 0, &"TAL-R"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n45de"]
+animation = &"Idle-Away"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lc56p"]
+animation = &"Idle-Sideways"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sblgr"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wovqv"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a1oef"]
 animation = &"Walk-Away"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jaklp"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8nfx"]
 animation = &"Walk-Sideways"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3b2pt"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76otr"]
 animation = &"Walk-Toward"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yej1b"]
-states/Idle/node = SubResource("AnimationNodeAnimation_haw6f")
-states/Idle/position = Vector2(359, 59)
-states/Walk-Away/node = SubResource("AnimationNodeAnimation_wovqv")
-states/Walk-Away/position = Vector2(390, 132)
-states/Walk-Sideways/node = SubResource("AnimationNodeAnimation_jaklp")
-states/Walk-Sideways/position = Vector2(484, 189)
-states/Walk-Toward/node = SubResource("AnimationNodeAnimation_3b2pt")
-states/Walk-Toward/position = Vector2(668, 143)
-graph_offset = Vector2(-108, -5)
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wb0ph"]
+states/End/position = Vector2(1228, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_sblgr")
+states/Idle/position = Vector2(546, 51)
+states/Idle-Away/node = SubResource("AnimationNodeAnimation_n45de")
+states/Idle-Away/position = Vector2(699, 51)
+states/Idle-Sideways/node = SubResource("AnimationNodeAnimation_lc56p")
+states/Idle-Sideways/position = Vector2(869, 51)
+states/Start/position = Vector2(158, 100)
+states/Walk-Away/node = SubResource("AnimationNodeAnimation_a1oef")
+states/Walk-Away/position = Vector2(699, 124)
+states/Walk-Sideways/node = SubResource("AnimationNodeAnimation_e8nfx")
+states/Walk-Sideways/position = Vector2(874, 124)
+states/Walk-Toward/node = SubResource("AnimationNodeAnimation_76otr")
+states/Walk-Toward/position = Vector2(546, 124)
+graph_offset = Vector2(21, -131)
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_we7oh"]
-graph_offset = Vector2(-311, 16)
-nodes/locomotion/node = SubResource("AnimationNodeStateMachine_yej1b")
-nodes/locomotion/position = Vector2(0, 140)
-node_connections = [&"output", 0, &"locomotion"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4i2no"]
+graph_offset = Vector2(-91.8, -86.9)
+nodes/Swing-OS/node = SubResource("AnimationNodeOneShot_gfs1u")
+nodes/Swing-OS/position = Vector2(640, -80)
+nodes/Swing-Tree/node = SubResource("AnimationNodeBlendTree_10sqh")
+nodes/Swing-Tree/position = Vector2(360, 160)
+nodes/locomotion/node = SubResource("AnimationNodeStateMachine_wb0ph")
+nodes/locomotion/position = Vector2(400, -60)
+nodes/output/position = Vector2(860, -80)
+node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree", &"output", 0, &"Swing-OS"]
 
 [node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
 collision_layer = 2
@@ -587,7 +644,7 @@ shape = SubResource("RectangleShape2D_nytlc")
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_eufyu")]
 asset_path = "res://assets/objects/hatchet.tscn"
-icon_path = "res://assets/objects/hatchet_icon.png"
+icon_path = "res://assets/objects/HatchetIcon.png"
 
 [node name="BaseAttributes" parent="." instance=ExtResource("4_ye5v8")]
 health = 100
@@ -600,7 +657,8 @@ visible = false
 texture_filter = 1
 texture = ExtResource("4_jykvj")
 hframes = 7
-vframes = 7
+vframes = 6
+frame = 2
 metadata/_aseprite_wizard_config_ = {
 "i_mode": 0,
 "keep_anim_length": true,
@@ -620,14 +678,15 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
+metadata/_aseprite_wizard_source_file_hash_ = "01d86c91b81f7db4c8ab9c83fdbd64d1"
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
 visible = false
 texture_filter = 1
 texture = ExtResource("5_bmeja")
 hframes = 7
-vframes = 7
+vframes = 6
+frame = 2
 region_rect = Rect2(192, 64, 64, 64)
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -648,7 +707,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
+metadata/_aseprite_wizard_source_file_hash_ = "01d86c91b81f7db4c8ab9c83fdbd64d1"
 
 [node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
@@ -678,9 +737,14 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_n7gl5")
 }
-tree_root = SubResource("AnimationNodeBlendTree_we7oh")
+tree_root = SubResource("AnimationNodeBlendTree_4i2no")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Swing-OS/active = false
+parameters/Swing-OS/internal_active = false
+parameters/Swing-OS/request = 0
+parameters/Swing-Tree/T-A/add_amount = 0
+parameters/Swing-Tree/TA-L/add_amount = 0.0
+parameters/Swing-Tree/TAL-R/add_amount = 0.0

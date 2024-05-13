@@ -9,4 +9,4 @@ enum DAMAGE_TYPE { MELEE, RANGE, MAGIC }
 enum MODE { DEV, TEST, PROD }
 
 ## Define directions that something is facing
-enum DIRECTION_FACING { LEFT, RIGHT, FRONT, BACK }
+enum DIRECTION_FACING { FRONT, RIGHT, LEFT, BACK }

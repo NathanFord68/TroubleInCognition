@@ -15,19 +15,18 @@ var direction_facing: Enums.DIRECTION_FACING
 ## The Animation should be responsible for calling the handle_action method of this controller
 ## When finished
 func anim_action() -> void:
-	var animation: String
-	match direction_facing:
-		Enums.DIRECTION_FACING.FRONT:
-			animation = "Swing-Toward"
-		Enums.DIRECTION_FACING.BACK:
-			pass
-		Enums.DIRECTION_FACING.LEFT:
-			pass
-		Enums.DIRECTION_FACING.RIGHT:
-			pass
-	animation_tree.set("parameters/%s/request" % animation, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	await get_tree().create_timer(( $"../AnimationPlayer" as AnimationPlayer).get_animation(animation).length).timeout
-
+	var equipment_tree := $"../Equipment".get_node("%s/AnimationTree" % str(Enums.ITEM_TYPE.PRIMARY)) as AnimationTree
+	animation_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
+	equipment_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
+	animation_tree.set("parameters/Swing-Tree/TA-L/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.LEFT else 0)
+	equipment_tree.set("parameters/Swing-Tree/TA-L/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.LEFT else 0)
+	animation_tree.set("parameters/Swing-Tree/TAL-R/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.RIGHT else 0)
+	equipment_tree.set("parameters/Swing-Tree/TAL-R/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.RIGHT else 0)
+	
+	animation_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	equipment_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer($"../AnimationPlayer".get_animation("Swing-Toward").length).timeout
+	
 ## Determines if we can handle calling the action of the target
 func can_handle_action(target: Node) -> bool:
 	# TODO add logic to check groups vs can action with
@@ -71,27 +70,40 @@ func maneuver(v: Vector2) -> void:
 	if v.x > 0: # Player walking Right
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
 		__animate_equipment_locomotion("Walk-Sideways")
-		flip_sprites(false)
-		direction_facing = Enums.DIRECTION_FACING.LEFT
+		sprites_left(false)
+		direction_facing = Enums.DIRECTION_FACING.RIGHT
 	if v.x < 0: # Player Walking left
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
 		__animate_equipment_locomotion("Walk-Sideways")
-		flip_sprites()
-		direction_facing = Enums.DIRECTION_FACING.RIGHT
+		sprites_left(true)
+		direction_facing = Enums.DIRECTION_FACING.LEFT
 	if v.y > 0: # Player Walk Toward player
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Toward")
 		__animate_equipment_locomotion("Walk-Toward")
-		flip_sprites()
+		sprites_left(true)
 		direction_facing = Enums.DIRECTION_FACING.FRONT
 	if v.y < 0: # Player Walk away from player
 		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Away")
 		__animate_equipment_locomotion("Walk-Away")
 		direction_facing = Enums.DIRECTION_FACING.BACK
 	if v == Vector2(): # Default to idle
-		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
-		__animate_equipment_locomotion("Idle")
-		flip_sprites()
-		direction_facing = Enums.DIRECTION_FACING.FRONT
+		match direction_facing:
+			Enums.DIRECTION_FACING.FRONT:
+				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
+				__animate_equipment_locomotion("Idle")
+				sprites_left(true)
+			Enums.DIRECTION_FACING.BACK:
+				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Away")
+				__animate_equipment_locomotion("Idle-Away")
+				sprites_left(true)
+			Enums.DIRECTION_FACING.LEFT:
+				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Sideways")
+				__animate_equipment_locomotion("Idle-Sideways")
+				sprites_left(true)
+			Enums.DIRECTION_FACING.RIGHT:
+				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Sideways")
+				__animate_equipment_locomotion("Idle-Sideways")
+				sprites_left(false)
 		
 	$"..".velocity = v
 
@@ -104,14 +116,11 @@ func __animate_equipment_locomotion(param: String):
 				as AnimationNodeStateMachinePlayback ).travel(param)
 
 ## Flips the sprites for the animations
-func flip_sprites(default: bool = true):
+func sprites_left(left: bool):
 	for sprite: Sprite2D in $"../Sprite".get_children():
-		sprite.flip_h = !default
+		sprite.flip_h = !left
 		
-	if ($"../Equipment" as Node2D).get_child_count() == 0:
-		return
-	
 	for equipment: StaticBody2D in $"../Equipment".get_children():
 		for sprite : Sprite2D in equipment.get_node("Sprite").get_children():
-			sprite.flip_h = !default
+			sprite.flip_h = !left
 	
