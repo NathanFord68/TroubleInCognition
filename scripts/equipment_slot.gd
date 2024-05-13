@@ -24,6 +24,7 @@ func _ready():
 
 ## Updates the icon for this slot
 func update_icon():
+	( get_node("Count") as Label ).text = "" if quantity == 0 or quantity == 1 else str(quantity)
 	if is_instance_valid(item):
 		$Item.texture = load(item.engine_info.icon_path)
 		return
@@ -59,19 +60,21 @@ func _drop_data(at_position : Vector2, data : Variant):
 		and item.type != data.allowed_type ):
 		return
 	
-	# Update my information
+	# Update quantities
+	var our_old_quantity = quantity
+	quantity = data.quantity
+	data.quantity = our_old_quantity
+	
+	# Update the items
+	var our_old_item = item
 	item = data.item
-	quantity += 1
+	data.item = our_old_item
+	
+	# Update icons
 	update_icon()
-	( get_node("Count") as Label ).text = "" if quantity == 0 else str(quantity)
+	data.update_icon()
 	
-	# Update the senders information
-	data.quantity -= 1
-	if data.quantity == 0:
-		data.item = null
-		data.update_icon()
-	( data.get_node("Count") as Label ).text = "" if data.quantity == 0 else str(data.quantity)
 	
-	var t = %InventoryViewportRootChild
 	# Signal that the item has been dropped in this slot
-	inventory_root.item_dropped.emit(allowed_type, self)
+	if not (allowed_type == Enums.ITEM_TYPE.MAIN and data.allowed_type == Enums.ITEM_TYPE.MAIN):
+		inventory_root.item_dropped.emit(allowed_type, self)

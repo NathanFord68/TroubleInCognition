@@ -23,35 +23,36 @@ func _ready():
 		n_equipment_slot.inventory_root = inventory_viewport
 		backpack[a] = n_equipment_slot
 		bp_slots.add_child(n_equipment_slot)
-	$"../PlayerViewport/InventoryViewport".item_dropped.connect(handle_item_dropped)
+	$"../PlayerViewport/InventoryViewport".item_dropped.connect(handle_item_dropped_into_slot)
 
 ## Handles the emission of the item_dropped signal from the viewport
-func handle_item_dropped(t: Enums.ITEM_TYPE, data: EquipmentSlot):
+func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
 	if t == Enums.ITEM_TYPE.MAIN:
-		equipment_to_inventory()
+		remove_from_inventory(data.item.type)
 		return
 	
-	inventory_to_equipment(t, data)
+	add_to_equipment_slot(t, data)
 
 ## Move item from inventory to equipment slot
-func inventory_to_equipment(t: Enums.ITEM_TYPE, data: EquipmentSlot):
+func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 	# Set the name to it's slot name and activate it's animation tree
-	data.item.name = str(t)
-	data.item.get_node("AnimationTree").active = true
+	var equipment_instance = load(data.item.engine_info.asset_path).instantiate()
+	equipment_instance.name = str(slot)
+	equipment_instance.get_node("AnimationTree").active = true
 	
 	# Turn the icon off and the sprites on
-	for s : Sprite2D in data.item.get_node("Sprite").get_children():
+	for s : Sprite2D in equipment_instance.get_node("Sprite").get_children():
 		if "icon" in s.name:
 			s.visible = false
 			continue
 		s.visible = true
 	
 	# Add it to our the equipment slot of our player
-	$"../Equipment".add_child(data.item)
+	$"../Equipment".add_child(equipment_instance)
 
 ## Move item from equipment to inventory
-func equipment_to_inventory():
-	pass
+func remove_from_inventory(slot: Enums.ITEM_TYPE):
+	$"../Equipment".get_node(str(slot)).queue_free()
 
 ## Adds an item to the inventory
 func add_to_inventory(item : Node, index : int = -1) -> bool:
@@ -71,11 +72,9 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 				_index = i
 				break
 	
-	# Check if the slot is already taken
-	#if backpack.size() > 0 and !is_instance_valid(backpack[_index]):
-		#return __swap_items(item, _index)
+	if _index == -1: ## TODO test this
+		return false
 		
-	
 	# Insert the item to last slot
 	if backpack[_index].quantity == 0:
 		backpack[_index].item = item
