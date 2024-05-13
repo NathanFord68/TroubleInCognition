@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://rou5x420t0ih" path="res://assets/objects/ToolBase.png" id="4_jykvj"]
 [ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_ye5v8"]
 [ext_resource type="Texture2D" uid="uid://bgvrulfbnjjqe" path="res://assets/objects/HatchetHead.png" id="5_bmeja"]
-[ext_resource type="Texture2D" uid="uid://ut5cdf1y3ulf" path="res://assets/objects/HatchetIcon.png" id="6_304y4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
 size = Vector2(4, 11)
@@ -16,7 +15,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -28,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -40,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -52,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -68,7 +67,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -80,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -92,7 +91,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -104,7 +103,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -120,7 +119,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -132,19 +131,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [12, 40]
+"values": [12, 38]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -156,14 +155,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [12, 38]
+"values": [12, 40]
 }
 
 [sub_resource type="Animation" id="Animation_qv2mh"]
@@ -171,7 +170,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -183,19 +182,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 21, 35, 36, 37, 38, 13, 39, 21]
+"values": [17, 21, 32, 33, 34, 35, 36, 37, 21]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -207,14 +206,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 21, 32, 33, 34, 35, 36, 37, 21]
+"values": [17, 21, 35, 36, 37, 38, 13, 39, 21]
 }
 
 [sub_resource type="Animation" id="Animation_c64kv"]
@@ -222,7 +221,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -234,7 +233,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -246,7 +245,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -258,7 +257,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -273,7 +272,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -285,19 +284,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [30, 22, 31, 32, 33, 34, 27, 28, 29]
+"values": [12, 22, 30, 31, 25, 26, 27, 28, 29]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -309,14 +308,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [12, 22, 30, 31, 25, 26, 27, 28, 29]
+"values": [30, 22, 31, 32, 33, 34, 27, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_vrc53"]
@@ -324,7 +323,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -336,7 +335,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -348,7 +347,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -360,7 +359,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -376,7 +375,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -388,7 +387,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -400,7 +399,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -412,7 +411,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -428,7 +427,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -440,7 +439,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -452,7 +451,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -464,7 +463,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -480,7 +479,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/hatchet_base:visible")
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -492,7 +491,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/hatchet_base:frame")
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -504,7 +503,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/hatchet_head:visible")
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
@@ -516,7 +515,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/hatchet_head:frame")
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
@@ -526,8 +525,61 @@ tracks/3/keys = {
 "values": [2, 3, 4, 3, 2, 5, 6, 5]
 }
 
+[sub_resource type="Animation" id="Animation_01mts"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/hatchet_head:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/hatchet_head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [39]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/hatchet_base:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/hatchet_base:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [41]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7gl5"]
 _data = {
+"Icon": SubResource("Animation_01mts"),
 "Idle": SubResource("Animation_2sxmq"),
 "Idle-Away": SubResource("Animation_fpn4o"),
 "Idle-Sideways": SubResource("Animation_lxplq"),
@@ -639,7 +691,7 @@ engine_info = NodePath("EngineInfo")
 attributes = NodePath("BaseAttributes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1.5)
+position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_nytlc")
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_eufyu")]
@@ -653,12 +705,11 @@ object_name = "hatchet_base"
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
-visible = false
 texture_filter = 1
 texture = ExtResource("4_jykvj")
 hframes = 7
 vframes = 6
-frame = 2
+frame = 41
 metadata/_aseprite_wizard_config_ = {
 "i_mode": 0,
 "keep_anim_length": true,
@@ -678,15 +729,14 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "01d86c91b81f7db4c8ab9c83fdbd64d1"
+metadata/_aseprite_wizard_source_file_hash_ = "82eea80b3d32f9fc4442da382ad77252"
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
-visible = false
 texture_filter = 1
 texture = ExtResource("5_bmeja")
 hframes = 7
 vframes = 6
-frame = 2
+frame = 39
 region_rect = Rect2(192, 64, 64, 64)
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -707,29 +757,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "01d86c91b81f7db4c8ab9c83fdbd64d1"
-
-[node name="hatchet_icon" type="Sprite2D" parent="Sprite"]
-texture_filter = 1
-texture = ExtResource("6_304y4")
-metadata/_aseprite_wizard_interface_config_ = {
-"layer_section": true,
-"output_section": true,
-"slice_section": true
-}
-metadata/_aseprite_wizard_config_ = {
-"i_mode": 1,
-"keep_anim_length": false,
-"layer": "HatchetIcon",
-"o_ex_p": "",
-"o_folder": "res://assets/objects",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"slice": "",
-"source": "res://Sprites.aseprite"
-}
-metadata/_aseprite_wizard_source_file_hash_ = "c5a3cc39a60015471a03ef3ad8b850b6"
+metadata/_aseprite_wizard_source_file_hash_ = "82eea80b3d32f9fc4442da382ad77252"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
