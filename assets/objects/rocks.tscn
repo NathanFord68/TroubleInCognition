@@ -1,12 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3cypgoptackx"]
+[gd_scene load_steps=18 format=3 uid="uid://slyhehnuja3w"]
 
-[ext_resource type="Script" path="res://scripts/item.gd" id="1_qnu1j"]
-[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_p4v2r"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_nucg2"]
-[ext_resource type="Texture2D" uid="uid://btouj5fj61qns" path="res://assets/objects/logs.png" id="4_q0lx4"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_nnyss"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="2_84qaf"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="3_o7lag"]
+[ext_resource type="Texture2D" uid="uid://blbbn20vdqk6j" path="res://assets/objects/rocks.png" id="4_ho2mn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uk5w"]
-size = Vector2(9, 9)
+size = Vector2(18.1408, 16.1396)
 
 [sub_resource type="Animation" id="Animation_qc4vl"]
 length = 0.001
@@ -327,35 +327,36 @@ _data = {
 "Walk-Toward": SubResource("Animation_wjpmu")
 }
 
-[node name="Logs" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
+[node name="Rocks" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_qnu1j")
+script = ExtResource("1_nnyss")
 stack_size = 20
 engine_info = NodePath("EngineInfo")
 attributes = NodePath("BaseAttributes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0.5, 0.653255)
+scale = Vector2(0.606368, 0.576628)
 shape = SubResource("RectangleShape2D_6uk5w")
 
-[node name="BaseAttributes" parent="." instance=ExtResource("4_nucg2")]
+[node name="BaseAttributes" parent="." instance=ExtResource("2_84qaf")]
 health = -1
-object_name = "logs"
+object_name = "rocks"
 
-[node name="EngineInfo" parent="." instance=ExtResource("2_p4v2r")]
-asset_path = "res://assets/objects/logs.tscn"
+[node name="EngineInfo" parent="." instance=ExtResource("3_o7lag")]
+asset_path = "res://assets/objects/rocks.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="logs_icon" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("4_q0lx4")
+texture = ExtResource("4_ho2mn")
 hframes = 2
 metadata/_aseprite_wizard_config_ = {
 "i_mode": 0,
 "keep_anim_length": true,
-"layer": "logs",
+"layer": "rocks",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
 "o_name": "",

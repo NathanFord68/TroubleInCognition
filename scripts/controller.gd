@@ -29,9 +29,14 @@ func anim_action() -> void:
 	
 ## Determines if we can handle calling the action of the target
 func can_handle_action(target: Node) -> bool:
-	# TODO add logic to check groups vs can action with
+	# Return if there's nothing there
 	if not is_instance_valid(target):
 		return false
+		
+	# Check the groups to make sure all of my equipment is in the actionable item
+	for group in target.get_groups():
+		if group not in $"../Equipment".get_node(str(Enums.ITEM_TYPE.PRIMARY)).get_groups():
+			return false
 	return true
 
 ## Calls the action of a target if it can

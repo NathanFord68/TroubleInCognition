@@ -614,7 +614,7 @@ animation = &"Swing-Toward"
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_bsjpl"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_10sqh"]
-graph_offset = Vector2(-132, 20.5)
+graph_offset = Vector2(-132, -14.5)
 nodes/Swing-Away/node = SubResource("AnimationNodeAnimation_pweku")
 nodes/Swing-Away/position = Vector2(20, 240)
 nodes/Swing-Left/node = SubResource("AnimationNodeAnimation_ydlj6")
@@ -668,7 +668,7 @@ states/Walk-Toward/position = Vector2(546, 124)
 graph_offset = Vector2(21, -131)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4i2no"]
-graph_offset = Vector2(-59.1818, -137.364)
+graph_offset = Vector2(187.907, -157.489)
 nodes/Swing-OS/node = SubResource("AnimationNodeOneShot_gfs1u")
 nodes/Swing-OS/position = Vector2(640, -80)
 nodes/Swing-Tree/node = SubResource("AnimationNodeBlendTree_10sqh")
@@ -678,7 +678,7 @@ nodes/locomotion/position = Vector2(400, -60)
 nodes/output/position = Vector2(860, -80)
 node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree", &"output", 0, &"Swing-OS"]
 
-[node name="Pickaxe" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
+[node name="Pickaxe" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Attack", "Harvest", "Interact", "Pickaxe"]]
 collision_layer = 2
 script = ExtResource("1_40gds")
 weapon_reach = 40.0

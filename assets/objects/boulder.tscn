@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://xrqeudhh1dt5"]
+
+[ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_768s0"]
+[ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_3o0x0"]
+[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="3_ewlfm"]
+[ext_resource type="Texture2D" uid="uid://dj4pa0jrdv04x" path="res://assets/objects/boulder.png" id="4_hct73"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
+size = Vector2(32, 30)
+
+[node name="boulder" type="StaticBody2D" node_paths=PackedStringArray("attributes", "engine_info") groups=["Harvest", "Pickaxe"]]
+script = ExtResource("1_768s0")
+attributes = NodePath("BaseAttributes")
+engine_info = NodePath("EngineInfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_5t7es")
+
+[node name="EngineInfo" parent="." instance=ExtResource("2_3o0x0")]
+asset_path = "res://assets/objects/boulder.tscn"
+
+[node name="BaseAttributes" parent="." instance=ExtResource("3_ewlfm")]
+health = 50
+drop_table = [{
+"chance": 100.0,
+"max": 4,
+"min": 2,
+"object": "rocks"
+}]
+object_name = "boulder"
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="boulder_icon" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("4_hct73")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "boulder",
+"o_ex_p": "",
+"o_folder": "res://assets/objects",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Sprites.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9bbf40100a77847eef04b6545c31c092"

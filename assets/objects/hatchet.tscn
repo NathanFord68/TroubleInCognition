@@ -680,7 +680,7 @@ nodes/locomotion/position = Vector2(400, -60)
 nodes/output/position = Vector2(860, -80)
 node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree", &"output", 0, &"Swing-OS"]
 
-[node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
+[node name="hatchet" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Attack", "Harvest", "Hatchet", "Interact"]]
 collision_layer = 2
 script = ExtResource("1_kjlfq")
 weapon_reach = 40.0
