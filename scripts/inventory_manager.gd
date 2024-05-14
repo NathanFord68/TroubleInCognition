@@ -80,7 +80,6 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 		backpack[_index].item = item
 	backpack[_index].quantity += 1
 	backpack[_index].update_icon()
-	( backpack[_index].get_node("Count") as Label ).text = str(backpack[_index].quantity)
 
 	return true
 	

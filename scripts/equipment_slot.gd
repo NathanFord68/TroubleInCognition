@@ -25,10 +25,22 @@ func _ready():
 ## Updates the icon for this slot
 func update_icon():
 	( get_node("Count") as Label ).text = "" if quantity == 0 or quantity == 1 else str(quantity)
-	if is_instance_valid(item):
-		$Item.texture = load(item.engine_info.icon_path)
+	if !is_instance_valid(item):	
+		$Item.texture = null
 		return
-	$Item.texture = null
+		
+	var final_img = Image.new()
+	for child : Sprite2D in item.get_node("Sprite").get_children():
+		var img = child.texture.get_image()
+		img.crop(64, 64)
+		if final_img.is_empty():
+			final_img = img
+			continue 
+		final_img.blend_rect(img, Rect2(0, 0, 64, 64), Vector2(0, 0))
+
+	$Item.texture = ImageTexture.create_from_image(final_img)
+	return	
+
 
 func _get_drag_data(_at_position: Vector2):
 	set_drag_preview(make_drag_preview())
