@@ -19,7 +19,6 @@ shape = SubResource("RectangleShape2D_5t7es")
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_j4sd8")]
 asset_path = "res://assets/objects/tree.tscn"
-icon_path = "res://assets/objects/tree_icon.png"
 
 [node name="BaseAttributes" parent="." instance=ExtResource("4_gq2xx")]
 health = 50

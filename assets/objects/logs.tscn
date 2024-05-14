@@ -345,7 +345,6 @@ object_name = "logs"
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_p4v2r")]
 asset_path = "res://assets/objects/logs.tscn"
-icon_path = "res://assets/objects/logs_icon.png"
 
 [node name="Sprite" type="Node2D" parent="."]
 
