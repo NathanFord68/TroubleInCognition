@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_eufyu"]
-[ext_resource type="Texture2D" uid="uid://rou5x420t0ih" path="res://assets/objects/ToolBase.png" id="4_jykvj"]
+[ext_resource type="Texture2D" uid="uid://ctukkc08lm2ct" path="res://assets/objects/tool_base.png" id="4_ntavo"]
 [ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_ye5v8"]
-[ext_resource type="Texture2D" uid="uid://bgvrulfbnjjqe" path="res://assets/objects/HatchetHead.png" id="5_bmeja"]
+[ext_resource type="Texture2D" uid="uid://m054ag1k0yqk" path="res://assets/objects/hatchet_head.png" id="5_w7ly2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
 size = Vector2(4, 11)
@@ -706,13 +706,13 @@ object_name = "hatchet_base"
 
 [node name="hatchet_base" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("4_jykvj")
+texture = ExtResource("4_ntavo")
 hframes = 7
 vframes = 6
 metadata/_aseprite_wizard_config_ = {
 "i_mode": 0,
 "keep_anim_length": true,
-"layer": "ToolBase",
+"layer": "tool_base",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
 "o_name": "",
@@ -728,18 +728,18 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "2bc81f31f286636c42382179eb8dab7b"
+metadata/_aseprite_wizard_source_file_hash_ = "6847772ddf5426a78c15fbc897b05a14"
 
 [node name="hatchet_head" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("5_bmeja")
+texture = ExtResource("5_w7ly2")
 hframes = 7
 vframes = 6
 region_rect = Rect2(192, 64, 64, 64)
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": true,
-"layer": "HatchetHead",
+"layer": "hatchet_head",
 "o_ex_p": "",
 "o_folder": "res://assets/objects",
 "o_name": "",
@@ -755,7 +755,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "2bc81f31f286636c42382179eb8dab7b"
+metadata/_aseprite_wizard_source_file_hash_ = "6847772ddf5426a78c15fbc897b05a14"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

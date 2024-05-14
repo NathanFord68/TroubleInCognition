@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_6qr3h"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_j4sd8"]
 [ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_gq2xx"]
-[ext_resource type="Texture2D" uid="uid://dfpw02frby844" path="res://assets/objects/tree_icon.png" id="6_2v84x"]
+[ext_resource type="Texture2D" uid="uid://bakmfg46pnjhw" path="res://assets/objects/tree.png" id="4_nmk23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
 size = Vector2(30, 56)
@@ -35,4 +35,22 @@ object_name = "tree"
 
 [node name="tree_icon" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
-texture = ExtResource("6_2v84x")
+texture = ExtResource("4_nmk23")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "tree",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Sprites.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6847772ddf5426a78c15fbc897b05a14"

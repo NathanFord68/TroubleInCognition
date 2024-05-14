@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfpw02frby844"
-path="res://.godot/imported/tree_icon.png-fe5661dffef024f8860cc2c00ddffbc5.ctex"
+uid="uid://l2isvugnocxa"
+path="res://.godot/imported/player_arms.png-7451efef8710afebbdc0de8bb4467241.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/tree_icon.png"
-dest_files=["res://.godot/imported/tree_icon.png-fe5661dffef024f8860cc2c00ddffbc5.ctex"]
+source_file="res://assets/objects/player_arms.png"
+dest_files=["res://.godot/imported/player_arms.png-7451efef8710afebbdc0de8bb4467241.ctex"]
 
 [params]
 
