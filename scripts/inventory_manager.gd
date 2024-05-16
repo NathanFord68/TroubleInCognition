@@ -14,6 +14,8 @@ var inventory_viewport : Control
 ## Holds the items of the players backpack
 var backpack : Array[EquipmentSlot] = []
 
+var total_item_count : Dictionary = {}
+
 func _ready():
 	# Resize and populate the backpack with equipment slots
 	var bp_slots := $"../PlayerViewport/InventoryViewport".get_backpack() as GridContainer
@@ -28,7 +30,7 @@ func _ready():
 ## Handles the emission of the item_dropped signal from the viewport
 func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
 	if t == Enums.ITEM_TYPE.MAIN:
-		remove_from_inventory(data.item.type)
+		remove_item_from_equipment_slot(data.item.type)
 		return
 	
 	add_to_equipment_slot(t, data)
@@ -50,8 +52,11 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 	# Add it to our the equipment slot of our player
 	$"../Equipment".add_child(equipment_instance)
 
-## Move item from equipment to inventory
-func remove_from_inventory(slot: Enums.ITEM_TYPE):
+## Clears an equipment slot of the equipped item
+##
+## This does not clear the item in the inventory 
+## Since this instance was a clone of the inventory item
+func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
 	$"../Equipment".get_node(str(slot)).queue_free()
 
 ## Adds an item to the inventory
@@ -80,10 +85,10 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 		backpack[_index].item = item
 	backpack[_index].quantity += 1
 	backpack[_index].update_icon()
-
-	return true
 	
+	if item.attributes.object_name in total_item_count:
+		total_item_count[item.attributes.object_name] += 1
+	else:
+		total_item_count[item.attributes.object_name] = 1
 
-## Swaps the the item dropped with the item in this slot
-func __swap_items(item : Item, index : int) -> bool:
 	return true

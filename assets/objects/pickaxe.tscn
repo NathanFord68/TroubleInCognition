@@ -113,8 +113,8 @@ tracks/3/keys = {
 "values": [1, 2]
 }
 
-[sub_resource type="Animation" id="Animation_hnybp"]
-length = 0.8
+[sub_resource type="Animation" id="Animation_pklp6"]
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -135,10 +135,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [3, 4, 5, 4, 3, 6, 7, 6]
+"values": [18, 19]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -159,65 +159,14 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [3, 4, 5, 4, 3, 6, 7, 6]
+"values": [18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_6xxwc"]
-length = 0.525
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/pickaxe_base:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 8, 9, 10, 11, 12, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/pickaxe_head:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 8, 9, 10, 11, 12, 4]
-}
-
-[sub_resource type="Animation" id="Animation_8bpbs"]
-length = 0.8
+[sub_resource type="Animation" id="Animation_h5o8y"]
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -238,10 +187,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [13, 14, 15, 14, 13, 16, 17, 16]
+"values": [13, 41]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -262,15 +211,14 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [13, 14, 15, 14, 13, 16, 17, 16]
+"values": [13, 41]
 }
 
-[sub_resource type="Animation" id="Animation_8pho8"]
-length = 0.8
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_vguus"]
+length = 0.675
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,10 +238,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 19, 20, 19, 18, 21, 22, 21]
+"values": [18, 22, 36, 37, 38, 39, 14, 40, 22]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -314,10 +262,10 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 19, 20, 19, 18, 21, 22, 21]
+"values": [18, 22, 35, 36, 37, 38, 39, 40, 22]
 }
 
 [sub_resource type="Animation" id="Animation_ttlir"]
@@ -422,8 +370,8 @@ tracks/3/keys = {
 "values": [13, 31, 32, 33, 26, 34, 28, 29, 30]
 }
 
-[sub_resource type="Animation" id="Animation_vguus"]
-length = 0.675
+[sub_resource type="Animation" id="Animation_6xxwc"]
+length = 0.525
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -443,10 +391,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 22, 36, 37, 38, 39, 14, 40, 22]
+"values": [3, 8, 9, 10, 11, 12, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -467,14 +415,14 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 22, 35, 36, 37, 38, 39, 40, 22]
+"values": [3, 8, 9, 10, 11, 12, 4]
 }
 
-[sub_resource type="Animation" id="Animation_h5o8y"]
-length = 2.0
+[sub_resource type="Animation" id="Animation_8pho8"]
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -495,10 +443,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [13, 41]
+"values": [18, 19, 20, 19, 18, 21, 22, 21]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -519,14 +467,14 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [13, 41]
+"values": [18, 19, 20, 19, 18, 21, 22, 21]
 }
 
-[sub_resource type="Animation" id="Animation_pklp6"]
-length = 2.0
+[sub_resource type="Animation" id="Animation_8bpbs"]
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -547,10 +495,10 @@ tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 19]
+"values": [13, 14, 15, 14, 13, 16, 17, 16]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -571,10 +519,62 @@ tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 19]
+"values": [13, 14, 15, 14, 13, 16, 17, 16]
+}
+
+[sub_resource type="Animation" id="Animation_hnybp"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/pickaxe_base:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/pickaxe_base:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4, 3, 6, 7, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/pickaxe_head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/pickaxe_head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4, 3, 6, 7, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bn2pg"]
@@ -699,7 +699,7 @@ asset_path = "res://assets/objects/pickaxe.tscn"
 
 [node name="BaseAttributes" parent="." instance=ExtResource("3_o28an")]
 health = 100
-object_name = "hatchet_base"
+object_name = "pickaxe_base"
 
 [node name="Sprite" type="Node2D" parent="."]
 

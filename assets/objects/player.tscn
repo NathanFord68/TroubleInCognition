@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=44 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Texture2D" uid="uid://cbgq4e5y2ejbv" path="res://assets/objects/player_head.png" id="2_iqng6"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c31htccccdc1g" path="res://assets/components/stats.tscn" id="7_dol6k"]
 [ext_resource type="PackedScene" uid="uid://denul1ebukliu" path="res://assets/components/inventory_manager.tscn" id="8_kdygk"]
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://assets/components/inventory_viewport.tscn" id="8_rq083"]
+[ext_resource type="PackedScene" uid="uid://co1a7qwaj0vt2" path="res://assets/components/crafting_viewport.tscn" id="11_oxgf1"]
+[ext_resource type="PackedScene" uid="uid://dlf625gx2sk7c" path="res://assets/components/crafting_manager.tscn" id="14_w8a02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o1y"]
 size = Vector2(0.909091, 2.13793)
@@ -1213,12 +1215,13 @@ nodes/locomotion/position = Vector2(400, -60)
 nodes/output/position = Vector2(860, -80)
 node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree", &"output", 0, &"Swing-OS"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "attributes", "engine_info", "inventory_manager") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "attributes", "engine_info", "inventory_manager", "crafting_manager") groups=["Player"]]
 script = ExtResource("1_5ni8o")
 stats = NodePath("Stats")
 attributes = NodePath("EnhancedAttributes")
 engine_info = NodePath("EngineInfo")
 inventory_manager = NodePath("InventoryManager")
+crafting_manager = NodePath("CraftingManager")
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -1364,6 +1367,9 @@ parameters/Swing-Tree/T-A/add_amount = 0
 parameters/Swing-Tree/TA-L/add_amount = 0.0
 parameters/Swing-Tree/TAL-R/add_amount = 0.0
 
+[node name="Controller" parent="." node_paths=PackedStringArray("animation_tree") instance=ExtResource("4_i3jf3")]
+animation_tree = NodePath("../AnimationTree")
+
 [node name="EnhancedAttributes" parent="." instance=ExtResource("5_8v1cs")]
 stamina = 100
 mana = 100
@@ -1381,11 +1387,15 @@ asset_path = "res://assets/objects/player.tscn"
 max_backpack_size = 50
 inventory_viewport = NodePath("../PlayerViewport/InventoryViewport")
 
+[node name="CraftingManager" parent="." node_paths=PackedStringArray("crafting_viewport", "inventory_manager") instance=ExtResource("14_w8a02")]
+crafting_viewport = NodePath("../PlayerViewport/CraftingViewport")
+inventory_manager = NodePath("../InventoryManager")
+
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
 [node name="InventoryViewport" parent="PlayerViewport" instance=ExtResource("8_rq083")]
 process_mode = 3
 visible = false
 
-[node name="Controller" parent="." node_paths=PackedStringArray("animation_tree") instance=ExtResource("4_i3jf3")]
-animation_tree = NodePath("../AnimationTree")
+[node name="CraftingViewport" parent="PlayerViewport" instance=ExtResource("11_oxgf1")]
+visible = false

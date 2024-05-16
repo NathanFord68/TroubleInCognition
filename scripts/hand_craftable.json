@@ -1,0 +1,34 @@
+{
+	"weapons": [
+		{
+			"name": "stone_hatchet",
+			"color": "696a6a",
+			"recipe": 
+			{
+				"logs": 2,
+				"rocks": 3
+			},
+			"attributes": {
+				"reach": 40,
+				"type": "MELEE",
+				"damage": 10,
+				"can_action_with": ["Harvest", "Hatchet", "Melee"],
+				"min_damage": 1,
+				"is_two_handed": false,
+				"stack_size":1,
+				"asset_path": "res://assets/objects/hatcht.tscn",
+				"health": 100,
+				"object_name": "stone_hatchet"
+			}
+		}
+	],
+	"armor": [
+		
+	],
+	"common": [
+		
+	],
+	"buildings": [
+		
+	]
+}

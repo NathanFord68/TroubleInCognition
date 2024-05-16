@@ -19,6 +19,10 @@ var engine_info : EngineInfo
 @export
 var inventory_manager : InventoryManager
 
+## Manages our crafting stuff
+@export
+var crafting_manager : CraftingManager
+
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		__handle_primary_mouse_pressed()

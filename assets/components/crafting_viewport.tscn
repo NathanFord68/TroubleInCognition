@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://co1a7qwaj0vt2"]
+
+[ext_resource type="Script" path="res://scripts/crafting_viewport.gd" id="1_j6g5n"]
+
+[node name="CraftingViewport" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j6g5n")
+
+[node name="PanelContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TabBar" type="TabBar" parent="PanelContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+tab_count = 4
+tab_close_display_policy = 2
+tab_0/title = "Weapons"
+tab_1/title = "Armor"
+tab_2/title = "Common"
+tab_3/title = "Buildings"
+
+[node name="ObjectList" type="VBoxContainer" parent="PanelContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SingleItemSelect" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Image" type="TextureRect" parent="PanelContainer/HBoxContainer/SingleItemSelect"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemInfo" type="VBoxContainer" parent="PanelContainer/HBoxContainer/SingleItemSelect"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Crafting" type="PanelContainer" parent="PanelContainer/HBoxContainer/SingleItemSelect"]
+self_modulate = Color(0.776471, 0.776471, 0.776471, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/HBoxContainer/SingleItemSelect/Crafting"]
+layout_mode = 2
+
+[node name="CraftButton" type="Button" parent="PanelContainer/HBoxContainer/SingleItemSelect/Crafting"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Craft"
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/SingleItemSelect/Crafting/CraftButton" to="." method="_on_craft_button_pressed"]
