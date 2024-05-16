@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dk1ma4s6db14l" path="res://Grass.png" id="1_dhngv"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://player/player.tscn" id="2_rip54"]
 [ext_resource type="PackedScene" uid="uid://djejwpfur26y" path="res://assets/tree/tree.tscn" id="3_d35s3"]
-[ext_resource type="PackedScene" uid="uid://vfhdy5cj554s" path="res://assets/tools/hatchet/hatchet.tscn" id="4_vpejk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30dgq"]
 texture = ExtResource("1_dhngv")
@@ -14,6 +13,34 @@ texture = ExtResource("1_dhngv")
 
 [sub_resource type="TileSet" id="TileSet_d2cjj"]
 sources/0 = SubResource("TileSetAtlasSource_30dgq")
+
+[sub_resource type="GDScript" id="GDScript_so5a5"]
+script/source = "extends StaticBody2D
+
+var damage : float = 10
+var range : float = 40
+var can_action_with : Array = [ \"Harvest\", \"Attack\" ]
+const animation_tree_path : String = \"res://components/animation_tree.tscn\"
+
+# Add ourselvs to the caller inventory TODO currently doing equiped slot. needs changing
+func interact(player):
+	
+	# Instantiate a new hatchet
+	var n_hatch = preload(\"res://assets/tools/hatchet/hatchet.tscn\")
+	var in_hatch = n_hatch.instantiate()
+	
+	# Set up hatchet for player use
+	in_hatch.get_node(\"AnimationTree\").active = true
+	in_hatch.get_node(\"WorldGen\").visible = false
+	in_hatch.get_node(\"PlayerGen\").visible = true
+	
+	# Add the hatchet to the equipped slot
+	player.get_node(\"MainHandSlot\").add_child(in_hatch)
+	player.equipped = in_hatch
+	
+	# Clear the free the old one
+	queue_free()
+"
 
 [node name="Main" type="Node2D"]
 
@@ -28,5 +55,8 @@ position = Vector2(307, 329)
 [node name="Tree" parent="." instance=ExtResource("3_d35s3")]
 position = Vector2(249, 335)
 
-[node name="Hatchet" parent="." instance=ExtResource("4_vpejk")]
+[node name="Hatchet" type="StaticBody2D" parent="." groups=["Interact"]]
+texture_filter = 1
 position = Vector2(309, 410)
+collision_layer = 2
+script = SubResource("GDScript_so5a5")
