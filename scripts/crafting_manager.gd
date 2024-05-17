@@ -2,13 +2,17 @@ extends Node
 
 class_name CraftingManager
 
-# The viewport players interact with
+## Keeps a reference to the inventory
 @export
-var crafting_viewport : CraftingViewport
+var inventory : InventoryManager
 
-@export
-var inventory_manager : InventoryManager
+var orders : Array[Dictionary] = []
 
-var queue : Array
-
-
+func _process(delta : float) -> void:
+	pass
+	
+func craft_item() -> void:
+	pass
+	
+func add_to_order(order: Dictionary) -> void:
+	pass

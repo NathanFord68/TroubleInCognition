@@ -2,17 +2,21 @@ extends Control
 
 class_name CraftingViewport
 
-## What item is selected
-var selected_item : Dictionary
-
-## How many are we making
-var craft_quantity : int
-
 ## The inventory manager so we can check if crafts can be completed
-var inventory_manager : InventoryManager
+@export
+var inventory : InventoryManager
+
+## The crafting order to be send to the manager
+##
+## quantity: int
+## item: recipe
+var craft_order : Dictionary
+
+## Stores all recipes for the given craftables
+var recipes: Array
 
 ## Signals to the crafting manager to begin crafting
-signal start_crafting
+signal send_order
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,12 +25,12 @@ func _process(delta):
 			visible = false
 			get_tree().paused = false
 			return
-		populate_crafting_list("hand_craftable.json")
+		populate_recipes("hand_craft")
 		visible = true
 		get_tree().paused = true
 
-func populate_crafting_list(file_name: String):
-	var file = FileAccess.open("res://scripts/%s" % file_name, FileAccess.READ)
+func populate_recipes(file_name: String) -> void:
+	var file = FileAccess.open("res://scripts/%s.json" % file_name, FileAccess.READ)
 	var contents = JSON.parse_string(file.get_as_text())
 	
 	# weapons
@@ -36,10 +40,6 @@ func populate_crafting_list(file_name: String):
 	# common
 	
 	# buildings
-
-## Signal to start the crafting process
-func _on_craft_button_pressed() -> void:
-	for item_name in selected_item.recipe.keys():
-		if inventory_manager.total_item_count[item_name] < selected_item.recipe[item_name] * craft_quantity:
-			return
-	start_crafting.emit()
+	
+func can_craft() -> bool:
+	return false
