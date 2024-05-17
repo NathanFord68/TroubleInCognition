@@ -64,8 +64,10 @@ func _on_tab_container_tab_clicked(tab):
 	# Create new list of items that we can craft based off tab
 	var list = load("res://assets/objects/craft_list.tscn").instantiate()
 	for item in recipes[__convert_tab_to_string(tab)]:
-		var b = load("res://assets/objects/craft_item_button.tscn").instantiate()
+		var b := load("res://assets/objects/craft_item_button.tscn").instantiate() as Button
 		b.text = item.name
+		b.item = item
+		b.send_button_was_pressed.connect(__update_ui_on_item_button_pressed)
 		list.add_child(b)
 	
 	# Queue free the old list
@@ -83,3 +85,6 @@ func __convert_tab_to_string(tab: int) -> String:
 		2: return "common"
 		3: return "building"
 	return ""
+
+func __update_ui_on_item_button_pressed(item: Dictionary):
+	print(item)
