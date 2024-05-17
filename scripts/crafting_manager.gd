@@ -52,6 +52,11 @@ func add_to_order(order: Dictionary) -> void:
 func __craft_item(item: ItemBase, recipe: Dictionary, key: String = "") -> void:
 	# Get all the keys so we can populate item
 	if key == "":
+		# Color it
+		for sprite in recipe.color.sprites:
+			item.get_node("Sprite/%s" % sprite).self_modulate = Color.html(recipe.color.hex)
+			
+		# Break down the components and set values
 		for k in recipe.object_data.keys():
 			__craft_item(item, recipe.object_data[k], k)
 		return

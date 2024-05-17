@@ -2,11 +2,14 @@
 	"weapon": [
 		{
 			"name": "stone_hatchet",
-			"color": "696a6a",
+			"color": {
+				"hex": "#696a6a",
+				"sprites": ["hatchet_head"]
+			},
 			"recipe": 
 			{
 				"logs": 2,
-				"rocks": 3
+				"rocks": 2
 			},
 			"time_to_craft": 2,
 			"object_data": {
@@ -28,7 +31,39 @@
 					"object_name": "stone_hatchet",
 					"drop_table": []
 				}
-				
+			}
+		},
+		{
+			"name": "stone_pickaxe",
+			"color": {
+				"hex": "#696a6a",
+				"sprites": ["pickaxe_head"]
+			},
+			"recipe": 
+			{
+				"logs": 2,
+				"rocks": 3
+			},
+			"time_to_craft": 2,
+			"object_data": {
+				"base_info": {
+					"weapon_reach": 40,
+					"type": "PRIMARY",
+					"damage_type": "MELEE",
+					"damage": 10,
+					"can_action_with": ["Harvest", "Pickaxe", "Melee", "Attack"],
+					"min_damage": 1,
+					"is_two_handed": false,
+					"stack_size":1,
+				},
+				"engine_info": {
+					"asset_path": "res://assets/objects/pickaxe.tscn",
+				},
+				"attributes": {
+					"health": 100,
+					"object_name": "stone_pickaxe",
+					"drop_table": []
+				}
 			}
 		}
 	],
