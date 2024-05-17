@@ -9,7 +9,6 @@
 				"rocks": 3
 			},
 			"time_to_craft": 2,
-			"asset_path": "res://assets/objects/hatcht.tscn",
 			"object_data": {
 				"base_info": {
 					"reach": 40,
@@ -21,7 +20,7 @@
 					"stack_size":1,
 				},
 				"engine_info": {
-					
+					"asset_path": "res://assets/objects/hatcht.tscn",
 				},
 				"attributes": {
 					"health": 100,

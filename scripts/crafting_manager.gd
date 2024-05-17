@@ -35,7 +35,7 @@ func craft_item() -> void:
 		get_tree().create_timer(order.recipe.craft_time)
 		
 		# craft item
-		var item = load(order.recipe.asset_path).instantiate()
+		var item = load(order.recipe.object_info.engine_info.asset_path).instantiate()
 		
 		# Add to inventory
 		inventory.add_to_inventory(item, order.recipe)
