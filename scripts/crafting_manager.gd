@@ -32,7 +32,7 @@ func handle_craft_item() -> void:
 	# Loop through quantity and start crafting
 	for i in range(0, order.quantity):
 		# Wait for crafting to finish
-		await get_tree().create_timer(order.item.time_to_craft)
+		await get_tree().create_timer(order.item.time_to_craft).timeout
 		
 		print(order.item.object_data.engine_info.asset_path)
 		# craft item
