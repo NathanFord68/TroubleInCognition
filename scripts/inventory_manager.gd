@@ -92,3 +92,46 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 		total_item_count[item.attributes.object_name] = 1
 
 	return true
+
+## Removes items from the inventory and the total count. 
+##
+## If index is set it will only drop from that slot
+func remove_from_inventory(item_name: String, quantity: int, index: int = -1) -> bool:
+	if index != -1:
+		pass # TODO develop this logic
+	
+	# Check if the quantity we need to remove is available
+	if total_item_count[item_name] < quantity:
+		return false
+		
+	# Reduce count in total
+	total_item_count[item_name] -= quantity
+	
+	# Iterate through and reduce / delete from backback until we are done
+	for slot : EquipmentSlot in backpack:
+		quantity = __handle_remove_quantity_from_slot(slot, item_name, quantity)
+	
+	return true
+	
+## Determines if this slot has the item we are removing and calls process as necessary
+func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int) -> int:
+	if slot.item.attributes.object_name == item_to_remove:
+		return __process_remove_quantity_from_slot(slot, quantity)
+	return quantity
+
+## Handle logic for removing quantity from a given slot
+func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> int:
+	# EquipmentSlot < quantity
+	if slot.quantity < quantity:
+		var r_quantity = quantity - slot.quantity
+		slot.quantity = 0
+		slot.item = null
+		slot.update_icon()
+		return r_quantity
+	
+	# EquipmentSlot >= quantity
+	slot.quantity -= quantity
+	if slot.quantity == 0:
+		slot.item = null
+		slot.update_icon()
+	return 0

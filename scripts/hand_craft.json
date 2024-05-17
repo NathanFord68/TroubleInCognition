@@ -9,17 +9,26 @@
 				"rocks": 3
 			},
 			"time_to_craft": 2,
-			"attributes": {
-				"reach": 40,
-				"type": "MELEE",
-				"damage": 10,
-				"can_action_with": ["Harvest", "Hatchet", "Melee", "Attack"],
-				"min_damage": 1,
-				"is_two_handed": false,
-				"stack_size":1,
-				"asset_path": "res://assets/objects/hatcht.tscn",
-				"health": 100,
-				"object_name": "stone_hatchet"
+			"asset_path": "res://assets/objects/hatcht.tscn",
+			"object_data": {
+				"base_info": {
+					"reach": 40,
+					"type": "MELEE",
+					"damage": 10,
+					"can_action_with": ["Harvest", "Hatchet", "Melee", "Attack"],
+					"min_damage": 1,
+					"is_two_handed": false,
+					"stack_size":1,
+				},
+				"engine_info": {
+					
+				},
+				"attributes": {
+					"health": 100,
+					"object_name": "stone_hatchet",
+					"drop_table": []
+				}
+				
 			}
 		}
 	],
