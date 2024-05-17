@@ -11,14 +11,14 @@
 			"time_to_craft": 2,
 			"object_data": {
 				"base_info": {
-					"weapon_reach": 50,
-					"type": "SECONDARY",
-					"damage_type": "RANGE",
+					"weapon_reach": 40,
+					"type": "PRIMARY",
+					"damage_type": "MELEE",
 					"damage": 10,
 					"can_action_with": ["Harvest", "Hatchet", "Melee", "Attack"],
 					"min_damage": 1,
 					"is_two_handed": false,
-					"stack_size":2,
+					"stack_size":1,
 				},
 				"engine_info": {
 					"asset_path": "res://assets/objects/hatchet.tscn",

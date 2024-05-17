@@ -38,7 +38,7 @@ func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
 ## Move item from inventory to equipment slot
 func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 	# Set the name to it's slot name and activate it's animation tree
-	var equipment_instance = load(data.item.engine_info.asset_path).instantiate()
+	var equipment_instance = data.item
 	equipment_instance.name = str(slot)
 	equipment_instance.get_node("AnimationTree").active = true
 	
@@ -57,7 +57,10 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 ## This does not clear the item in the inventory 
 ## Since this instance was a clone of the inventory item
 func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
-	$"../Equipment".get_node(str(slot)).queue_free()
+	var node = $"../Equipment".get_node(str(slot))
+	node.name = node.attributes.object_name
+	node.get_node("AnimationTree").active = false
+	$"../Equipment".remove_child(node)
 
 ## Adds an item to the inventory
 func add_to_inventory(item : Node, index : int = -1) -> bool:
