@@ -38,6 +38,6 @@ engine_info = NodePath("../Rocks/EngineInfo")
 attributes = NodePath("../Rocks/BaseAttributes")
 
 [node name="Rocks3" parent="." node_paths=PackedStringArray("engine_info", "attributes") instance=ExtResource("7_4t720")]
-position = Vector2(247, 402)
+position = Vector2(273, 398)
 engine_info = NodePath("../Rocks/EngineInfo")
 attributes = NodePath("../Rocks/BaseAttributes")
