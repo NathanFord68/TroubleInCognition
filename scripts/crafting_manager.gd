@@ -16,9 +16,9 @@ func _ready() -> void:
 func _process(delta : float) -> void:
 	# If there are orders and we're not crafting call craft item
 	if not is_crafting and orders.size() > 0:
-		craft_item()
+		handle_craft_item()
 	
-func craft_item() -> void:
+func handle_craft_item() -> void:
 	# Set that we are crafting
 	is_crafting = true
 	
@@ -37,6 +37,7 @@ func craft_item() -> void:
 		print(order.item.object_data.engine_info.asset_path)
 		# craft item
 		var item = load(order.item.object_data.engine_info.asset_path).instantiate()
+		__craft_item(item, order.item)
 		
 		# Add to inventory
 		inventory.add_to_inventory(item)
@@ -56,12 +57,16 @@ func __craft_item(item: ItemBase, recipe: Dictionary, key: String = "") -> void:
 		return
 			
 	# If base info then populate the root object
-	if key == "base_info":
-		for k in recipe.keys():
-			item[k] = recipe[k]
-		return
-	
-	# Populate the components
 	for k in recipe.keys():
-		item[key][k] = recipe[k]
+		if key == "base_info":
+			if k == "type":
+				item[k] = Enums.convert_string_to_item_type(recipe[k])
+				continue
+			if k == "damage_type":
+				item[k] = Enums.convert_string_to_damage_type(recipe[k])
+				continue
+			item[k] = recipe[k]
+			continue
 	
+		# Populate the components
+		item[key][k] = recipe[k]
