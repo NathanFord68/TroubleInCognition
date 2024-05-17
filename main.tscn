@@ -30,14 +30,10 @@ position = Vector2(216, 394)
 position = Vector2(350, 341)
 
 [node name="Rocks" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(233, 375)
+position = Vector2(223, 362)
 
-[node name="Rocks2" parent="." node_paths=PackedStringArray("engine_info", "attributes") instance=ExtResource("7_4t720")]
-position = Vector2(240, 388)
-engine_info = NodePath("../Rocks/EngineInfo")
-attributes = NodePath("../Rocks/BaseAttributes")
+[node name="Rocks2" parent="." instance=ExtResource("7_4t720")]
+position = Vector2(234, 381)
 
-[node name="Rocks3" parent="." node_paths=PackedStringArray("engine_info", "attributes") instance=ExtResource("7_4t720")]
-position = Vector2(273, 398)
-engine_info = NodePath("../Rocks/EngineInfo")
-attributes = NodePath("../Rocks/BaseAttributes")
+[node name="Rocks3" parent="." instance=ExtResource("7_4t720")]
+position = Vector2(247, 395)

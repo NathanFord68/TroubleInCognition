@@ -21,10 +21,12 @@ var inventory_root : Control
 func _ready():
 	update_icon()
 
+func update_label():
+	( get_node("Count") as Label ).text = "" if quantity == 0 or quantity == 1 else str(quantity)
 
 ## Updates the icon for this slot
 func update_icon():
-	( get_node("Count") as Label ).text = "" if quantity == 0 or quantity == 1 else str(quantity)
+	update_label()
 	if !is_instance_valid(item):	
 		$Item.texture = null
 		return

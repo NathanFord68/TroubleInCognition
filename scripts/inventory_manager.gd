@@ -137,4 +137,6 @@ func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> 
 	if slot.quantity == 0:
 		slot.item = null
 		slot.update_icon()
+	else:
+		slot.update_label()
 	return 0
