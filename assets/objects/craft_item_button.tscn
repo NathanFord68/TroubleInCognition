@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmvy6u3e2gim4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4x54"]
+
+[node name="CraftItemButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l4x54")

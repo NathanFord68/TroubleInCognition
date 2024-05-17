@@ -18,6 +18,11 @@ var recipes: Dictionary
 ## Signals to the crafting manager to begin crafting
 signal send_order
 
+func _ready() -> void:
+	populate_recipes("hand_craft")
+	_on_tab_container_tab_clicked(0)
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("player_toggle_crafting"):
@@ -52,3 +57,29 @@ func can_craft() -> bool:
 	
 	# Return true by default
 	return true
+
+
+## Updates the Object list with the current selected tab of items
+func _on_tab_container_tab_clicked(tab):
+	# Create new list of items that we can craft based off tab
+	var list = load("res://assets/objects/craft_list.tscn").instantiate()
+	for item in recipes[__convert_tab_to_string(tab)]:
+		var b = load("res://assets/objects/craft_item_button.tscn").instantiate()
+		b.text = item.name
+		list.add_child(b)
+	
+	# Queue free the old list
+	if %ItemListScene.get_child_count() == 2:
+		%ItemListScene.get_child(1).queue_free()
+		
+	# Attach the new list
+	%ItemListScene.add_child(list)
+	pass
+
+func __convert_tab_to_string(tab: int) -> String:
+	match tab:
+		0: return "weapon"
+		1: return "armor"
+		2: return "common"
+		3: return "building"
+	return ""

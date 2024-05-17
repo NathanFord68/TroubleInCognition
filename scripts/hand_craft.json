@@ -1,5 +1,5 @@
 {
-	"weapons": [
+	"weapon": [
 		{
 			"name": "stone_hatchet",
 			"color": "696a6a",
@@ -32,12 +32,18 @@
 		}
 	],
 	"armor": [
-		
+		{
+			"name": "test_armor_name"
+		}
 	],
 	"common": [
-		
+		{
+			"name": "test_common_name"
+		}
 	],
-	"buildings": [
-		
+	"building": [
+		{
+			"name": "test_building_name"
+		}
 	]
 }

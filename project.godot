@@ -21,6 +21,10 @@ Enums="*res://scripts/enums.gd"
 Debug="*res://scripts/debugger.gd"
 Env="*res://scripts/env.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="TroubleInCognition"
