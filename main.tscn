@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp3dkq3631ia6"]
+[gd_scene load_steps=8 format=3 uid="uid://cp3dkq3631ia6"]
 
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="1_3w23n"]
 [ext_resource type="PackedScene" uid="uid://dqrccsiidgik4" path="res://assets/objects/tree.tscn" id="2_6vaid"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3cypgoptackx" path="res://assets/objects/logs.tscn" id="4_es3pe"]
 [ext_resource type="PackedScene" uid="uid://dqr28u4uksoel" path="res://assets/objects/pickaxe.tscn" id="5_ooit3"]
 [ext_resource type="PackedScene" uid="uid://xrqeudhh1dt5" path="res://assets/objects/boulder.tscn" id="6_bs2gv"]
+[ext_resource type="PackedScene" uid="uid://slyhehnuja3w" path="res://assets/objects/rocks.tscn" id="7_4t720"]
 
 [node name="Main" type="Node2D"]
 
@@ -35,3 +36,16 @@ position = Vector2(294, 399)
 
 [node name="boulder" parent="." instance=ExtResource("6_bs2gv")]
 position = Vector2(350, 341)
+
+[node name="Rocks" parent="." instance=ExtResource("7_4t720")]
+position = Vector2(233, 375)
+
+[node name="Rocks2" parent="." node_paths=PackedStringArray("engine_info", "attributes") instance=ExtResource("7_4t720")]
+position = Vector2(240, 388)
+engine_info = NodePath("../Rocks/EngineInfo")
+attributes = NodePath("../Rocks/BaseAttributes")
+
+[node name="Rocks3" parent="." node_paths=PackedStringArray("engine_info", "attributes") instance=ExtResource("7_4t720")]
+position = Vector2(247, 402)
+engine_info = NodePath("../Rocks/EngineInfo")
+attributes = NodePath("../Rocks/BaseAttributes")

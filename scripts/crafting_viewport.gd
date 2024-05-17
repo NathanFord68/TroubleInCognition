@@ -44,15 +44,15 @@ func populate_recipes(file_name: String) -> void:
 func can_craft() -> bool:
 	# Get list of required mats
 	var mats = []
-	for key in craft_order.recipe.keys():
+	for key in craft_order.item.recipe.keys():
 		mats.push_back({
-			"required": craft_order.recipe[key] * craft_order.quantity,
+			"required": craft_order.item.recipe[key] * craft_order.quantity,
 			"name": key
 		})
 	
 	# For each mat, check the inventory
 	for mat in mats: 
-		if inventory.total_item_count[mat.name] < mat.required:
+		if mat.name not in inventory.total_item_count or inventory.total_item_count[mat.name] < mat.required:
 			return false # short the method out and return false
 	
 	# Return true by default
@@ -87,4 +87,9 @@ func __convert_tab_to_string(tab: int) -> String:
 	return ""
 
 func __update_ui_on_item_button_pressed(item: Dictionary):
-	print(item)
+	craft_order = {
+		"quantity": 1,
+		"item": item
+	}
+	if can_craft():
+		send_order.emit(craft_order)

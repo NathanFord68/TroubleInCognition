@@ -115,7 +115,7 @@ func remove_from_inventory(item_name: String, quantity: int, index: int = -1) ->
 	
 ## Determines if this slot has the item we are removing and calls process as necessary
 func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int) -> int:
-	if slot.item.attributes.object_name == item_to_remove:
+	if is_instance_valid(slot.item) and slot.item.attributes.object_name == item_to_remove:
 		return __process_remove_quantity_from_slot(slot, quantity)
 	return quantity
 

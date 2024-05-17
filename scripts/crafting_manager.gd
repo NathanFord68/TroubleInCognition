@@ -26,19 +26,20 @@ func craft_item() -> void:
 	var order = orders[0]
 	
 	# Remove the items from our inventory
-	for key in order.recipe.keys():
-		inventory.remove_from_inventory(key, order.recipe[key] * order.quantity)
+	for key in order.item.recipe.keys():
+		inventory.remove_from_inventory(key, order.item.recipe[key] * order.quantity)
 	
 	# Loop through quantity and start crafting
 	for i in range(0, order.quantity):
 		# Wait for crafting to finish
-		get_tree().create_timer(order.recipe.craft_time)
+		await get_tree().create_timer(order.item.time_to_craft)
 		
+		print(order.item.object_data.engine_info.asset_path)
 		# craft item
-		var item = load(order.recipe.object_info.engine_info.asset_path).instantiate()
+		var item = load(order.item.object_data.engine_info.asset_path).instantiate()
 		
 		# Add to inventory
-		inventory.add_to_inventory(item, order.recipe)
+		inventory.add_to_inventory(item)
 	
 	# Pop order off array
 	orders.pop_front()

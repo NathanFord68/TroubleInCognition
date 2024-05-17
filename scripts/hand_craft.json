@@ -20,7 +20,7 @@
 					"stack_size":1,
 				},
 				"engine_info": {
-					"asset_path": "res://assets/objects/hatcht.tscn",
+					"asset_path": "res://assets/objects/hatchet.tscn",
 				},
 				"attributes": {
 					"health": 100,
