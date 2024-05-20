@@ -10,7 +10,7 @@ var inventory : InventoryManager
 ##
 ## quantity: int
 ## item: recipe
-var craft_order : Dictionary
+var craft_order : Dictionary = {"quantity": 1, "item": null}
 
 ## Stores all recipes for the given craftables
 var recipes: Dictionary
@@ -67,7 +67,7 @@ func _on_tab_container_tab_clicked(tab):
 		var b := load("res://assets/objects/craft_item_button.tscn").instantiate() as Button
 		b.text = item.name
 		b.item = item
-		b.send_button_was_pressed.connect(__update_ui_on_item_button_pressed)
+		b.send_button_was_pressed.connect(_update_ui_on_item_button_pressed)
 		list.add_child(b)
 	
 	# Queue free the old list
@@ -76,7 +76,6 @@ func _on_tab_container_tab_clicked(tab):
 		
 	# Attach the new list
 	%ItemListScene.add_child(list)
-	pass
 
 func __convert_tab_to_string(tab: int) -> String:
 	match tab:
@@ -86,10 +85,40 @@ func __convert_tab_to_string(tab: int) -> String:
 		3: return "building"
 	return ""
 
-func __update_ui_on_item_button_pressed(item: Dictionary):
-	craft_order = {
-		"quantity": 1,
-		"item": item
-	}
+func _update_ui_on_item_button_pressed(item: Dictionary):
+	# Set the craft order
+	craft_order.quantity = 1
+	craft_order.item = item
+	
+	# Set the UI with the items information
+	%"QuantityLabel".text = str(1)
+	%"QuantitySlider".value = 1
+
+func _on_quantity_slider_drag_ended(_value_changed: bool) -> void:
+	var final_quantity = 100
+	# Get the maximum that we can craft
+	for key in craft_order.item.recipe.keys():
+		# Check if key is in the inventory
+		if key not in inventory.total_item_count or inventory.total_item_count[key] < craft_order.item.recipe[key]:
+			final_quantity = 1
+			break
+		
+		final_quantity = min(final_quantity, floori(inventory.total_item_count[key] / craft_order.item.recipe[key]))
+	
+	# Update the quantity
+	craft_order.quantity = final_quantity
+	
+	# Update the label
+	%"QuantityLabel".text = str(final_quantity)
+	%"QuantitySlider".value = final_quantity
+
+func _on_quantity_slider_value_changed(value: int) -> void:
+	# Update quantity of the craft order
+	craft_order.quantity = value
+	
+	# Update the label
+	%"QuantityLabel".text = str(value)
+
+func _on_craft_button_pressed():
 	if can_craft():
 		send_order.emit(craft_order)

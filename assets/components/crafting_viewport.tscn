@@ -71,19 +71,46 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Crafting" type="PanelContainer" parent="PanelContainer/HBoxContainer/SingleItemSelect"]
-self_modulate = Color(0.776471, 0.776471, 0.776471, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/SingleItemSelect"]
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/HBoxContainer/SingleItemSelect/Crafting"]
+[node name="QuantitySlider" type="HSlider" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+min_value = 1.0
+value = 1.0
 
-[node name="CraftButton" type="Button" parent="PanelContainer/HBoxContainer/SingleItemSelect/Crafting"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Panel" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CraftButton" type="Button" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Craft"
+
+[node name="Spacer2" type="Panel" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuantityLabel" type="Label" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="Spacer3" type="Panel" parent="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="tab_clicked" from="PanelContainer/HBoxContainer/ItemListScene/ItemListTabs" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="tab_selected" from="PanelContainer/HBoxContainer/ItemListScene/ItemListTabs" to="." method="_on_tab_container_tab_selected"]
@@ -95,4 +122,6 @@ text = "Craft"
 [connection signal="tab_selected" from="PanelContainer/HBoxContainer/ItemListScene/ItemListTabs/Common" to="." method="_on_weapons_tab_selected"]
 [connection signal="tab_clicked" from="PanelContainer/HBoxContainer/ItemListScene/ItemListTabs/Building" to="." method="_on_weapons_tab_clicked"]
 [connection signal="tab_selected" from="PanelContainer/HBoxContainer/ItemListScene/ItemListTabs/Building" to="." method="_on_weapons_tab_selected"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/SingleItemSelect/Crafting/CraftButton" to="." method="_on_craft_button_pressed"]
+[connection signal="drag_ended" from="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/QuantitySlider" to="." method="_on_quantity_slider_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/QuantitySlider" to="." method="_on_quantity_slider_value_changed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/SingleItemSelect/VBoxContainer/HBoxContainer/CraftButton" to="." method="_on_craft_button_pressed"]
