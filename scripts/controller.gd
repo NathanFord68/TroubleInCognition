@@ -9,6 +9,7 @@ var animation_tree: AnimationTree
 
 var direction_facing: Enums.DIRECTION_FACING
 
+var is_sprite_flipped : bool = false
 var playing_action_animation : bool = false
 
 ## Plays the action animation
@@ -133,6 +134,15 @@ func __animate_equipment_locomotion(param: String):
 
 ## Flips the sprites for the animations
 func sprites_left(left: bool):
+	# If the sprite does not need to be flipped return
+	if left and not is_sprite_flipped:
+		return
+	if not left and is_sprite_flipped:
+		return
+	
+	is_sprite_flipped = !left
+	
+	# Flip the sprite to the direction we are trying to go
 	for sprite: Sprite2D in $"../Sprite".get_children():
 		sprite.flip_h = !left
 		
