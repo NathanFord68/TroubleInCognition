@@ -9,12 +9,15 @@ var animation_tree: AnimationTree
 
 var direction_facing: Enums.DIRECTION_FACING
 
+var playing_action_animation : bool = false
+
 ## Plays the action animation
 ##
 ## Plays the designated animation based on which direction we are facing
 ## The Animation should be responsible for calling the handle_action method of this controller
 ## When finished
 func anim_action() -> void:
+	playing_action_animation = true
 	var equipment_tree := $"../Equipment".get_node("%s/AnimationTree" % str(Enums.ITEM_TYPE.PRIMARY)) as AnimationTree
 	animation_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
 	equipment_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
@@ -26,11 +29,15 @@ func anim_action() -> void:
 	animation_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	equipment_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	await get_tree().create_timer($"../AnimationPlayer".get_animation("Swing-Toward").length).timeout
+	playing_action_animation = false
 	
 ## Determines if we can handle calling the action of the target
 func can_handle_action(target: Node) -> bool:
 	# Return if there's nothing there
 	if not is_instance_valid(target):
+		return false
+	
+	if playing_action_animation:
 		return false
 		
 	# Check the groups to make sure all of my equipment is in the actionable item
@@ -41,9 +48,13 @@ func can_handle_action(target: Node) -> bool:
 
 ## Calls the action of a target if it can
 func handle_action(target: Node) -> void:
-	if can_handle_action(target):
-		await anim_action()
-		target.action($"..")
+	if not can_handle_action(target):
+		return
+	await anim_action()
+	
+	if not is_instance_valid(target):
+		return
+	target.action($"..")
 	
 	
 ## Processes the action of this object
