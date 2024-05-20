@@ -7,7 +7,7 @@ class_name InventoryViewport
 signal item_dropped
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("player_toggle_inventory"):
 		if visible:
 			visible = false

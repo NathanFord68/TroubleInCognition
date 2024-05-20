@@ -58,7 +58,7 @@ func _can_drop_data(_at_position, data):
 		return false
 	return true
 	
-func _drop_data(at_position : Vector2, data : Variant) -> void:
+func _drop_data(_at_position : Vector2, data : Variant) -> void:
 	# If the slot has something not allowed in our slot return
 	if ( data.allowed_type != Enums.ITEM_TYPE.MAIN 
 		and is_instance_valid(item)

@@ -26,7 +26,7 @@ func _ready() -> void:
 	_on_tab_container_tab_clicked(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("player_toggle_crafting"):
 		if visible:
 			visible = false

@@ -4,7 +4,7 @@ const IMAGE_EDGE_BUFFER_AMOUNT : int = 6
 
 ## Draws a line shape to visualize ray cast
 func visualize_ray_cast(start: Vector2, end: Vector2, n: Node = null) -> void:
-	if is_instance_valid(n.get_node("RayCast")):
+	if is_instance_valid(n) and n.has_node("RayCast"):
 		n.get_node("RayCast").points = [start, end]
 		return
 	
@@ -17,7 +17,7 @@ func visualize_ray_cast(start: Vector2, end: Vector2, n: Node = null) -> void:
 
 ## Draws a circle to visualize point casts
 func visualize_point(point: Vector2) -> void:
-	pass
+	print(point)
 
 func generate_image_texture_from_scene(s: Node) -> ImageTexture:
 	# Get the size of the new image
@@ -27,7 +27,7 @@ func generate_image_texture_from_scene(s: Node) -> ImageTexture:
 	item_size += Vector2(IMAGE_EDGE_BUFFER_AMOUNT, IMAGE_EDGE_BUFFER_AMOUNT)
 	
 	# Create the canvas
-	var final_img = Image.create(item_size.x, item_size.y, false, Image.FORMAT_RGBA8)
+	var final_img = Image.create(int(item_size.x), int(item_size.y), false, Image.FORMAT_RGBA8)
 	
 	# Apply sprites to canvas
 	for child : Sprite2D in s.get_node("Sprite").get_children():

@@ -47,7 +47,7 @@ func handle_action(target: Node) -> void:
 	
 	
 ## Processes the action of this object
-func action(caller: Node) -> void:
+func action(_caller: Node) -> void:
 	pass
 
 ## Calls the interact of a target if it can
@@ -66,7 +66,7 @@ func can_handle_interact(target: Node) -> bool:
 	return true
 
 ## Processes the interact of this object
-func interact(caller: Node) -> void:
+func interact(_caller: Node) -> void:
 	pass
 
 ## Updates the velocity of the owner

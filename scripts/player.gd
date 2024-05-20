@@ -27,7 +27,7 @@ func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		__handle_primary_mouse_pressed()
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if not can_physics_process():
 		return 
 	if Input.is_action_just_pressed("dev_debug"):
@@ -51,15 +51,15 @@ func can_physics_process() -> bool:
 	return true
 
 ## Gets the target the player is trying to interact with
-func get_target(range : float) -> Node:
-	var p_hit = point_to_mouse(true)
-	var t_hit = trace_to_mouse(range, true)
+func get_target(reach_range : float) -> Node:
+	var p_hit = point_to_mouse()
+	var t_hit = trace_to_mouse(reach_range)
 	if p_hit == t_hit:
 		return p_hit
 	return null
 
 ## Ray traces to the mouse position from the player
-func trace_to_mouse(range: float, debug: bool) -> Node:
+func trace_to_mouse(reach_range: float) -> Node:
 	# Normalize to mouse position
 	var click_normalized : Vector2 = global_position.direction_to(get_global_mouse_position())
 	
@@ -67,7 +67,7 @@ func trace_to_mouse(range: float, debug: bool) -> Node:
 	var space = get_world_2d().direct_space_state
 	
 	# Create the query
-	var end = global_position + (click_normalized * range )
+	var end = global_position + (click_normalized * reach_range )
 	var query = PhysicsRayQueryParameters2D.create(global_position, end)
 	query.exclude = [self]
 	
@@ -85,7 +85,7 @@ func trace_to_mouse(range: float, debug: bool) -> Node:
 	return null
 
 ## Point trace at the mouse position
-func point_to_mouse(debug: bool) -> Node:
+func point_to_mouse() -> Node:
 	# Get world space physics
 	var space = get_world_2d().direct_space_state
 	

@@ -13,7 +13,7 @@ var is_crafting: bool = false
 func _ready() -> void:
 	( $"../PlayerViewport/CraftingViewport" as CraftingViewport ).send_order.connect(add_to_order)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	# If there are orders and we're not crafting call craft item
 	if not is_crafting and orders.size() > 0:
 		handle_craft_item()
