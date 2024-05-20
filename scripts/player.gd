@@ -76,7 +76,7 @@ func trace_to_mouse(range: float, debug: bool) -> Node:
 	
 	# Visualize if true
 	if Env.mode == Enums.MODE.DEV:
-		Debug.visualize_ray_cast(global_position, end, self)
+		Global.visualize_ray_cast(global_position, end, self)
 	
 	# Return collider if hit
 	if "collider" in hit:
