@@ -11,40 +11,46 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_3w23n")]
-position = Vector2(282, 339)
+position = Vector2(130, 336)
 
 [node name="tree" parent="." instance=ExtResource("2_6vaid")]
-position = Vector2(225, 306)
+position = Vector2(277, 322)
 
 [node name="Logs" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(191, 373)
+position = Vector2(185, 332)
 
 [node name="Logs2" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(196, 392)
+position = Vector2(185, 360)
 
 [node name="Logs3" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(208, 380)
+position = Vector2(185, 346)
 
 [node name="Logs4" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(216, 394)
+position = Vector2(185, 375)
 
 [node name="boulder" parent="." instance=ExtResource("6_bs2gv")]
-position = Vector2(350, 341)
+position = Vector2(327, 339)
 
 [node name="Rocks" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(223, 362)
+position = Vector2(207, 333)
 
 [node name="Rocks2" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(234, 381)
+position = Vector2(207, 347)
 
 [node name="Rocks3" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(247, 395)
+position = Vector2(207, 361)
 
 [node name="Rocks4" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(268, 385)
+position = Vector2(207, 375)
 
 [node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
-position = Vector2(249, 367)
+position = Vector2(225, 335)
 
 [node name="Pickaxe" parent="." instance=ExtResource("6_btl4l")]
-position = Vector2(286, 374)
+position = Vector2(240, 336)
+
+[node name="tree2" parent="." instance=ExtResource("2_6vaid")]
+position = Vector2(278, 400)
+
+[node name="boulder2" parent="." instance=ExtResource("6_bs2gv")]
+position = Vector2(330, 400)
