@@ -104,7 +104,7 @@ func point_to_mouse() -> Node:
 	return null
 
 func __get_weapon_reach() -> float:
-	if is_instance_valid($Equipment.get_node(str(Enums.ITEM_TYPE.PRIMARY))):
+	if $Equipment.has_node(str(Enums.ITEM_TYPE.PRIMARY)):
 		return ($Equipment.get_node(str(Enums.ITEM_TYPE.PRIMARY)) as Weapon).weapon_reach
 	return -1
 
