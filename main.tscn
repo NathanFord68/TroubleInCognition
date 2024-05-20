@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp3dkq3631ia6"]
+[gd_scene load_steps=8 format=3 uid="uid://cp3dkq3631ia6"]
 
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="1_3w23n"]
 [ext_resource type="PackedScene" uid="uid://dqrccsiidgik4" path="res://assets/objects/tree.tscn" id="2_6vaid"]
 [ext_resource type="PackedScene" uid="uid://c3cypgoptackx" path="res://assets/objects/logs.tscn" id="4_es3pe"]
 [ext_resource type="PackedScene" uid="uid://xrqeudhh1dt5" path="res://assets/objects/boulder.tscn" id="6_bs2gv"]
+[ext_resource type="PackedScene" uid="uid://dqr28u4uksoel" path="res://assets/objects/pickaxe.tscn" id="6_btl4l"]
 [ext_resource type="PackedScene" uid="uid://slyhehnuja3w" path="res://assets/objects/rocks.tscn" id="7_4t720"]
+[ext_resource type="PackedScene" uid="uid://utqvv155d7g7" path="res://assets/objects/hatchet.tscn" id="7_xybt0"]
 
 [node name="Main" type="Node2D"]
 
@@ -40,3 +42,9 @@ position = Vector2(247, 395)
 
 [node name="Rocks4" parent="." instance=ExtResource("7_4t720")]
 position = Vector2(268, 385)
+
+[node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
+position = Vector2(249, 367)
+
+[node name="Pickaxe" parent="." instance=ExtResource("6_btl4l")]
+position = Vector2(286, 374)
