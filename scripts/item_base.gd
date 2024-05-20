@@ -22,6 +22,10 @@ var engine_info: EngineInfo
 @export 
 var attributes: BaseAttributes
 
+## Describes the object
+@export
+var description: String
+
 ## Processes the action to be done on this item when a caller actions with it
 func action(caller: Node) -> void:
 	print(caller)

@@ -18,7 +18,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Enums="*res://scripts/enums.gd"
-Debug="*res://scripts/debugger.gd"
+Global="*res://scripts/global.gd"
 Env="*res://scripts/env.gd"
 
 [display]
