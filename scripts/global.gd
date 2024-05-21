@@ -33,6 +33,7 @@ func generate_image_texture_from_scene(s: Node) -> ImageTexture:
 	for child : Sprite2D in s.get_node("Sprite").get_children():
 		__apply_sprite_to_image(final_img, child, item_size)
 	
+	final_img.save_png("res://assets/resources/%s.png" % s.attributes.object_name)
 	# Generate and return the texture
 	return ImageTexture.create_from_image(final_img)
 
