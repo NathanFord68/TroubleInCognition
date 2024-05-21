@@ -53,10 +53,21 @@ func can_physics_process() -> bool:
 ## Gets the target the player is trying to interact with
 func get_target(reach_range : float) -> Node:
 	var p_hit = point_to_mouse()
-	var t_hit = trace_to_mouse(reach_range)
-	if p_hit == t_hit:
-		return p_hit
-	return null
+	
+	if Env.mode == Enums.MODE.DEV:
+		var click_normalized : Vector2 = global_position.direction_to(get_global_mouse_position())
+		var end = global_position + (click_normalized * reach_range )
+		Global.visualize_ray_cast(global_position, end, self)
+		
+	if not is_instance_valid(p_hit):
+		return null
+		
+	if global_position.distance_to(p_hit.global_position) > reach_range:
+		return null
+	
+	# Visualize if true
+		
+	return p_hit
 
 ## Ray traces to the mouse position from the player
 func trace_to_mouse(reach_range: float) -> Node:
