@@ -42,16 +42,16 @@ metadata/_aseprite_wizard_config_ = {
 "keep_anim_length": false,
 "layer": "tree",
 "o_ex_p": "",
-"o_folder": "",
+"o_folder": "res://assets/resources",
 "o_name": "",
 "only_visible": false,
 "player": "",
 "slice": "",
-"source": "res://Sprites.aseprite"
+"source": "res://static.aseprite"
 }
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "6847772ddf5426a78c15fbc897b05a14"
+metadata/_aseprite_wizard_source_file_hash_ = "d71cf9b952b621356e13dc42920dc8e1"
