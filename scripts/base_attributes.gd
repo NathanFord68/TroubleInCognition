@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 
 ## Base class for anything that needs attributes
 class_name BaseAttributes

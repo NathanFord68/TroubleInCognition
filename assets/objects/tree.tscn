@@ -1,26 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqrccsiidgik4"]
+[gd_scene load_steps=7 format=3 uid="uid://dqrccsiidgik4"]
 
 [ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_6qr3h"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_j4sd8"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_gq2xx"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_sg2r6"]
 [ext_resource type="Texture2D" uid="uid://bakmfg46pnjhw" path="res://assets/objects/tree.png" id="4_nmk23"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
-size = Vector2(30, 56)
-
-[node name="tree" type="StaticBody2D" node_paths=PackedStringArray("attributes", "engine_info") groups=["Harvest", "Hatchet"]]
-script = ExtResource("1_6qr3h")
-attributes = NodePath("BaseAttributes")
-engine_info = NodePath("EngineInfo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_5t7es")
-
-[node name="EngineInfo" parent="." instance=ExtResource("2_j4sd8")]
-asset_path = "res://assets/objects/tree.tscn"
-
-[node name="BaseAttributes" parent="." instance=ExtResource("4_gq2xx")]
+[sub_resource type="Resource" id="Resource_lec1n"]
+script = ExtResource("2_sg2r6")
 health = 50
 drop_table = [{
 "chance": 100.0,
@@ -29,6 +15,21 @@ drop_table = [{
 "object": "logs"
 }]
 object_name = "tree"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
+size = Vector2(30, 56)
+
+[node name="tree" type="StaticBody2D" node_paths=PackedStringArray("engine_info") groups=["Harvest", "Hatchet"]]
+script = ExtResource("1_6qr3h")
+attributes = SubResource("Resource_lec1n")
+engine_info = NodePath("EngineInfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_5t7es")
+
+[node name="EngineInfo" parent="." instance=ExtResource("2_j4sd8")]
+asset_path = "res://assets/objects/tree.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 

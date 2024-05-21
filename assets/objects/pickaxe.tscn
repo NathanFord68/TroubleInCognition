@@ -1,10 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqr28u4uksoel"]
+[gd_scene load_steps=37 format=3 uid="uid://dqr28u4uksoel"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_40gds"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_kal46"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="3_o28an"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ubnea"]
 [ext_resource type="Texture2D" uid="uid://ctukkc08lm2ct" path="res://assets/objects/tool_base.png" id="4_dyvlh"]
 [ext_resource type="Texture2D" uid="uid://dccrhfb1c0s0d" path="res://assets/objects/pickaxe_head.png" id="5_unxis"]
+
+[sub_resource type="Resource" id="Resource_cmwyk"]
+script = ExtResource("2_ubnea")
+health = 100
+drop_table = []
+object_name = "stone_pickaxe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
 size = Vector2(7, 11)
@@ -678,7 +684,7 @@ nodes/locomotion/position = Vector2(400, -60)
 nodes/output/position = Vector2(860, -80)
 node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree", &"output", 0, &"Swing-OS"]
 
-[node name="Pickaxe" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Attack", "Harvest", "Interact", "Pickaxe"]]
+[node name="Pickaxe" type="StaticBody2D" node_paths=PackedStringArray("engine_info") groups=["Attack", "Harvest", "Interact", "Pickaxe"]]
 collision_layer = 2
 script = ExtResource("1_40gds")
 weapon_reach = 40.0
@@ -688,7 +694,7 @@ min_damage = 1
 stack_size = 1
 type = 5
 engine_info = NodePath("EngineInfo")
-attributes = NodePath("BaseAttributes")
+attributes = SubResource("Resource_cmwyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -696,10 +702,6 @@ shape = SubResource("RectangleShape2D_nytlc")
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_kal46")]
 asset_path = "res://assets/objects/pickaxe.tscn"
-
-[node name="BaseAttributes" parent="." instance=ExtResource("3_o28an")]
-health = 100
-object_name = "pickaxe_base"
 
 [node name="Sprite" type="Node2D" parent="."]
 

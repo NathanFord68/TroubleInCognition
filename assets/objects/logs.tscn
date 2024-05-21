@@ -1,9 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3cypgoptackx"]
+[gd_scene load_steps=19 format=3 uid="uid://c3cypgoptackx"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_qnu1j"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_b73sk"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_p4v2r"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="4_nucg2"]
 [ext_resource type="Texture2D" uid="uid://btouj5fj61qns" path="res://assets/objects/logs.png" id="4_q0lx4"]
+
+[sub_resource type="Resource" id="Resource_qdd86"]
+script = ExtResource("2_b73sk")
+health = -1
+drop_table = []
+object_name = "logs"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uk5w"]
 size = Vector2(9, 9)
@@ -327,21 +333,17 @@ _data = {
 "Walk-Toward": SubResource("Animation_wjpmu")
 }
 
-[node name="Logs" type="StaticBody2D" node_paths=PackedStringArray("engine_info", "attributes") groups=["Interact"]]
+[node name="Logs" type="StaticBody2D" node_paths=PackedStringArray("engine_info") groups=["Interact"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_qnu1j")
 stack_size = 20
 engine_info = NodePath("EngineInfo")
-attributes = NodePath("BaseAttributes")
+attributes = SubResource("Resource_qdd86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_6uk5w")
-
-[node name="BaseAttributes" parent="." instance=ExtResource("4_nucg2")]
-health = -1
-object_name = "logs"
 
 [node name="EngineInfo" parent="." instance=ExtResource("2_p4v2r")]
 asset_path = "res://assets/objects/logs.tscn"

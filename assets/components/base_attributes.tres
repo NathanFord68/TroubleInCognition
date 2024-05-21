@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseAttributes" load_steps=2 format=3 uid="uid://c54m7iojmqpgt"]
+
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="1_djv1d"]
+
+[resource]
+script = ExtResource("1_djv1d")
+health = 0
+drop_table = []
+object_name = ""

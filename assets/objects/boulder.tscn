@@ -1,26 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://xrqeudhh1dt5"]
+[gd_scene load_steps=7 format=3 uid="uid://xrqeudhh1dt5"]
 
 [ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_768s0"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="2_3o0x0"]
-[ext_resource type="PackedScene" uid="uid://buu4rdvout202" path="res://assets/components/base_attributes.tscn" id="3_ewlfm"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ck6li"]
 [ext_resource type="Texture2D" uid="uid://dj4pa0jrdv04x" path="res://assets/objects/boulder.png" id="4_hct73"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
-size = Vector2(32, 30)
-
-[node name="boulder" type="StaticBody2D" node_paths=PackedStringArray("attributes", "engine_info") groups=["Harvest", "Pickaxe"]]
-script = ExtResource("1_768s0")
-attributes = NodePath("BaseAttributes")
-engine_info = NodePath("EngineInfo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
-shape = SubResource("RectangleShape2D_5t7es")
-
-[node name="EngineInfo" parent="." instance=ExtResource("2_3o0x0")]
-asset_path = "res://assets/objects/boulder.tscn"
-
-[node name="BaseAttributes" parent="." instance=ExtResource("3_ewlfm")]
+[sub_resource type="Resource" id="Resource_fxtrk"]
+script = ExtResource("2_ck6li")
 health = 50
 drop_table = [{
 "chance": 100.0,
@@ -29,6 +15,21 @@ drop_table = [{
 "object": "rocks"
 }]
 object_name = "boulder"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
+size = Vector2(32, 30)
+
+[node name="boulder" type="StaticBody2D" node_paths=PackedStringArray("engine_info") groups=["Harvest", "Pickaxe"]]
+script = ExtResource("1_768s0")
+attributes = SubResource("Resource_fxtrk")
+engine_info = NodePath("EngineInfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_5t7es")
+
+[node name="EngineInfo" parent="." instance=ExtResource("2_3o0x0")]
+asset_path = "res://assets/objects/boulder.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
