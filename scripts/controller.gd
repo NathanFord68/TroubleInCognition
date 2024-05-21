@@ -1,11 +1,13 @@
-extends Node
+extends Resource
 
 ## Controls players and ai
 class_name Controller
 
 ## The tree that controls all animations
-@export 
 var animation_tree: AnimationTree
+
+## Who owns this controller
+var resource_owner: CharacterBody2D
 
 var direction_facing: Enums.DIRECTION_FACING
 
@@ -19,7 +21,7 @@ var playing_action_animation : bool = false
 ## When finished
 func anim_action() -> void:
 	playing_action_animation = true
-	var equipment_tree := $"../Equipment".get_node("%s/AnimationTree" % str(Enums.ITEM_TYPE.PRIMARY)) as AnimationTree
+	var equipment_tree := resource_owner.get_node("Equipment/%s/AnimationTree" % str(Enums.ITEM_TYPE.PRIMARY)) as AnimationTree
 	animation_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
 	equipment_tree.set("parameters/Swing-Tree/T-A/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.BACK else 0)
 	animation_tree.set("parameters/Swing-Tree/TA-L/add_amount", 1 if direction_facing == Enums.DIRECTION_FACING.LEFT else 0)
@@ -29,7 +31,7 @@ func anim_action() -> void:
 	
 	animation_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	equipment_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	await get_tree().create_timer($"../AnimationPlayer".get_animation("Swing-Toward").length).timeout
+	await resource_owner.get_tree().create_timer(resource_owner.get_node("AnimationPlayer").get_animation("Swing-Toward").length).timeout
 	playing_action_animation = false
 	
 ## Determines if we can handle calling the action of the target
@@ -43,7 +45,7 @@ func can_handle_action(target: Node) -> bool:
 		
 	# Check the groups to make sure all of my equipment is in the actionable item
 	for group in target.get_groups():
-		if group not in $"../Equipment".get_node(str(Enums.ITEM_TYPE.PRIMARY)).get_groups():
+		if group not in resource_owner.get_node("Equipment/%s" % str(Enums.ITEM_TYPE.PRIMARY)).get_groups():
 			return false
 	return true
 
@@ -55,7 +57,7 @@ func handle_action(target: Node) -> void:
 	
 	if not is_instance_valid(target):
 		return
-	target.action($"..")
+	target.action(resource_owner)
 	
 	
 ## Processes the action of this object
@@ -65,7 +67,7 @@ func action(_caller: Node) -> void:
 ## Calls the interact of a target if it can
 func handle_interact(target: Node) -> void:
 	if can_handle_interact(target):
-		target.interact($"..")
+		target.interact(resource_owner)
 
 ## Determines if we can handle interacting with the target
 func can_handle_interact(target: Node) -> bool:
@@ -122,12 +124,12 @@ func maneuver(v: Vector2) -> void:
 				__animate_equipment_locomotion("Idle-Sideways")
 				sprites_left(false)
 		
-	$"..".velocity = v
+	resource_owner.velocity = v
 
 func __animate_equipment_locomotion(param: String):
-	if ($"../Equipment" as Node2D).get_child_count() == 0:
+	if (resource_owner.get_node("Equipment") as Node2D).get_child_count() == 0:
 		return
-	for equipment: StaticBody2D in $"../Equipment".get_children():
+	for equipment: StaticBody2D in resource_owner.get_node("Equipment").get_children():
 		(( equipment.get_node("AnimationTree") 
 			as AnimationTree).get("parameters/locomotion/playback")
 				as AnimationNodeStateMachinePlayback ).travel(param)
@@ -143,10 +145,10 @@ func sprites_left(left: bool):
 	is_sprite_flipped = !left
 	
 	# Flip the sprite to the direction we are trying to go
-	for sprite: Sprite2D in $"../Sprite".get_children():
+	for sprite: Sprite2D in resource_owner.get_node("Sprite").get_children():
 		sprite.flip_h = !left
 		
-	for equipment: StaticBody2D in $"../Equipment".get_children():
+	for equipment: StaticBody2D in resource_owner.get_node("Equipment").get_children():
 		for sprite : Sprite2D in equipment.get_node("Sprite").get_children():
 			sprite.flip_h = !left
 	

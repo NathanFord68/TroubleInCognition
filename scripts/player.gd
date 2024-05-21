@@ -3,6 +3,10 @@ extends CharacterBody2D
 ## Handles player interaction
 class_name Player
 
+## Controls the actor and it's animations
+@export
+var controller : Controller
+
 ## Stats of the player
 @export
 var stats : Stats
@@ -23,6 +27,10 @@ var inventory_manager : InventoryManager
 @export
 var crafting_manager : CraftingManager
 
+func _ready() -> void:
+	controller.resource_owner = self
+	controller.animation_tree = $AnimationTree
+
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		__handle_primary_mouse_pressed()
@@ -34,10 +42,10 @@ func _physics_process(_delta) -> void:
 		inventory_manager.debug_print()
 	
 	if Input.is_action_just_pressed("player_interact"):
-		$Controller.handle_interact(get_target(attributes.base_reach))
+		controller.handle_interact(get_target(attributes.base_reach))
 	
 	# Movement
-	$Controller.maneuver(Vector2(
+	controller.maneuver(Vector2(
 		Input.get_axis("player_left", "player_right") * attributes.speed,
 		Input.get_axis("player_up", "player_down") * attributes.speed
 	))
@@ -123,4 +131,4 @@ func __handle_primary_mouse_pressed() -> void:
 	var reach = __get_weapon_reach()
 	if reach == -1:
 		return
-	$Controller.handle_action(get_target(reach))
+	controller.handle_action(get_target(reach))

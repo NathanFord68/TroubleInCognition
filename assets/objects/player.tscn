@@ -1,11 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=46 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
+[ext_resource type="Script" path="res://scripts/controller.gd" id="2_c112w"]
 [ext_resource type="Script" path="res://scripts/enhanced_attributes.gd" id="2_ejxqa"]
 [ext_resource type="Texture2D" uid="uid://cbgq4e5y2ejbv" path="res://assets/objects/player_head.png" id="2_iqng6"]
 [ext_resource type="Texture2D" uid="uid://b0h6lkwicpgcp" path="res://assets/objects/player_torso.png" id="3_l7ogd"]
 [ext_resource type="Texture2D" uid="uid://l2isvugnocxa" path="res://assets/objects/player_arms.png" id="4_3sqng"]
-[ext_resource type="PackedScene" uid="uid://cjuekjs8vop3q" path="res://assets/components/Controller.tscn" id="4_i3jf3"]
 [ext_resource type="Texture2D" uid="uid://dtrr2w7avd8y7" path="res://assets/objects/player_legs.png" id="5_wlbna"]
 [ext_resource type="PackedScene" uid="uid://jr3ly1tjpjhp" path="res://assets/components/engine_info.tscn" id="6_thqr0"]
 [ext_resource type="PackedScene" uid="uid://c31htccccdc1g" path="res://assets/components/stats.tscn" id="7_dol6k"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://assets/components/inventory_viewport.tscn" id="8_rq083"]
 [ext_resource type="PackedScene" uid="uid://co1a7qwaj0vt2" path="res://assets/components/crafting_viewport.tscn" id="11_oxgf1"]
 [ext_resource type="PackedScene" uid="uid://dlf625gx2sk7c" path="res://assets/components/crafting_manager.tscn" id="14_w8a02"]
+
+[sub_resource type="Resource" id="Resource_838iy"]
+script = ExtResource("2_c112w")
 
 [sub_resource type="Resource" id="Resource_sit1f"]
 script = ExtResource("2_ejxqa")
@@ -1227,6 +1230,7 @@ node_connections = [&"Swing-OS", 0, &"locomotion", &"Swing-OS", 1, &"Swing-Tree"
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "engine_info", "inventory_manager", "crafting_manager") groups=["Player"]]
 script = ExtResource("1_5ni8o")
+controller = SubResource("Resource_838iy")
 stats = NodePath("Stats")
 attributes = SubResource("Resource_sit1f")
 engine_info = NodePath("EngineInfo")
@@ -1376,9 +1380,6 @@ parameters/Swing-OS/request = 0
 parameters/Swing-Tree/T-A/add_amount = 0
 parameters/Swing-Tree/TA-L/add_amount = 0.0
 parameters/Swing-Tree/TAL-R/add_amount = 0.0
-
-[node name="Controller" parent="." node_paths=PackedStringArray("animation_tree") instance=ExtResource("4_i3jf3")]
-animation_tree = NodePath("../AnimationTree")
 
 [node name="EngineInfo" parent="." instance=ExtResource("6_thqr0")]
 asset_path = "res://assets/objects/player.tscn"
