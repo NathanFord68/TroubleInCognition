@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_nnyss"]
 [ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ap7rq"]
 [ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_lijs3"]
-[ext_resource type="Texture2D" uid="uid://blbbn20vdqk6j" path="res://assets/objects/rocks.png" id="4_ho2mn"]
+[ext_resource type="Texture2D" uid="uid://blbbn20vdqk6j" path="res://assets/resources/rocks.png" id="4_ho2mn"]
 
 [sub_resource type="Resource" id="Resource_jv2u4"]
 script = ExtResource("2_lijs3")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrr2w7avd8y7"
-path="res://.godot/imported/player_legs.png-2254aeccfa81ad55b1286fd35524c38a.ctex"
+uid="uid://l2isvugnocxa"
+path="res://.godot/imported/player_arms.png-be8d4e62b310e8f3c5dfc513a0f0ffec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/player_legs.png"
-dest_files=["res://.godot/imported/player_legs.png-2254aeccfa81ad55b1286fd35524c38a.ctex"]
+source_file="res://assets/resources/player_arms.png"
+dest_files=["res://.godot/imported/player_arms.png-be8d4e62b310e8f3c5dfc513a0f0ffec.ctex"]
 
 [params]
 

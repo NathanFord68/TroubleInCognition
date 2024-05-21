@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_kjlfq"]
 [ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_8qrm6"]
 [ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_imjk6"]
-[ext_resource type="Texture2D" uid="uid://m054ag1k0yqk" path="res://assets/objects/hatchet_head.png" id="5_w7ly2"]
+[ext_resource type="Texture2D" uid="uid://m054ag1k0yqk" path="res://assets/resources/hatchet_head.png" id="5_w7ly2"]
 
 [sub_resource type="Resource" id="Resource_6qxbm"]
 script = ExtResource("2_imjk6")

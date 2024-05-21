@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3vbbbwdswsm2"]
 
-[ext_resource type="Texture2D" uid="uid://eqfc72brmwdc" path="res://assets/objects/equipment_slot.png" id="1_7jkoc"]
+[ext_resource type="Texture2D" uid="uid://eqfc72brmwdc" path="res://assets/resources/equipment_slot.png" id="1_7jkoc"]
 [ext_resource type="Script" path="res://scripts/equipment_slot.gd" id="1_urfq3"]
 
 [node name="EquipmentSlot" type="PanelContainer"]

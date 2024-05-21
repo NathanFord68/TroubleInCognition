@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_40gds"]
 [ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_ska8q"]
 [ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ubnea"]
-[ext_resource type="Texture2D" uid="uid://ctukkc08lm2ct" path="res://assets/objects/tool_base.png" id="4_dyvlh"]
-[ext_resource type="Texture2D" uid="uid://dccrhfb1c0s0d" path="res://assets/objects/pickaxe_head.png" id="5_unxis"]
+[ext_resource type="Texture2D" uid="uid://ctukkc08lm2ct" path="res://assets/resources/tool_base.png" id="4_dyvlh"]
+[ext_resource type="Texture2D" uid="uid://dccrhfb1c0s0d" path="res://assets/resources/pickaxe_head.png" id="5_unxis"]
 
 [sub_resource type="Resource" id="Resource_cbmti"]
 script = ExtResource("2_ska8q")
