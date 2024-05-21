@@ -3,7 +3,6 @@ extends Control
 class_name CraftingViewport
 
 ## The inventory manager so we can check if crafts can be completed
-@export
 var inventory : InventoryManager
 
 ## The crafting order to be send to the manager

@@ -39,9 +39,9 @@ object_name = "player"
 script = ExtResource("4_onhxt")
 asset_path = "res://assets/objects/player.tscn"
 
-[sub_resource type="Resource" id="Resource_4ptqj"]
+[sub_resource type="Resource" id="Resource_h64fj"]
 script = ExtResource("6_843i5")
-max_backpack_size = 50
+max_backpack_size = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o1y"]
 size = Vector2(0.909091, 2.13793)
@@ -1250,7 +1250,7 @@ controller = SubResource("Resource_838iy")
 stats = SubResource("Resource_hd5a7")
 attributes = SubResource("Resource_sit1f")
 engine_info = SubResource("Resource_63m4p")
-inventory_manager = SubResource("Resource_4ptqj")
+inventory_manager = SubResource("Resource_h64fj")
 crafting_manager = NodePath("CraftingManager")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -1398,6 +1398,8 @@ parameters/Swing-Tree/TA-L/add_amount = 0.0
 parameters/Swing-Tree/TAL-R/add_amount = 0.0
 
 [node name="CraftingManager" parent="." instance=ExtResource("14_w8a02")]
+inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("6_843i5"),"max_backpack_size":50)
+
 
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
@@ -1407,5 +1409,5 @@ visible = false
 
 [node name="CraftingViewport" parent="PlayerViewport" instance=ExtResource("11_oxgf1")]
 visible = false
-inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null,"max_backpack_size":50)
+inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("6_843i5"),"max_backpack_size":50)
 

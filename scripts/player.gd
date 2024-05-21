@@ -30,7 +30,15 @@ var crafting_manager : CraftingManager
 func _ready() -> void:
 	controller.resource_owner = self
 	controller.animation_tree = $AnimationTree
-
+	
+	inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
+	inventory_manager.equipment = $Equipment
+	
+	crafting_manager.inventory = inventory_manager
+	( $PlayerViewport/CraftingViewport as CraftingViewport).inventory = inventory_manager
+	
+	inventory_manager.initialize_backpack()
+	
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		__handle_primary_mouse_pressed()

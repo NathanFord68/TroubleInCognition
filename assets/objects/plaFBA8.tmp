@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://l2isvugnocxa" path="res://assets/objects/player_arms.png" id="4_3sqng"]
 [ext_resource type="Script" path="res://scripts/engine_info.gd" id="4_onhxt"]
 [ext_resource type="Texture2D" uid="uid://dtrr2w7avd8y7" path="res://assets/objects/player_legs.png" id="5_wlbna"]
-[ext_resource type="Script" path="res://scripts/inventory_manager.gd" id="6_843i5"]
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://assets/components/inventory_viewport.tscn" id="8_rq083"]
 [ext_resource type="PackedScene" uid="uid://co1a7qwaj0vt2" path="res://assets/components/crafting_viewport.tscn" id="11_oxgf1"]
 [ext_resource type="PackedScene" uid="uid://dlf625gx2sk7c" path="res://assets/components/crafting_manager.tscn" id="14_w8a02"]
@@ -39,9 +38,156 @@ object_name = "player"
 script = ExtResource("4_onhxt")
 asset_path = "res://assets/objects/player.tscn"
 
-[sub_resource type="Resource" id="Resource_4ptqj"]
-script = ExtResource("6_843i5")
-max_backpack_size = 50
+[sub_resource type="GDScript" id="GDScript_k6ceg"]
+script/source = "extends Resource
+
+## Manage the inventory of the player
+class_name InventoryManager
+
+## Reference to our inventory viewport
+var inventory_viewport : Control
+
+## Reference to the equipment node for the player
+var equipment : Node2D
+
+## Max slots the backpack allows
+@export
+var max_backpack_size : int
+
+## Holds the items of the players backpack
+var backpack : Array[EquipmentSlot] = []
+
+var total_item_count : Dictionary = {}
+
+func _ready():
+	# Resize and populate the backpack with equipment slots
+	var bp_slots := inventory_viewport.get_backpack() as GridContainer
+	backpack.resize(max_backpack_size)
+	for a in range(0, max_backpack_size):
+		var n_equipment_slot := ( load(\"res://assets/objects/equipment_slot.tscn\") as PackedScene ).instantiate() as EquipmentSlot
+		n_equipment_slot.inventory_root = inventory_viewport
+		backpack[a] = n_equipment_slot
+		bp_slots.add_child(n_equipment_slot)
+	inventory_viewport.item_dropped.connect(handle_item_dropped_into_slot)
+
+## Handles the emission of the item_dropped signal from the viewport
+func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
+	if t == Enums.ITEM_TYPE.MAIN:
+		remove_item_from_equipment_slot(data.item.type)
+		return
+	
+	add_to_equipment_slot(t, data)
+
+## Move item from inventory to equipment slot
+func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
+	# Set the name to it's slot name and activate it's animation tree
+	var equipment_instance = data.item
+	equipment_instance.name = str(slot)
+	equipment_instance.get_node(\"AnimationTree\").active = true
+	
+	# Turn the icon off and the sprites on
+	for s : Sprite2D in equipment_instance.get_node(\"Sprite\").get_children():
+		if \"icon\" in s.name:
+			s.visible = false
+			continue
+		s.visible = true
+	
+	# Add it to our the equipment slot of our player
+	equipment.add_child(equipment_instance)
+
+## Clears an equipment slot of the equipped item
+##
+## This does not clear the item in the inventory 
+## Since this instance was a clone of the inventory item
+func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
+	var node = equipment.get_node(str(slot))
+	node.name = node.attributes.object_name
+	node.get_node(\"AnimationTree\").active = false
+	equipment.remove_child(node)
+
+## Adds an item to the inventory
+func add_to_inventory(item : Node, index : int = -1) -> bool:
+	var _index : int = index
+	
+	if _index == -1:
+		# Find the lowest index and set i equal to
+		for i in range(0, max_backpack_size):
+			# Set it to first empty slot if it does not have an index yet
+			if backpack[i].is_empty() and _index == -1:
+				_index = i
+			
+			# Set it to stack onto a slot if there is room
+			if (!backpack[i].is_empty() # Checks that this slot is not an empty slot
+				and backpack[i].item.attributes.object_name == item.attributes.object_name # Item in slot is of this items type
+				and backpack[i].quantity < backpack[i].item.stack_size ): # Stack is not full 
+				_index = i
+				break
+	
+	if _index == -1: ## TODO test this
+		return false
+		
+	# Insert the item to last slot
+	if backpack[_index].quantity == 0:
+		backpack[_index].item = item
+	backpack[_index].quantity += 1
+	backpack[_index].update_icon()
+	
+	if item.attributes.object_name in total_item_count:
+		total_item_count[item.attributes.object_name] += 1
+	else:
+		total_item_count[item.attributes.object_name] = 1
+
+	return true
+
+## Removes items from the inventory and the total count. 
+##
+## If index is set it will only drop from that slot
+func remove_from_inventory(item_name: String, quantity: int, index: int = -1) -> bool:
+	if index != -1:
+		pass # TODO develop this logic
+	
+	# Check if the quantity we need to remove is available
+	if total_item_count[item_name] < quantity:
+		return false
+		
+	# Reduce count in total
+	total_item_count[item_name] -= quantity
+	
+	# Iterate through and reduce / delete from backback until we are done
+	for slot : EquipmentSlot in backpack:
+		quantity = __handle_remove_quantity_from_slot(slot, item_name, quantity)
+	
+	return true
+	
+## Determines if this slot has the item we are removing and calls process as necessary
+func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int) -> int:
+	if is_instance_valid(slot.item) and slot.item.attributes.object_name == item_to_remove:
+		return __process_remove_quantity_from_slot(slot, quantity)
+	return quantity
+
+## Handle logic for removing quantity from a given slot
+func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> int:
+	# EquipmentSlot < quantity
+	if slot.quantity < quantity:
+		var r_quantity = quantity - slot.quantity
+		slot.quantity = 0
+		slot.item = null
+		slot.update_icon()
+		return r_quantity
+	
+	# EquipmentSlot >= quantity
+	slot.quantity -= quantity
+	if slot.quantity == 0:
+		slot.item = null
+		slot.update_icon()
+	else:
+		slot.update_label()
+	return 0
+"
+
+[sub_resource type="Resource" id="Resource_h64fj"]
+script = SubResource("GDScript_k6ceg")
+max_backpack_size = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o1y"]
 size = Vector2(0.909091, 2.13793)
@@ -1250,7 +1396,7 @@ controller = SubResource("Resource_838iy")
 stats = SubResource("Resource_hd5a7")
 attributes = SubResource("Resource_sit1f")
 engine_info = SubResource("Resource_63m4p")
-inventory_manager = SubResource("Resource_4ptqj")
+inventory_manager = SubResource("Resource_h64fj")
 crafting_manager = NodePath("CraftingManager")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -1398,6 +1544,8 @@ parameters/Swing-Tree/TA-L/add_amount = 0.0
 parameters/Swing-Tree/TAL-R/add_amount = 0.0
 
 [node name="CraftingManager" parent="." instance=ExtResource("14_w8a02")]
+inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":SubResource("GDScript_k6ceg"),"max_backpack_size":50)
+
 
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 
@@ -1407,5 +1555,5 @@ visible = false
 
 [node name="CraftingViewport" parent="PlayerViewport" instance=ExtResource("11_oxgf1")]
 visible = false
-inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null,"max_backpack_size":50)
+inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":SubResource("GDScript_k6ceg"),"max_backpack_size":50)
 

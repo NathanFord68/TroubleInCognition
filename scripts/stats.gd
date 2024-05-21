@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 
 ## Stores stats for characters
 class_name Stats

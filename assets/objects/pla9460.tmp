@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=47 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Script" path="res://scripts/controller.gd" id="2_c112w"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://l2isvugnocxa" path="res://assets/objects/player_arms.png" id="4_3sqng"]
 [ext_resource type="Script" path="res://scripts/engine_info.gd" id="4_onhxt"]
 [ext_resource type="Texture2D" uid="uid://dtrr2w7avd8y7" path="res://assets/objects/player_legs.png" id="5_wlbna"]
-[ext_resource type="Script" path="res://scripts/inventory_manager.gd" id="6_843i5"]
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://assets/components/inventory_viewport.tscn" id="8_rq083"]
 [ext_resource type="PackedScene" uid="uid://co1a7qwaj0vt2" path="res://assets/components/crafting_viewport.tscn" id="11_oxgf1"]
 [ext_resource type="PackedScene" uid="uid://dlf625gx2sk7c" path="res://assets/components/crafting_manager.tscn" id="14_w8a02"]
@@ -38,10 +37,6 @@ object_name = "player"
 [sub_resource type="Resource" id="Resource_63m4p"]
 script = ExtResource("4_onhxt")
 asset_path = "res://assets/objects/player.tscn"
-
-[sub_resource type="Resource" id="Resource_4ptqj"]
-script = ExtResource("6_843i5")
-max_backpack_size = 50
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o1y"]
 size = Vector2(0.909091, 2.13793)
@@ -1250,7 +1245,6 @@ controller = SubResource("Resource_838iy")
 stats = SubResource("Resource_hd5a7")
 attributes = SubResource("Resource_sit1f")
 engine_info = SubResource("Resource_63m4p")
-inventory_manager = SubResource("Resource_4ptqj")
 crafting_manager = NodePath("CraftingManager")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -1398,6 +1392,8 @@ parameters/Swing-Tree/TA-L/add_amount = 0.0
 parameters/Swing-Tree/TAL-R/add_amount = 0.0
 
 [node name="CraftingManager" parent="." instance=ExtResource("14_w8a02")]
+inventory = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":3,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null,"max_backpack_size":50)
+
 
 [node name="PlayerViewport" type="CanvasLayer" parent="."]
 

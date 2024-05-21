@@ -1,31 +1,33 @@
-extends Node
+extends Resource
 
 ## Manage the inventory of the player
 class_name InventoryManager
 
+## Reference to our inventory viewport
+var inventory_viewport : Control
+
+## Reference to the equipment node for the player
+var equipment : Node2D
+
 ## Max slots the backpack allows
 @export
 var max_backpack_size : int
-
-## Reference to our inventory viewport
-@export
-var inventory_viewport : Control
 
 ## Holds the items of the players backpack
 var backpack : Array[EquipmentSlot] = []
 
 var total_item_count : Dictionary = {}
 
-func _ready():
+func initialize_backpack():
 	# Resize and populate the backpack with equipment slots
-	var bp_slots := $"../PlayerViewport/InventoryViewport".get_backpack() as GridContainer
+	var bp_slots := inventory_viewport.get_backpack() as GridContainer
 	backpack.resize(max_backpack_size)
 	for a in range(0, max_backpack_size):
 		var n_equipment_slot := ( load("res://assets/objects/equipment_slot.tscn") as PackedScene ).instantiate() as EquipmentSlot
 		n_equipment_slot.inventory_root = inventory_viewport
 		backpack[a] = n_equipment_slot
 		bp_slots.add_child(n_equipment_slot)
-	$"../PlayerViewport/InventoryViewport".item_dropped.connect(handle_item_dropped_into_slot)
+	inventory_viewport.item_dropped.connect(handle_item_dropped_into_slot)
 
 ## Handles the emission of the item_dropped signal from the viewport
 func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
@@ -50,17 +52,17 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 		s.visible = true
 	
 	# Add it to our the equipment slot of our player
-	$"../Equipment".add_child(equipment_instance)
+	equipment.add_child(equipment_instance)
 
 ## Clears an equipment slot of the equipped item
 ##
 ## This does not clear the item in the inventory 
 ## Since this instance was a clone of the inventory item
 func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
-	var node = $"../Equipment".get_node(str(slot))
+	var node = equipment.get_node(str(slot))
 	node.name = node.attributes.object_name
 	node.get_node("AnimationTree").active = false
-	$"../Equipment".remove_child(node)
+	equipment.remove_child(node)
 
 ## Adds an item to the inventory
 func add_to_inventory(item : Node, index : int = -1) -> bool:

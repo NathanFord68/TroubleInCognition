@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="Controller" load_steps=2 format=3 uid="uid://dd776njwttpf1"]
-
-[ext_resource type="Script" path="res://scripts/controller.gd" id="1_x6xt8"]
-
-[resource]
-script = ExtResource("1_x6xt8")

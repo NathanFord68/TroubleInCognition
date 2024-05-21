@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 
 ## Stores engine related information about game objects
 class_name EngineInfo
