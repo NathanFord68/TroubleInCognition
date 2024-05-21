@@ -1,56 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp3dkq3631ia6"]
+[gd_scene load_steps=8 format=3 uid="uid://bg654e2d0uw3f"]
 
-[ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="1_3w23n"]
 [ext_resource type="PackedScene" uid="uid://dqrccsiidgik4" path="res://assets/objects/tree.tscn" id="2_6vaid"]
 [ext_resource type="PackedScene" uid="uid://c3cypgoptackx" path="res://assets/objects/logs.tscn" id="4_es3pe"]
+[ext_resource type="PackedScene" uid="uid://dqr28u4uksoel" path="res://assets/objects/pickaxe.tscn" id="4_ockpk"]
+[ext_resource type="PackedScene" uid="uid://slyhehnuja3w" path="res://assets/objects/rocks.tscn" id="6_1hvxo"]
 [ext_resource type="PackedScene" uid="uid://xrqeudhh1dt5" path="res://assets/objects/boulder.tscn" id="6_bs2gv"]
-[ext_resource type="PackedScene" uid="uid://dqr28u4uksoel" path="res://assets/objects/pickaxe.tscn" id="6_btl4l"]
-[ext_resource type="PackedScene" uid="uid://slyhehnuja3w" path="res://assets/objects/rocks.tscn" id="7_4t720"]
+[ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="6_btl4l"]
 [ext_resource type="PackedScene" uid="uid://utqvv155d7g7" path="res://assets/objects/hatchet.tscn" id="7_xybt0"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_3w23n")]
-position = Vector2(130, 336)
-
-[node name="tree" parent="." instance=ExtResource("2_6vaid")]
-position = Vector2(277, 322)
-
-[node name="Logs" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(185, 332)
-
-[node name="Logs2" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(185, 360)
-
-[node name="Logs3" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(185, 346)
-
-[node name="Logs4" parent="." instance=ExtResource("4_es3pe")]
-position = Vector2(185, 375)
-
 [node name="boulder" parent="." instance=ExtResource("6_bs2gv")]
-position = Vector2(327, 339)
-
-[node name="Rocks" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(207, 333)
-
-[node name="Rocks2" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(207, 347)
-
-[node name="Rocks3" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(207, 361)
-
-[node name="Rocks4" parent="." instance=ExtResource("7_4t720")]
-position = Vector2(207, 375)
-
-[node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
-position = Vector2(225, 335)
-
-[node name="Pickaxe" parent="." instance=ExtResource("6_btl4l")]
-position = Vector2(240, 336)
-
-[node name="tree2" parent="." instance=ExtResource("2_6vaid")]
-position = Vector2(278, 400)
+position = Vector2(586, 379)
 
 [node name="boulder2" parent="." instance=ExtResource("6_bs2gv")]
-position = Vector2(330, 400)
+position = Vector2(587, 281)
+
+[node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
+position = Vector2(440, 307)
+
+[node name="tree" parent="." instance=ExtResource("2_6vaid")]
+position = Vector2(504, 272)
+
+[node name="tree2" parent="." instance=ExtResource("2_6vaid")]
+position = Vector2(505, 379)
+
+[node name="Pickaxe" parent="." instance=ExtResource("4_ockpk")]
+position = Vector2(414, 306)
+
+[node name="Logs" parent="." instance=ExtResource("4_es3pe")]
+position = Vector2(389, 288)
+
+[node name="Logs2" parent="." instance=ExtResource("4_es3pe")]
+position = Vector2(389, 307)
+
+[node name="Logs3" parent="." instance=ExtResource("4_es3pe")]
+position = Vector2(392, 326)
+
+[node name="Logs4" parent="." instance=ExtResource("4_es3pe")]
+position = Vector2(392, 349)
+
+[node name="Rocks" parent="." instance=ExtResource("6_1hvxo")]
+position = Vector2(361, 286)
+
+[node name="Rocks2" parent="." instance=ExtResource("6_1hvxo")]
+position = Vector2(361, 309)
+
+[node name="Rocks3" parent="." instance=ExtResource("6_1hvxo")]
+position = Vector2(362, 329)
+
+[node name="Rocks4" parent="." instance=ExtResource("6_1hvxo")]
+position = Vector2(363, 350)
+
+[node name="Player" parent="." instance=ExtResource("6_btl4l")]
+position = Vector2(309, 312)
