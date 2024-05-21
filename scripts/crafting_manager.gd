@@ -1,21 +1,24 @@
-extends Node
+extends Resource
 
 class_name CraftingManager
 
 ## Keeps a reference to the inventory
 var inventory : InventoryManager
 
+## Keeps a reference to the owner so we can get the tree
+var owner : CharacterBody2D
+
+## Reference to the crafting viewport
+var crafting_viewport : CraftingViewport
+
+## Keeps the queue of crafting orders
 var orders : Array[Dictionary] = []
 
+## Prevents the system from crafting the next order until the current one is done
 var is_crafting: bool = false
 
-func _ready() -> void:
-	( $"../PlayerViewport/CraftingViewport" as CraftingViewport ).send_order.connect(add_to_order)
-
-func _process(_delta : float) -> void:
-	# If there are orders and we're not crafting call craft item
-	if not is_crafting and orders.size() > 0:
-		handle_craft_item()
+func initialize_crafting_manager() -> void:
+	crafting_viewport.send_order.connect(add_to_order)
 	
 func handle_craft_item() -> void:
 	# Set that we are crafting
@@ -30,10 +33,8 @@ func handle_craft_item() -> void:
 	
 	# Loop through quantity and start crafting
 	for i in range(0, order.quantity):
-		# Wait for crafting to finish
-		await get_tree().create_timer(order.item.time_to_craft).timeout
-		
-		print(order.item.object_data.engine_info.asset_path)
+		await owner.get_tree().create_timer(order.item.time_to_craft).timeout
+				
 		# craft item
 		var item = load(order.item.object_data.engine_info.asset_path).instantiate()
 		__craft_item(item, order.item)

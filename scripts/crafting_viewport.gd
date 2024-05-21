@@ -29,11 +29,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("player_toggle_crafting"):
 		if visible:
 			visible = false
-			get_tree().paused = false
 			return
 		populate_recipes("hand_craft")
 		visible = true
-		get_tree().paused = true
 
 func populate_recipes(file_name: String) -> void:
 	# Get the file contents

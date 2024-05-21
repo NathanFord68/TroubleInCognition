@@ -9,6 +9,9 @@ var animation_tree: AnimationTree
 ## Who owns this controller
 var resource_owner: CharacterBody2D
 
+## Keeps a reference to the owner
+var owner : CharacterBody2D
+
 var direction_facing: Enums.DIRECTION_FACING
 
 var is_sprite_flipped : bool = false
@@ -31,7 +34,9 @@ func anim_action() -> void:
 	
 	animation_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	equipment_tree.set("parameters/Swing-OS/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	await resource_owner.get_tree().create_timer(resource_owner.get_node("AnimationPlayer").get_animation("Swing-Toward").length).timeout
+	
+	await owner.get_tree().create_timer(1).timeout
+	
 	playing_action_animation = false
 	
 ## Determines if we can handle calling the action of the target

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlf625gx2sk7c"]
-
-[ext_resource type="Script" path="res://scripts/crafting_manager.gd" id="1_8xu4c"]
-
-[node name="CraftingManager" type="Node"]
-process_mode = 3
-script = ExtResource("1_8xu4c")

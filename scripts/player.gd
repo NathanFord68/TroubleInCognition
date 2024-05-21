@@ -28,16 +28,20 @@ var inventory_manager : InventoryManager
 var crafting_manager : CraftingManager
 
 func _ready() -> void:
-	controller.resource_owner = self
+	controller.resource_owner = self # TODO get rid of this
 	controller.animation_tree = $AnimationTree
+	controller.owner = self
 	
 	inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
 	inventory_manager.equipment = $Equipment
-	
-	crafting_manager.inventory = inventory_manager
-	( $PlayerViewport/CraftingViewport as CraftingViewport).inventory = inventory_manager
-	
 	inventory_manager.initialize_backpack()
+	
+	( $PlayerViewport/CraftingViewport as CraftingViewport).inventory = inventory_manager
+	crafting_manager.inventory = inventory_manager
+	crafting_manager.crafting_viewport = $PlayerViewport/CraftingViewport
+	crafting_manager.owner = self
+	crafting_manager.initialize_crafting_manager()
+	
 	
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
@@ -57,6 +61,10 @@ func _physics_process(_delta) -> void:
 		Input.get_axis("player_left", "player_right") * attributes.speed,
 		Input.get_axis("player_up", "player_down") * attributes.speed
 	))
+	
+	# Crafting
+	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
+		crafting_manager.handle_craft_item()
 
 	move_and_slide()
 
@@ -80,8 +88,6 @@ func get_target(reach_range : float) -> Node:
 		
 	if global_position.distance_to(p_hit.global_position) > reach_range:
 		return null
-	
-	# Visualize if true
 		
 	return p_hit
 
