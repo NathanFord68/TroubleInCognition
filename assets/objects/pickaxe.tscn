@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqr28u4uksoel"]
+
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_40gds"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_ska8q"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ubnea"]
+[ext_resource type="Texture2D" uid="uid://ctukkc08lm2ct" path="res://assets/resources/tool_base.png" id="4_dyvlh"]
+[ext_resource type="Texture2D" uid="uid://dccrhfb1c0s0d" path="res://assets/resources/pickaxe_head.png" id="5_unxis"]
+
+[sub_resource type="Resource" id="Resource_cbmti"]
+script = ExtResource("2_ska8q")
+asset_path = "res://assets/objects/pickaxe.tscn"
+
+[sub_resource type="Resource" id="Resource_cmwyk"]
+script = ExtResource("2_ubnea")
+health = 100
+drop_table = []
+object_name = "stone_pickaxe"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
+size = Vector2(7, 11)
+
+[node name="Pickaxe" type="StaticBody2D" groups=["Attack", "Harvest", "Interact", "Pickaxe"]]
+collision_layer = 2
+script = ExtResource("1_40gds")
+weapon_reach = 40.0
+can_action_with = ["Harvest", "Melee"]
+damage = 10
+min_damage = 1
+attack_speed = 0.75
+stack_size = 1
+type = 5
+engine_info = SubResource("Resource_cbmti")
+attributes = SubResource("Resource_cmwyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_nytlc")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="pickaxe_base" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("4_dyvlh")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": true,
+"layer": "tool_base",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"set_vis_track": true,
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d71cf9b952b621356e13dc42920dc8e1"
+
+[node name="pickaxe_head" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("5_unxis")
+region_rect = Rect2(192, 64, 64, 64)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": true,
+"layer": "pickaxe_head",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"set_vis_track": true,
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d71cf9b952b621356e13dc42920dc8e1"

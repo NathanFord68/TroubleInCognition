@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://slyhehnuja3w"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_nnyss"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ap7rq"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_lijs3"]
+[ext_resource type="Texture2D" uid="uid://blbbn20vdqk6j" path="res://assets/resources/rocks.png" id="4_ho2mn"]
+
+[sub_resource type="Resource" id="Resource_jv2u4"]
+script = ExtResource("2_lijs3")
+asset_path = "res://assets/objects/rocks.tscn"
+
+[sub_resource type="Resource" id="Resource_gcdi1"]
+script = ExtResource("2_ap7rq")
+health = -1
+drop_table = []
+object_name = "rocks"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uk5w"]
+size = Vector2(18.1408, 16.1396)
+
+[node name="Rocks" type="StaticBody2D" groups=["Interact"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nnyss")
+stack_size = 20
+engine_info = SubResource("Resource_jv2u4")
+attributes = SubResource("Resource_gcdi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.653255)
+scale = Vector2(0.606368, 0.576628)
+shape = SubResource("RectangleShape2D_6uk5w")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="rocks_icon" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("4_ho2mn")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": true,
+"layer": "rocks",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"set_vis_track": true,
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d71cf9b952b621356e13dc42920dc8e1"

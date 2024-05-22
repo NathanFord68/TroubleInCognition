@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://xrdvhuuqpbdf"]
+
+[ext_resource type="PackedScene" uid="uid://c3vbbbwdswsm2" path="res://assets/objects/equipment_slot.tscn" id="1_1onyg"]
+[ext_resource type="Script" path="res://scripts/inventory_viewport.gd" id="1_ow8eh"]
+
+[node name="InventoryViewport" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ow8eh")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Cape" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 7
+inventory_root = NodePath("../../../../..")
+
+[node name="Head" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 1
+inventory_root = NodePath("../../../../..")
+
+[node name="Ammo" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 8
+inventory_root = NodePath("../../../../..")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Secondary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 6
+inventory_root = NodePath("../../../../..")
+
+[node name="Chest" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 2
+inventory_root = NodePath("../../../../..")
+
+[node name="Primary" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 5
+inventory_root = NodePath("../../../../..")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Legs" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 3
+inventory_root = NodePath("../../../../..")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Ring" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 10
+inventory_root = NodePath("../../../../..")
+
+[node name="Feet" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 4
+inventory_root = NodePath("../../../../..")
+
+[node name="Gloves" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4" node_paths=PackedStringArray("inventory_root") instance=ExtResource("1_1onyg")]
+layout_mode = 2
+allowed_type = 9
+inventory_root = NodePath("../../../../..")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Defense: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backpack" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 10
+
+[node name="InventoryViewportRootChild" type="Node" parent="."]
+unique_name_in_owner = true
