@@ -59,11 +59,6 @@ func handle_action(target: Node) -> void:
 	
 	# Call that targets action
 	target.action(owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY])
-	
-	
-## Processes the action of this object
-func action(_caller: Node) -> void:
-	pass
 
 ## Calls the interact of a target if it can
 func handle_interact(target: Node) -> void:
@@ -79,10 +74,6 @@ func can_handle_interact(target: Node) -> bool:
 		return false
 	
 	return true
-
-## Processes the interact of this object
-func interact(_caller: Node) -> void:
-	pass
 
 ## Updates the velocity of the owner
 func maneuver(v: Vector2) -> void:
@@ -150,6 +141,7 @@ func __set_time_scale_node(state_machine_name: String, desired_time: float) -> v
 		
 	node_from_direction = node_from_direction % state_machine_name
 	
-	var anim_length = animation_player.get_animation(node_from_direction).length
-	animation_tree.set("parameters/TimeScale/scale", 1 / (desired_time / anim_length))
+	var anim = animation_player.get_animation(node_from_direction)
+	if is_instance_valid(anim):
+		animation_tree.set("parameters/TimeScale/scale", 1 / (desired_time / anim.length))
 

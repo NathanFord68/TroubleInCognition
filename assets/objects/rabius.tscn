@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://bp5gh8c88pomh"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tqm2a"]
+[ext_resource type="Script" path="res://scripts/enhanced_attributes.gd" id="2_yp0c5"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="3_edvw0"]
+[ext_resource type="Script" path="res://scripts/controller.gd" id="4_824km"]
+
+[sub_resource type="Resource" id="Resource_10qqr"]
+script = ExtResource("2_yp0c5")
+stamina = 300
+mana = 0
+speed = 100.0
+base_reach = 20.0
+health = 20
+drop_table = []
+object_name = ""
+
+[sub_resource type="Resource" id="Resource_1dwg3"]
+script = ExtResource("3_edvw0")
+asset_path = "res://assets/objects/rabius.tscn"
+
+[sub_resource type="Resource" id="Resource_qqc7q"]
+script = ExtResource("4_824km")
+IDLE_LENGTH = 0.0
+WALK_LENGTH = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obxu1"]
+radius = 256.699
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cefae"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uek4n"]
+radius = 2.51401
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1j82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g13g2"]
+size = Vector2(2.77263, 2.66939)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1idam"]
+graph_offset = Vector2(-250.818, 81.2)
+
+[node name="Rabius" type="CharacterBody2D"]
+script = ExtResource("1_tqm2a")
+attributes = SubResource("Resource_10qqr")
+engine_info = SubResource("Resource_1dwg3")
+controller = SubResource("Resource_qqc7q")
+
+[node name="ForgetPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForgetPlayer"]
+shape = SubResource("CircleShape2D_obxu1")
+
+[node name="DetectPlayer" type="Area2D" parent="."]
+
+[node name="AreaCollision" type="CollisionShape2D" parent="DetectPlayer"]
+position = Vector2(0.00390625, 0)
+shape = SubResource("CircleShape2D_cefae")
+
+[node name="AttackPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPlayer"]
+shape = SubResource("CircleShape2D_uek4n")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite"]
+scale = Vector2(3, 3)
+mesh = SubResource("BoxMesh_v1j82")
+
+[node name="CharacterCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0.00527287, 0.0323346)
+shape = SubResource("RectangleShape2D_g13g2")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_1idam")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_exited" from="ForgetPlayer" to="." method="_on_forget_player_body_exited"]
+[connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_entered" from="AttackPlayer" to="." method="_on_attack_player_body_entered"]

@@ -33,6 +33,8 @@ var equipment_manager : EquipmentManager
 
 var is_action_pressed : bool = false
 
+var acting_force : Vector2
+
 func _ready() -> void:
 	controller.resource_owner = self # TODO get rid of this
 	controller.animation_tree = $AnimationTree
@@ -67,12 +69,13 @@ func _physics_process(_delta) -> void:
 	
 	if is_action_pressed:
 		__handle_primary_mouse_pressed()
-		
+	
+	
 	# Movement
 	controller.maneuver(Vector2(
 		Input.get_axis("player_left", "player_right") * attributes.speed,
 		Input.get_axis("player_up", "player_down") * attributes.speed
-	))
+	) + acting_force)
 	
 	# Crafting
 	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
@@ -85,6 +88,20 @@ func can_physics_process() -> bool:
 	if not is_instance_valid(attributes):
 		return false
 	return true
+
+## Processes the action of this object
+func action(weapon: Node, force: Vector2 = Vector2(), force_time : float = 0, is_force_continuous : bool= false) -> void:
+	attributes.health -= weapon.damage
+	if force != Vector2():
+		acting_force = force
+		if is_force_continuous:
+			return
+		
+		await get_tree().create_timer(force_time).timeout
+		acting_force = Vector2()
+	
+func interact() -> void:
+	pass
 
 ## Gets the target the player is trying to interact with
 func get_target(reach_range : float) -> Node:

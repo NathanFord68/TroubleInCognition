@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg654e2d0uw3f"]
+[gd_scene load_steps=9 format=3 uid="uid://bg654e2d0uw3f"]
 
 [ext_resource type="PackedScene" uid="uid://dqrccsiidgik4" path="res://assets/objects/tree.tscn" id="2_6vaid"]
 [ext_resource type="PackedScene" uid="uid://c3cypgoptackx" path="res://assets/objects/logs.tscn" id="4_es3pe"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xrqeudhh1dt5" path="res://assets/objects/boulder.tscn" id="6_bs2gv"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="6_btl4l"]
 [ext_resource type="PackedScene" uid="uid://utqvv155d7g7" path="res://assets/objects/hatchet.tscn" id="7_xybt0"]
+[ext_resource type="PackedScene" uid="uid://bp5gh8c88pomh" path="res://assets/objects/rabius.tscn" id="8_egats"]
 
 [node name="Main" type="Node2D"]
 
@@ -54,3 +55,6 @@ position = Vector2(363, 350)
 
 [node name="Player" parent="." instance=ExtResource("6_btl4l")]
 position = Vector2(309, 312)
+
+[node name="Rabius" parent="." instance=ExtResource("8_egats")]
+position = Vector2(250, 312)

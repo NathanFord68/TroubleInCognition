@@ -2199,7 +2199,7 @@ states/Idle-Right/node = SubResource("AnimationNodeAnimation_vadfm")
 states/Idle-Right/position = Vector2(555, 199)
 states/Start/position = Vector2(156, 28)
 transitions = ["Idle-Away", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_hl47f"), "Idle-Forward", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_pxvlv"), "Idle-Right", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_e05vo"), "Idle-Left", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_3w2xa"), "Idle-Away", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_jx7q5"), "Idle-Away", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_n1pmr"), "Idle-Right", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_gc6dy"), "Idle-Forward", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_lq1ij"), "Idle-Right", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_13nl7"), "Idle-Left", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_b2xrv"), "Idle-Left", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_0tbiq"), "Idle-Forward", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_ra5aw"), "Start", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_gova4")]
-graph_offset = Vector2(-231, 9)
+graph_offset = Vector2(-294, -153)
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0cuh5"]
 input_0/name = "Idle"
@@ -2345,9 +2345,10 @@ states/Walk-Right/position = Vector2(651, 204)
 states/Walk-Toward/node = SubResource("AnimationNodeAnimation_u3nlx")
 states/Walk-Toward/position = Vector2(468, 85)
 transitions = ["Start", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_h1yh7"), "Walk-Toward", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_ld6q4"), "Walk-Away", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_iwqt3"), "Walk-Right", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_o415k"), "Walk-Left", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_anylr"), "Walk-Toward", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_ngpyw"), "Walk-Left", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_ol360"), "Walk-Right", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_c0bqv"), "Walk-Away", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_6gxko"), "Walk-Toward", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_ruh5u"), "Walk-Away", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_h2ntv"), "Walk-Right", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_p0f5l"), "Walk-Left", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_meulf")]
+graph_offset = Vector2(-145, -141)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
-graph_offset = Vector2(496.244, -211.553)
+graph_offset = Vector2(-344.029, -284.361)
 nodes/Idle/node = SubResource("AnimationNodeStateMachine_n3t0c")
 nodes/Idle/position = Vector2(300, -380)
 nodes/Locomotion-Transitions/node = SubResource("AnimationNodeTransition_0cuh5")
@@ -2382,6 +2383,7 @@ texture_filter = 1
 texture = ExtResource("2_iqng6")
 hframes = 4
 vframes = 3
+frame = 1
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2410,6 +2412,7 @@ texture_filter = 1
 texture = ExtResource("3_l7ogd")
 hframes = 3
 vframes = 3
+frame = 1
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2438,6 +2441,7 @@ texture_filter = 1
 texture = ExtResource("4_3sqng")
 hframes = 7
 vframes = 6
+frame = 1
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2465,6 +2469,7 @@ texture_filter = 1
 texture = ExtResource("5_wlbna")
 hframes = 5
 vframes = 5
+frame = 1
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2503,7 +2508,7 @@ zoom = Vector2(3.955, 3.955)
 [node name="5" type="Sprite2D" parent="Equipment"]
 z_index = 8
 texture_filter = 1
-position = Vector2(-9, 13)
+position = Vector2(-9, 14)
 rotation = 3.31613
 skew = 0.261799
 
@@ -2519,13 +2524,13 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_lud6u")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/conditions/away = false
-parameters/Idle/conditions/forward = true
+parameters/Idle/conditions/forward = false
 parameters/Idle/conditions/left = false
 parameters/Idle/conditions/right = false
 parameters/Locomotion-Transitions/current_state = "Idle"
 parameters/Locomotion-Transitions/transition_request = ""
 parameters/Locomotion-Transitions/current_index = 0
-parameters/Swing/conditions/away = true
+parameters/Swing/conditions/away = false
 parameters/Swing/conditions/finish = false
 parameters/Swing/conditions/forward = false
 parameters/Swing/conditions/left = false
