@@ -20,6 +20,10 @@ func visualize_point(point: Vector2) -> void:
 	print(point)
 
 func generate_image_texture_from_scene(s: Node) -> ImageTexture:
+	# Return an image texture if there is already an image
+	if FileAccess.file_exists("res://assets/resources/%s.png" % s.attributes.object_name):
+		return ImageTexture.create_from_image(Image.load_from_file("res://assets/resources/%s.png" % s.attributes.object_name))
+	
 	# Get the size of the new image
 	var item_size : Vector2 = (s.get_node("CollisionShape2D") as CollisionShape2D).shape.get_rect().size
 	item_size.x = max(item_size.x, item_size.y)
