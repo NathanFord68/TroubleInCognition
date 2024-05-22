@@ -90,70 +90,28 @@ func interact(_caller: Node) -> void:
 
 ## Updates the velocity of the owner
 func maneuver(v: Vector2) -> void:
+	#for p in animation_tree.get_property_list():
+	#	print(p)
 	# Add velocity and play animations
 	if v.x > 0: # Player walking Right
-		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
-		__animate_equipment_locomotion("Walk-Sideways")
-		sprites_left(false)
 		direction_facing = Enums.DIRECTION_FACING.RIGHT
 	if v.x < 0: # Player Walking left
-		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Sideways")
-		__animate_equipment_locomotion("Walk-Sideways")
-		sprites_left(true)
 		direction_facing = Enums.DIRECTION_FACING.LEFT
 	if v.y > 0: # Player Walk Toward player
-		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Toward")
-		__animate_equipment_locomotion("Walk-Toward")
-		sprites_left(true)
 		direction_facing = Enums.DIRECTION_FACING.FRONT
 	if v.y < 0: # Player Walk away from player
-		(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Walk-Away")
-		__animate_equipment_locomotion("Walk-Away")
 		direction_facing = Enums.DIRECTION_FACING.BACK
 	if v == Vector2(): # Default to idle
-		match direction_facing:
-			Enums.DIRECTION_FACING.FRONT:
-				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle")
-				__animate_equipment_locomotion("Idle")
-				sprites_left(true)
-			Enums.DIRECTION_FACING.BACK:
-				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Away")
-				__animate_equipment_locomotion("Idle-Away")
-				sprites_left(true)
-			Enums.DIRECTION_FACING.LEFT:
-				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Sideways")
-				__animate_equipment_locomotion("Idle-Sideways")
-				sprites_left(true)
-			Enums.DIRECTION_FACING.RIGHT:
-				(animation_tree.get("parameters/locomotion/playback") as AnimationNodeStateMachinePlayback).travel("Idle-Sideways")
-				__animate_equipment_locomotion("Idle-Sideways")
-				sprites_left(false)
+		animation_tree.set("parameters/Idle/conditions/away", direction_facing == Enums.DIRECTION_FACING.BACK)
+		animation_tree.set("parameters/Idle/conditions/forward", direction_facing == Enums.DIRECTION_FACING.FRONT)
+		animation_tree.set("parameters/Idle/conditions/right", direction_facing == Enums.DIRECTION_FACING.RIGHT)
+		animation_tree.set("parameters/Idle/conditions/left", direction_facing == Enums.DIRECTION_FACING.LEFT)
+		animation_tree.set("parameters/Idle-Walk/blend_amount", 0)
+	else:
+		animation_tree.set("parameters/Walk/conditions/away", direction_facing == Enums.DIRECTION_FACING.BACK)
+		animation_tree.set("parameters/Walk/conditions/forward", direction_facing == Enums.DIRECTION_FACING.FRONT)
+		animation_tree.set("parameters/Walk/conditions/right", direction_facing == Enums.DIRECTION_FACING.RIGHT)
+		animation_tree.set("parameters/Walk/conditions/left", direction_facing == Enums.DIRECTION_FACING.LEFT)
+		animation_tree.set("parameters/Idle-Walk/blend_amount", 1)
 		
 	resource_owner.velocity = v
-
-func __animate_equipment_locomotion(param: String):
-	if (resource_owner.get_node("Equipment") as Node2D).get_child_count() == 0:
-		return
-	for equipment: StaticBody2D in resource_owner.get_node("Equipment").get_children():
-		(( equipment.get_node("AnimationTree") 
-			as AnimationTree).get("parameters/locomotion/playback")
-				as AnimationNodeStateMachinePlayback ).travel(param)
-
-## Flips the sprites for the animations
-func sprites_left(left: bool):
-	# If the sprite does not need to be flipped return
-	if left and not is_sprite_flipped:
-		return
-	if not left and is_sprite_flipped:
-		return
-	
-	is_sprite_flipped = !left
-	
-	# Flip the sprite to the direction we are trying to go
-	for sprite: Sprite2D in resource_owner.get_node("Sprite").get_children():
-		sprite.flip_h = !left
-		
-	for equipment: StaticBody2D in resource_owner.get_node("Equipment").get_children():
-		for sprite : Sprite2D in equipment.get_node("Sprite").get_children():
-			sprite.flip_h = !left
-	
