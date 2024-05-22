@@ -1,0 +1,67 @@
+[
+	{
+		"type": "WEAPON",
+		"name": "hatchet",
+		"recipe": [],
+		"collision": [4, 11],
+		"sprites": [
+			"hatchet_base",
+			"hatchet_head"
+		],
+		"engine_info": {
+			"asset_path": "hatchet.tscn",
+			"icon_path": "hatchet_icon.png"
+		},
+		"attributes": {
+			"health": 100,
+			"drop_table": [],
+			"object_name": "hatchet_base"
+		},
+		"weapon": {
+			"damage": 10,
+			"min_damage": 1,
+			"weapon_reach": 40,
+			"can_action_with": ["Harvest", "Melee"],
+			"damage_type":"MELEE",
+			"is_two_handed": false
+			
+		}
+	},
+	{
+		"type": "HARVEST",
+		"name": "tree",
+		"recipe": [],
+		"collision": [30, 56],
+		"sprites": [],
+		"engine_info": {
+			"asset_path": "tree.tscn",
+			"icon_path": "tree_icon.png"
+		},
+		"attributes": {
+			"health": 50,
+			"drop_table": [{
+				"chance": 100.0,
+				"object": "logs",
+				"min": 2,
+				"max": 4
+			}],
+			"object_name": "tree"
+		},
+	},
+	{
+		"type": "ITEM",
+		"name": "logs",
+		"recipe": [],
+		"collision": [15, 16],
+		"sprites": [],
+		"engine_info": {
+			"asset_path": "logs.tscn",
+			"icon_path": "logs_icon.png"
+		},
+		"attributes": {
+			"health": -1,
+			"drop_table": [],
+			"object_name": "logs"
+		},
+	}
+]
