@@ -27,9 +27,16 @@ var inventory_manager : InventoryManager
 @export
 var crafting_manager : CraftingManager
 
+## Holds references to items the player has equipped
+@export 
+var equipment_manager : EquipmentManager
+
+var is_action_pressed : bool = false
+
 func _ready() -> void:
 	controller.resource_owner = self # TODO get rid of this
 	controller.animation_tree = $AnimationTree
+	controller.animation_player = $AnimationPlayer
 	controller.owner = self
 	
 	inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
@@ -42,11 +49,13 @@ func _ready() -> void:
 	crafting_manager.owner = self
 	crafting_manager.initialize_crafting_manager()
 	
+	inventory_manager.send_item_equipped.connect(equipment_manager.set_equipment_item)
+	
 	
 func _input(event) -> void:
-	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		__handle_primary_mouse_pressed()
-
+	if event is InputEventMouseButton and event.button_index == 1:
+		is_action_pressed = event.pressed
+	
 func _physics_process(_delta) -> void:
 	if not can_physics_process():
 		return 
@@ -56,6 +65,9 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
+	if is_action_pressed:
+		__handle_primary_mouse_pressed()
+		
 	# Movement
 	controller.maneuver(Vector2(
 		Input.get_axis("player_left", "player_right") * attributes.speed,
@@ -137,8 +149,8 @@ func point_to_mouse() -> Node:
 	return null
 
 func __get_weapon_reach() -> float:
-	if $Equipment.has_node(str(Enums.ITEM_TYPE.PRIMARY)):
-		return ($Equipment.get_node(str(Enums.ITEM_TYPE.PRIMARY)) as Weapon).weapon_reach
+	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment:
+		return equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].weapon_reach
 	return -1
 
 func __handle_primary_mouse_pressed() -> void:

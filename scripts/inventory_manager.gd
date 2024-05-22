@@ -18,6 +18,8 @@ var backpack : Array[EquipmentSlot] = []
 
 var total_item_count : Dictionary = {}
 
+signal send_item_equipped
+
 func initialize_backpack():
 	# Resize and populate the backpack with equipment slots
 	var bp_slots := inventory_viewport.get_backpack() as GridContainer
@@ -39,20 +41,11 @@ func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
 
 ## Move item from inventory to equipment slot
 func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
-	# Set the name to it's slot name and activate it's animation tree
-	var equipment_instance = data.item
-	equipment_instance.name = str(slot)
-	equipment_instance.get_node("AnimationTree").active = true
-	
-	# Turn the icon off and the sprites on
-	for s : Sprite2D in equipment_instance.get_node("Sprite").get_children():
-		if "icon" in s.name:
-			s.visible = false
-			continue
-		s.visible = true
-	
 	# Add it to our the equipment slot of our player
-	equipment.add_child(equipment_instance)
+	equipment.get_node(str(slot)).texture = Global.generate_image_texture_from_scene(data.item)
+	
+	# Signal the item that was added
+	send_item_equipped.emit(data.item)
 
 ## Clears an equipment slot of the equipped item
 ##

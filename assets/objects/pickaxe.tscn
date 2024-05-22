@@ -26,6 +26,7 @@ weapon_reach = 40.0
 can_action_with = ["Harvest", "Melee"]
 damage = 10
 min_damage = 1
+attack_speed = 0.75
 stack_size = 1
 type = 5
 engine_info = SubResource("Resource_cbmti")

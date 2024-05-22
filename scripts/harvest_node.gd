@@ -15,10 +15,7 @@ var engine_info: EngineInfo
 const object_path : String = "res://assets/objects/%s.tscn"
 
 ## Processes the action of this object
-func action(caller: Node) -> void:
-	# Get the weapon that's hitting us
-	var weapon :=  caller.get_node("Equipment/%s" % Enums.ITEM_TYPE.PRIMARY) as Weapon 
-	
+func action(weapon: Weapon) -> void:
 	# Deal the necessary damage
 	attributes.health -= weapon.damage
 

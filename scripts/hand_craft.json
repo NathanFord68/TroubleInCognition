@@ -22,6 +22,7 @@
 					"min_damage": 1,
 					"is_two_handed": false,
 					"stack_size":1,
+					"attack_speed": 0.75,
 					"description": "It's a stone hatchet, what more do you want"
 				},
 				"engine_info": {
@@ -56,6 +57,7 @@
 					"min_damage": 1,
 					"is_two_handed": false,
 					"stack_size":1,
+					"attack_speed": 0.75,
 					"description": "It's a pickaxe made from stone, good luck using it"
 				},
 				"engine_info": {

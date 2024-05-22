@@ -31,3 +31,7 @@ var min_damage: int
 ## Can the character carry a secondary slot
 @export 
 var is_two_handed: bool
+
+## How fast does the weapon attack
+@export
+var attack_speed: float
