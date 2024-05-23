@@ -72,10 +72,10 @@ func _physics_process(_delta) -> void:
 	
 	
 	# Movement
-	controller.maneuver(Vector2(
+	controller._maneuver(Vector2(
 		Input.get_axis("player_left", "player_right") * attributes.speed,
 		Input.get_axis("player_up", "player_down") * attributes.speed
-	) + acting_force)
+	), acting_force)
 	
 	# Crafting
 	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
@@ -90,15 +90,28 @@ func can_physics_process() -> bool:
 	return true
 
 ## Processes the action of this object
-func action(weapon: Node, force: Vector2 = Vector2(), force_time : float = 0, is_force_continuous : bool= false) -> void:
+func action(
+	weapon: Node, 
+	force_direction: Vector2 = Vector2(), 
+	force_time : float = 0, 
+	is_force_continuous : bool= false) -> void:
+	
+	# Apply the damage
 	attributes.health -= weapon.damage
-	if force != Vector2():
-		acting_force = force
-		if is_force_continuous:
-			return
-		
-		await get_tree().create_timer(force_time).timeout
-		acting_force = Vector2()
+	
+	if attributes.health <= 0:
+		queue_free()
+	# Return if there is no force to apply
+	if force_time == 0:
+		return
+	
+	# Apply the force
+	acting_force = force_direction * weapon.knock_back_strength
+	if is_force_continuous:
+		return
+	
+	await get_tree().create_timer(force_time).timeout
+	acting_force = Vector2()
 	
 func interact() -> void:
 	pass

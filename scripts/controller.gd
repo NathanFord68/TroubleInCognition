@@ -76,7 +76,7 @@ func can_handle_interact(target: Node) -> bool:
 	return true
 
 ## Updates the velocity of the owner
-func maneuver(v: Vector2) -> void:
+func _maneuver(v: Vector2, f: Vector2 = Vector2()) -> void:
 	#for p in animation_tree.get_property_list():
 	#	print(p)
 	# Add velocity and play animations
@@ -93,7 +93,8 @@ func maneuver(v: Vector2) -> void:
 	else:
 		__set_animation("Walk", WALK_LENGTH)
 		
-	resource_owner.velocity = v
+	resource_owner.velocity = v + f
+
 
 ## Goes through all logic to set an animation
 ##
@@ -144,4 +145,3 @@ func __set_time_scale_node(state_machine_name: String, desired_time: float) -> v
 	var anim = animation_player.get_animation(node_from_direction)
 	if is_instance_valid(anim):
 		animation_tree.set("parameters/TimeScale/scale", 1 / (desired_time / anim.length))
-
