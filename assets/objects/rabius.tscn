@@ -392,7 +392,7 @@ _data = {
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1idam"]
 graph_offset = Vector2(-572.648, -63.5553)
 
-[node name="Rabius" type="CharacterBody2D"]
+[node name="Rabius" type="CharacterBody2D" groups=["Attack"]]
 script = ExtResource("1_ce6ri")
 attributes = SubResource("Resource_3x5m3")
 engine_info = SubResource("Resource_avgjs")

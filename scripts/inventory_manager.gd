@@ -19,6 +19,7 @@ var backpack : Array[EquipmentSlot] = []
 var total_item_count : Dictionary = {}
 
 signal send_item_equipped
+signal send_item_unequpped
 
 func initialize_backpack():
 	# Resize and populate the backpack with equipment slots
@@ -52,10 +53,8 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 ## This does not clear the item in the inventory 
 ## Since this instance was a clone of the inventory item
 func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
-	var node = equipment.get_node(str(slot))
-	node.name = node.attributes.object_name
-	node.get_node("AnimationTree").active = false
-	equipment.remove_child(node)
+	equipment.get_node(str(slot)).texture = null
+	send_item_unequpped.emit(slot)
 
 ## Adds an item to the inventory
 func add_to_inventory(item : Node, index : int = -1) -> bool:

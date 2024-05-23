@@ -69,6 +69,41 @@
 					"drop_table": []
 				}
 			}
+		},
+		{
+			"name": "stone_buster_sword",
+			"color": {
+				"hex": "#696a6a",
+				"sprites": ["buster_sword"]
+			},
+			"recipe": 
+			{
+				"logs": 1,
+				"rocks": 3
+			},
+			"time_to_craft": 3,
+			"object_data": {
+				"base_info": {
+					"weapon_reach": 40,
+					"type": "PRIMARY",
+					"damage_type": "MELEE",
+					"damage": 15,
+					"can_action_with": ["Attack", "Melee"],
+					"min_damage": 1,
+					"is_two_handed": false,
+					"stack_size": 1,
+					"attack_speed": 1.5,
+					"description": "Slower to swing, but does more damage"
+				},
+				"engine_info": {
+					"asset_path": "res://assets/objects/buster_sword.tscn",
+				},
+				"attributes": {
+					"health": 100,
+					"object_name": "stone_buster_sword",
+					"drop_table": []
+				}
+			}
 		}
 	],
 	"armor": [

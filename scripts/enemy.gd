@@ -14,7 +14,8 @@ var controller : EnemyController
 @export
 var equipment_manager : EquipmentManager
 
-var player_detected : Player
+## Store the object path
+const object_path : String = "res://assets/objects/%s.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +34,36 @@ func _physics_process(_delta : float) -> void:
 	controller._handle_attack_player()
 	
 	move_and_slide()
+
+func action(weapon : Weapon ) -> void:
+	attributes.health -= weapon.damage
+	print(attributes.health)
+	
+	if attributes.health <= 0:
+		# Drop based off drop table TODO
+		var rng := RandomNumberGenerator.new().randi_range(0, 100)
+		for d in attributes.drop_table:
+			__process_drop_item(rng, d)
+		
+		# Queue free if we're dead
+		queue_free()
+
+## Processes the interact of this object
+func interact(caller: Node) -> void:
+	print(caller)
+
+func __process_drop_item(rng: int, data: Dictionary):
+	if not (rng < data.chance):
+		return
+		
+	var quantity := RandomNumberGenerator.new().randi_range(data.min, data.max)
+	for i in range(0, quantity):
+		var item : StaticBody2D = (load(object_path % data.object) as PackedScene).instantiate()
+		var generator = RandomNumberGenerator.new()
+		item.global_position = global_position + Vector2(generator.randf_range(0, 30), generator.randf_range(0, 30))
+		get_tree().root.add_child(item)
+		
+
 
 # Forget the player 
 func _on_forget_player_body_exited(body : Node2D) -> void:

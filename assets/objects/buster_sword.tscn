@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvk3cqexa2vgo"]
+
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_xled7"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="2_fenjd"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="3_7pkqu"]
+[ext_resource type="Texture2D" uid="uid://umel836um883" path="res://assets/resources/buster_sword.png" id="4_4714p"]
+
+[sub_resource type="Resource" id="Resource_6qxbm"]
+script = ExtResource("2_fenjd")
+asset_path = "res://assets/objects/sword.tscn"
+
+[sub_resource type="Resource" id="Resource_uf5vb"]
+script = ExtResource("3_7pkqu")
+health = 100
+drop_table = []
+object_name = "stone_sword"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nytlc"]
+size = Vector2(4, 33)
+
+[node name="BusterSword" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_xled7")
+weapon_reach = 40.0
+can_action_with = ["Attack", "Melee"]
+damage = 10
+min_damage = 1
+attack_speed = 0.75
+stack_size = 1
+type = 5
+engine_info = SubResource("Resource_6qxbm")
+attributes = SubResource("Resource_uf5vb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_nytlc")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="buster_sword" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("4_4714p")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": true,
+"layer": "buster_sword",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"set_vis_track": true,
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "734a380447e69fdc444b9b9404fbc115"

@@ -38,7 +38,7 @@ func can_handle_action(target: Node) -> bool:
 		
 	# Check the groups to make sure all of my equipment is in the actionable item
 	for group in target.get_groups():
-		if group not in owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].get_groups():
+		if group not in owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].can_action_with:
 			return false
 	return true
 

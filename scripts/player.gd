@@ -52,6 +52,7 @@ func _ready() -> void:
 	crafting_manager.initialize_crafting_manager()
 	
 	inventory_manager.send_item_equipped.connect(equipment_manager.set_equipment_item)
+	inventory_manager.send_item_unequpped.connect(equipment_manager.remove_equipment)
 	
 	
 func _input(event) -> void:

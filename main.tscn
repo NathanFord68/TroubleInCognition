@@ -19,6 +19,7 @@ position = Vector2(587, 281)
 
 [node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
 position = Vector2(440, 307)
+can_action_with = ["Harvest", "Melee", "Hatchet", "Attack"]
 
 [node name="tree" parent="." instance=ExtResource("2_6vaid")]
 position = Vector2(504, 272)
@@ -28,6 +29,7 @@ position = Vector2(505, 379)
 
 [node name="Pickaxe" parent="." instance=ExtResource("4_ockpk")]
 position = Vector2(414, 306)
+can_action_with = ["Harvest", "Melee", "Pickaxe", "Attack"]
 
 [node name="Logs" parent="." instance=ExtResource("4_es3pe")]
 position = Vector2(389, 288)
@@ -57,4 +59,4 @@ position = Vector2(363, 350)
 position = Vector2(309, 312)
 
 [node name="Rabius" parent="." instance=ExtResource("8_egats")]
-position = Vector2(250, 312)
+position = Vector2(23, 307)
