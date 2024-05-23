@@ -58,6 +58,15 @@ func _ready() -> void:
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		is_action_pressed = event.pressed
+		
+	if event is InputEventMouseButton and event.button_index == 4:
+		var zoom = clamp($Camera2D.zoom.x + .05, 1.5, 3)
+		$Camera2D.zoom = Vector2(zoom, zoom)
+		
+	if event is InputEventMouseButton and event.button_index == 5:
+		var zoom = clamp($Camera2D.zoom.x - .05, 1.5, 3)
+		$Camera2D.zoom = Vector2(zoom, zoom)
+		
 	
 func _physics_process(_delta) -> void:
 	if not can_physics_process():
