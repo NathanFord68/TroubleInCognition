@@ -113,7 +113,7 @@ func __set_animation(state_machine_name: String, desired_length : float, is_loco
 		animation_tree.set("parameters/%s-One-Shot/request" % state_machine_name, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		
 		# Wait for the animation to finish
-		await owner.get_tree().create_timer(desired_length).timeout
+		await owner.get_tree().create_timer(desired_length - .3).timeout
 		
 		# Set the finished condition and return to let caller know that animation is finished
 		animation_tree.set("parameters/%s/conditions/finish" % state_machine_name, true)

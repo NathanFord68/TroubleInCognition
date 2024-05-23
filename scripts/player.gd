@@ -62,10 +62,8 @@ func _input(event) -> void:
 func _physics_process(_delta) -> void:
 	if not can_physics_process():
 		return 
-	if Input.is_action_just_pressed("dev_debug"):
-		inventory_manager.debug_print()
-	
-	if Input.is_action_just_pressed("player_interact"):
+
+	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
 	if is_action_pressed:
