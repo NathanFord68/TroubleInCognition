@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg654e2d0uw3f"]
+[gd_scene load_steps=9 format=3 uid="uid://bg654e2d0uw3f"]
 
 [ext_resource type="PackedScene" uid="uid://dqrccsiidgik4" path="res://assets/objects/tree.tscn" id="2_6vaid"]
 [ext_resource type="PackedScene" uid="uid://c3cypgoptackx" path="res://assets/objects/logs.tscn" id="4_es3pe"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xrqeudhh1dt5" path="res://assets/objects/boulder.tscn" id="6_bs2gv"]
 [ext_resource type="PackedScene" uid="uid://r3l7flnqb5wq" path="res://assets/objects/player.tscn" id="6_btl4l"]
 [ext_resource type="PackedScene" uid="uid://utqvv155d7g7" path="res://assets/objects/hatchet.tscn" id="7_xybt0"]
+[ext_resource type="PackedScene" uid="uid://bp5gh8c88pomh" path="res://assets/objects/rabius.tscn" id="8_egats"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,6 +19,7 @@ position = Vector2(587, 281)
 
 [node name="hatchet" parent="." instance=ExtResource("7_xybt0")]
 position = Vector2(440, 307)
+can_action_with = ["Harvest", "Melee", "Hatchet", "Attack"]
 
 [node name="tree" parent="." instance=ExtResource("2_6vaid")]
 position = Vector2(504, 272)
@@ -27,6 +29,7 @@ position = Vector2(505, 379)
 
 [node name="Pickaxe" parent="." instance=ExtResource("4_ockpk")]
 position = Vector2(414, 306)
+can_action_with = ["Harvest", "Melee", "Pickaxe", "Attack"]
 
 [node name="Logs" parent="." instance=ExtResource("4_es3pe")]
 position = Vector2(389, 288)
@@ -54,3 +57,6 @@ position = Vector2(363, 350)
 
 [node name="Player" parent="." instance=ExtResource("6_btl4l")]
 position = Vector2(309, 312)
+
+[node name="Rabius" parent="." instance=ExtResource("8_egats")]
+position = Vector2(23, 307)

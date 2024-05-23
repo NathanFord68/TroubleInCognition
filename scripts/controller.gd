@@ -38,7 +38,7 @@ func can_handle_action(target: Node) -> bool:
 		
 	# Check the groups to make sure all of my equipment is in the actionable item
 	for group in target.get_groups():
-		if group not in owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].get_groups():
+		if group not in owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].can_action_with:
 			return false
 	return true
 
@@ -59,11 +59,6 @@ func handle_action(target: Node) -> void:
 	
 	# Call that targets action
 	target.action(owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY])
-	
-	
-## Processes the action of this object
-func action(_caller: Node) -> void:
-	pass
 
 ## Calls the interact of a target if it can
 func handle_interact(target: Node) -> void:
@@ -80,12 +75,8 @@ func can_handle_interact(target: Node) -> bool:
 	
 	return true
 
-## Processes the interact of this object
-func interact(_caller: Node) -> void:
-	pass
-
 ## Updates the velocity of the owner
-func maneuver(v: Vector2) -> void:
+func _maneuver(v: Vector2, f: Vector2 = Vector2()) -> void:
 	#for p in animation_tree.get_property_list():
 	#	print(p)
 	# Add velocity and play animations
@@ -102,7 +93,8 @@ func maneuver(v: Vector2) -> void:
 	else:
 		__set_animation("Walk", WALK_LENGTH)
 		
-	resource_owner.velocity = v
+	resource_owner.velocity = v + f
+
 
 ## Goes through all logic to set an animation
 ##
@@ -121,7 +113,7 @@ func __set_animation(state_machine_name: String, desired_length : float, is_loco
 		animation_tree.set("parameters/%s-One-Shot/request" % state_machine_name, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		
 		# Wait for the animation to finish
-		await owner.get_tree().create_timer(desired_length).timeout
+		await owner.get_tree().create_timer(desired_length - .3).timeout
 		
 		# Set the finished condition and return to let caller know that animation is finished
 		animation_tree.set("parameters/%s/conditions/finish" % state_machine_name, true)
@@ -150,6 +142,6 @@ func __set_time_scale_node(state_machine_name: String, desired_time: float) -> v
 		
 	node_from_direction = node_from_direction % state_machine_name
 	
-	var anim_length = animation_player.get_animation(node_from_direction).length
-	animation_tree.set("parameters/TimeScale/scale", 1 / (desired_time / anim_length))
-
+	var anim = animation_player.get_animation(node_from_direction)
+	if is_instance_valid(anim):
+		animation_tree.set("parameters/TimeScale/scale", 1 / (desired_time / anim.length))

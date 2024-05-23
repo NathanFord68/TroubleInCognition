@@ -33,6 +33,8 @@ var equipment_manager : EquipmentManager
 
 var is_action_pressed : bool = false
 
+var acting_force : Vector2
+
 func _ready() -> void:
 	controller.resource_owner = self # TODO get rid of this
 	controller.animation_tree = $AnimationTree
@@ -50,29 +52,38 @@ func _ready() -> void:
 	crafting_manager.initialize_crafting_manager()
 	
 	inventory_manager.send_item_equipped.connect(equipment_manager.set_equipment_item)
+	inventory_manager.send_item_unequpped.connect(equipment_manager.remove_equipment)
 	
 	
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		is_action_pressed = event.pressed
+		
+	if event is InputEventMouseButton and event.button_index == 4:
+		var zoom = clamp($Camera2D.zoom.x + .05, 1.5, 3)
+		$Camera2D.zoom = Vector2(zoom, zoom)
+		
+	if event is InputEventMouseButton and event.button_index == 5:
+		var zoom = clamp($Camera2D.zoom.x - .05, 1.5, 3)
+		$Camera2D.zoom = Vector2(zoom, zoom)
+		
 	
 func _physics_process(_delta) -> void:
 	if not can_physics_process():
 		return 
-	if Input.is_action_just_pressed("dev_debug"):
-		inventory_manager.debug_print()
-	
-	if Input.is_action_just_pressed("player_interact"):
+
+	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
 	if is_action_pressed:
 		__handle_primary_mouse_pressed()
-		
+	
+	
 	# Movement
-	controller.maneuver(Vector2(
+	controller._maneuver(Vector2(
 		Input.get_axis("player_left", "player_right") * attributes.speed,
 		Input.get_axis("player_up", "player_down") * attributes.speed
-	))
+	), acting_force)
 	
 	# Crafting
 	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
@@ -85,6 +96,33 @@ func can_physics_process() -> bool:
 	if not is_instance_valid(attributes):
 		return false
 	return true
+
+## Processes the action of this object
+func action(
+	weapon: Node, 
+	force_direction: Vector2 = Vector2(), 
+	force_time : float = 0, 
+	is_force_continuous : bool= false) -> void:
+	
+	# Apply the damage
+	attributes.health -= weapon.damage
+	
+	if attributes.health <= 0:
+		queue_free()
+	# Return if there is no force to apply
+	if force_time == 0:
+		return
+	
+	# Apply the force
+	acting_force = force_direction * weapon.knock_back_strength
+	if is_force_continuous:
+		return
+	
+	await get_tree().create_timer(force_time).timeout
+	acting_force = Vector2()
+	
+func interact() -> void:
+	pass
 
 ## Gets the target the player is trying to interact with
 func get_target(reach_range : float) -> Node:

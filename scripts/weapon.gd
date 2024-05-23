@@ -35,3 +35,7 @@ var is_two_handed: bool
 ## How fast does the weapon attack
 @export
 var attack_speed: float
+
+## How hard to knock back the actor when hit
+@export
+var knock_back_strength: float
