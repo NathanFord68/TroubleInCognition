@@ -37,7 +37,6 @@ func _physics_process(_delta : float) -> void:
 
 func action(weapon : Weapon ) -> void:
 	attributes.health -= weapon.damage
-	print(attributes.health)
 	
 	if attributes.health <= 0:
 		# Drop based off drop table TODO
