@@ -36,7 +36,6 @@ var is_action_pressed : bool = false
 var acting_force : Vector2
 
 func _ready() -> void:
-	controller.resource_owner = self # TODO get rid of this
 	controller.animation_tree = $AnimationTree
 	controller.animation_player = $AnimationPlayer
 	controller.owner = self
@@ -98,27 +97,25 @@ func can_physics_process() -> bool:
 	return true
 
 ## Processes the action of this object
-func action(
-	weapon: Node, 
-	force_direction: Vector2 = Vector2(), 
-	force_time : float = 0, 
-	is_force_continuous : bool= false) -> void:
-	
+func action(weapon: Node) -> void:
 	# Apply the damage
 	attributes.health -= weapon.damage
 	
 	if attributes.health <= 0:
 		queue_free()
-	# Return if there is no force to apply
-	if force_time == 0:
-		return
-	
+
+func apply_force(
+	direction: Vector2,
+	strength: float,
+	time: float,
+	is_continuous: bool
+):
 	# Apply the force
-	acting_force = force_direction * weapon.knock_back_strength
-	if is_force_continuous:
+	acting_force = direction * strength
+	if is_continuous:
 		return
 	
-	await get_tree().create_timer(force_time).timeout
+	await get_tree().create_timer(time).timeout
 	acting_force = Vector2()
 	
 func interact() -> void:
@@ -195,4 +192,4 @@ func __handle_primary_mouse_pressed() -> void:
 	var reach = __get_weapon_reach()
 	if reach == -1:
 		return
-	controller.handle_action(get_target(reach))
+	controller._handle_action(get_target(reach))

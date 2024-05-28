@@ -21,12 +21,12 @@ const object_path : String = "res://assets/objects/%s.tscn"
 func _ready():
 	controller.animation_tree = $AnimationTree
 	controller.animation_player = $AnimationPlayer
-	controller.resource_owner = self
+	controller.owner = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta : float) -> void:
-	if is_instance_valid(controller.player_detected):
-		var direction = global_position.direction_to(controller.player_detected.global_position)
+	if is_instance_valid(controller.detected_player):
+		var direction = global_position.direction_to(controller.detected_player.global_position)
 		controller._maneuver( direction * attributes.speed )
 	else:
 		controller._maneuver(Vector2())
@@ -67,12 +67,12 @@ func __process_drop_item(rng: int, data: Dictionary):
 # Forget the player 
 func _on_forget_player_body_exited(body : Node2D) -> void:
 	if "Player" in body.get_groups():
-		controller.player_detected = null
+		controller.detected_player = null
 
 # Start tracking the player 
 func _on_detect_player_body_entered(body : Node2D) -> void:
 	if "Player" in body.get_groups():
-		controller.player_detected = body
+		controller.detected_player = body
 
 func _on_attack_player_body_entered(body : Node2D) -> void:
 	if "Player" in body.get_groups():
