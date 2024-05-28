@@ -50,7 +50,7 @@ func _handle_action(target: Node) -> void:
 	
 	# Play that animation
 	playing_action_animation = true
-	await __set_animation("Swing", owner.equipment_manager.equipment[5].attack_speed, false, true)
+	await __set_animation("Swing", owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].attack_speed, false, true)
 	playing_action_animation = false
 	
 	# Call that targets action

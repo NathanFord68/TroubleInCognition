@@ -7,14 +7,14 @@ var did_just_attack : bool = false
 var can_attack_player : bool = false
 
 ## Calls the action of a target if it can
-func _handle_action(target: Node) -> void:
+func _handle_action(_target: Node) -> void:
 	# Check if we can do an action
 	if not can_handle_action(detected_player):
 		return
 	
 	# Play that animation
 	playing_action_animation = true
-	await __set_animation("Swing", owner.equipment_manager.equipment[5].attack_speed, false, true)
+	await __set_animation("Swing", owner.equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].attack_speed, false, true)
 	playing_action_animation = false
 	
 	# Call that targets action
@@ -39,9 +39,6 @@ func _handle_attack_player() -> void:
 		
 	if not _can_handle_attack_player():
 		return
-	
-	# Perform the attack
-	var direction = owner.global_position.direction_to(detected_player.global_position)
 	
 	# Call the players action and apply force
 	_handle_action(detected_player)
