@@ -72,7 +72,7 @@ func _can_drop_data(_at_position, data):
 	if allowed_type == Enums.ITEM_TYPE.MAIN:
 		return true
 	
-	if not data.item.has("type"):
+	if not ( data.item as HarvestNode ).has_meta("type"):
 		return false
 		
 	if allowed_type != data.item.type:

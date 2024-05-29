@@ -211,7 +211,6 @@ func point_to_mouse() -> Node:
 
 ## Handle the placement of the building in the world
 func handle_place_build() -> void:
-	pass
 	# Instantiate new instance of the thing we are crafting
 	var building_that_can_place = load(building_to_place.engine_info.asset_path).instantiate()
 	building_that_can_place.global_position = get_global_mouse_position()
@@ -219,8 +218,15 @@ func handle_place_build() -> void:
 	get_tree().root.add_child(building_that_can_place)
 	
 	# Remove from inventory
+	inventory_manager.remove_from_inventory(building_to_place.attributes.object_name, 1)
+	
+	is_primary_action_pressed = false
+	
 	# Check if we are out of the item
-	# Queue free the current selected building
+	if inventory_manager.total_item_count[building_to_place.attributes.object_name] <= 0:
+		# Queue free the current selected building
+		building_to_place.queue_free()
+		is_in_build_mode = false
 	
 func can_handle_place_build() -> bool:
 	return true
