@@ -30,6 +30,7 @@ func _ready():
 func _input(event):
 	if not _can_handle_input(event):
 		return
+	
 	interact()
 
 func _can_handle_input(event):
@@ -56,6 +57,9 @@ func _can_handle_input(event):
 		return false
 	
 	if not event.keycode == 69:
+		return false
+	
+	if not event.pressed:
 		return false
 
 	return true
@@ -125,7 +129,7 @@ func update_label():
 	( get_node("Count") as Label ).text = "" if quantity == 0 or quantity == 1 else str(quantity)
 
 func interact() -> void:
-	print_debug("You did it. I am being interacted with")
+	viewport.enter_build_mode.emit(item)
 
 func _on_mouse_entered():
 	is_active_equipment_slot = true

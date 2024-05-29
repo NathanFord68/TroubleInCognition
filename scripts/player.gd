@@ -31,8 +31,14 @@ var crafting_manager : CraftingManager
 @export 
 var equipment_manager : EquipmentManager
 
-var is_action_pressed : bool = false
+## Tracks if we pressed the primary action mouse button
+var is_primary_action_pressed : bool = false
 
+## Tracks building information
+var is_in_build_mode: bool
+var building_to_place: StaticBody2D
+
+## Tracks external forces being applied to us
 var acting_force : Vector2
 
 func _ready() -> void:
@@ -53,10 +59,12 @@ func _ready() -> void:
 	inventory_manager.send_item_equipped.connect(equipment_manager.set_equipment_item)
 	inventory_manager.send_item_unequpped.connect(equipment_manager.remove_equipment)
 	
+	$PlayerViewport/InventoryViewport.enter_build_mode.connect(handle_enter_build_mode)
+	
 	
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
-		is_action_pressed = event.pressed
+		is_primary_action_pressed = event.pressed
 		
 	if event is InputEventMouseButton and event.button_index == 4:
 		var zoom = clamp($Camera2D.zoom.x + .05, 1.5, 3)
@@ -69,14 +77,16 @@ func _input(event) -> void:
 	
 func _physics_process(_delta) -> void:
 	if not can_physics_process():
-		return 
+		return
 
 	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
-	if is_action_pressed:
+	if is_primary_action_pressed:
 		__handle_primary_mouse_pressed()
 	
+	if is_in_build_mode:
+		building_to_place.global_position = get_global_mouse_position()
 	
 	# Movement
 	controller._maneuver(Vector2(
@@ -90,6 +100,22 @@ func _physics_process(_delta) -> void:
 
 	move_and_slide()
 
+func handle_enter_build_mode(building: StaticBody2D):
+	# Enter build mode
+	is_in_build_mode = true
+	
+	# Setup the building to place
+	building_to_place = building
+	for sprite : Sprite2D in building_to_place.get_node("Sprite").get_children():
+		sprite.self_modulate = Color(0, 125, 125, 150)
+	building_to_place.set_collision_layer_value(16, true)
+	building_to_place.set_collision_layer_value(1, false)
+	add_child(building_to_place)
+	
+	# Turn the viewport off
+	$PlayerViewport/InventoryViewport.visible = false
+	
+	
 ## Checks to make sure everything the physics process will need has been instantiated
 func can_physics_process() -> bool:
 	if not is_instance_valid(attributes):
@@ -183,12 +209,31 @@ func point_to_mouse() -> Node:
 	
 	return null
 
+## Handle the placement of the building in the world
+func handle_place_build() -> void:
+	pass
+	# Instantiate new instance of the thing we are crafting
+	var building_that_can_place = load(building_to_place.engine_info.asset_path).instantiate()
+	building_that_can_place.global_position = get_global_mouse_position()
+	# Attach to tree
+	get_tree().root.add_child(building_that_can_place)
+	
+	# Remove from inventory
+	# Check if we are out of the item
+	# Queue free the current selected building
+	
+func can_handle_place_build() -> bool:
+	return true
+
 func __get_weapon_reach() -> float:
 	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment:
 		return equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].weapon_reach
 	return -1
 
 func __handle_primary_mouse_pressed() -> void:
+	if is_in_build_mode:
+		handle_place_build()
+		return
 	var reach = __get_weapon_reach()
 	if reach == -1:
 		return
