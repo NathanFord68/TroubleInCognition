@@ -166,7 +166,18 @@ func __generate_common_item_info() -> void:
 	pass
 
 func __generate_building_item_info() -> void:
-	pass
+	# Name
+	__attach_label_to_item_info("Name", craft_order.item.object_data.attributes.object_name.replace("_", " "))
+	
+	# Recipe
+	__attach_label_to_item_info("Recipe", str(craft_order.item.recipe))
+	
+	# Damage
+	__attach_label_to_item_info("Health", str(craft_order.item.object_data.attributes.health))
+	
+	# Description
+	__attach_label_to_item_info("Description", craft_order.item.object_data.base_info.description)
+	
 
 func __attach_label_to_item_info(n: String, s: String) -> void:
 	var l = Label.new()

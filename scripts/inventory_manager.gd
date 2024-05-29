@@ -72,7 +72,7 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 			# Set it to stack onto a slot if there is room
 			if (!backpack[i].is_empty() # Checks that this slot is not an empty slot
 				and backpack[i].item.attributes.object_name == item.attributes.object_name # Item in slot is of this items type
-				and backpack[i].quantity < backpack[i].item.stack_size ): # Stack is not full 
+				and backpack[i].quantity < backpack[i].item.stack_size ): # Stack is not full
 				_index = i
 				break
 	

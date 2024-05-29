@@ -19,6 +19,10 @@ var can_place: bool
 @export
 var stack_size: int
 
+## Describes the thing
+@export
+var description: String
+
 ## Store the object path
 const object_path : String = "res://assets/objects/%s.tscn"
 

@@ -127,7 +127,8 @@
 			"object_data": {
 				"base_info": {
 					"can_place": true,
-					"stack_size": 10
+					"stack_size": 10,
+					"description": "I believe the fox was able to blow down this house too. Maybe save up for some stone",
 				},
 				"engine_info": {
 					"asset_path": "res://assets/objects/wood_wall.tscn",
@@ -153,7 +154,8 @@
 			"object_data": {
 				"base_info": {
 					"can_place": true,
-					"stack_size": 10
+					"stack_size": 10,
+					"description": "It's a stone wall, stronger than a wooden wall but more expensive."
 				},
 				"engine_info": {
 					"asset_path": "res://assets/objects/stone_wall.tscn",

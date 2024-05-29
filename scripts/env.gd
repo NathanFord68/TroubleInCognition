@@ -1,3 +1,3 @@
 extends Node
 
-var mode : Enums.MODE = Enums.MODE.DEV
+var mode : Enums.MODE = Enums.MODE.PROD
