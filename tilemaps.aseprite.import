@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://csrkrfmertkqt"
+path="res://.godot/imported/tilemaps.aseprite-4310a450254e7820009c6b642fa90a77.res"
+
+[deps]
+
+source_file="res://tilemaps.aseprite"
+dest_files=["res://.godot/imported/tilemaps.aseprite-4310a450254e7820009c6b642fa90a77.res"]
+
+[params]
+
