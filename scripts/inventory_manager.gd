@@ -29,7 +29,9 @@ func initialize_backpack():
 		var n_equipment_slot := ( load("res://assets/objects/equipment_slot.tscn") as PackedScene ).instantiate() as EquipmentSlot
 		n_equipment_slot.inventory_root = inventory_viewport
 		backpack[a] = n_equipment_slot
+		n_equipment_slot.viewport = inventory_viewport
 		bp_slots.add_child(n_equipment_slot)
+		
 	inventory_viewport.item_dropped.connect(handle_item_dropped_into_slot)
 
 ## Handles the emission of the item_dropped signal from the viewport

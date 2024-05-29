@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgvwx1njtpund"]
+
+[ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_pdiap"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_sdu2t"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="3_tc6yc"]
+[ext_resource type="Texture2D" uid="uid://c77meni0x5tqm" path="res://assets/resources/wood_wall.png" id="4_0jeow"]
+
+[sub_resource type="Resource" id="Resource_lec1n"]
+script = ExtResource("2_sdu2t")
+health = 20
+drop_table = []
+object_name = "wood_wall"
+
+[sub_resource type="Resource" id="Resource_l8ux0"]
+script = ExtResource("3_tc6yc")
+asset_path = "res://assets/objects/wood_wall.tscn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
+size = Vector2(16, 15)
+
+[node name="WoodWall" type="StaticBody2D" groups=["Attack"]]
+script = ExtResource("1_pdiap")
+attributes = SubResource("Resource_lec1n")
+engine_info = SubResource("Resource_l8ux0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_5t7es")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="wood_wall_icon" type="Sprite2D" parent="Sprite"]
+texture_filter = 1
+texture = ExtResource("4_0jeow")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "wood_wall",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "66a246b36809fb906d6663122e3fde36"

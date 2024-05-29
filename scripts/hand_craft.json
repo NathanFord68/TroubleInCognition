@@ -113,6 +113,30 @@
 		
 	],
 	"building": [
-		
+		{
+			"name": "wood_wall",
+			"color": {
+				"hex": "",
+				"sprites": []
+			},
+			"recipe": 
+			{
+				"logs": 3,
+			},
+			"time_to_craft": 3,
+			"object_data": {
+				"base_info": {
+					"can_place": true	
+				},
+				"engine_info": {
+					"asset_path": "res://assets/objects/wood_wall.tscn",
+				},
+				"attributes": {
+					"health": 20,
+					"object_name": "wood_wall",
+					"drop_table": []
+				}
+			}
+		},
 	]
 }

@@ -11,6 +11,9 @@ var attributes: BaseAttributes
 @export
 var engine_info: EngineInfo
 
+@export
+var can_place: bool
+
 ## Store the object path
 const object_path : String = "res://assets/objects/%s.tscn"
 

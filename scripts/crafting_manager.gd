@@ -49,7 +49,7 @@ func handle_craft_item() -> void:
 func add_to_order(order: Dictionary) -> void:
 	orders.push_back(order)
 
-func __craft_item(item: ItemBase, recipe: Dictionary, key: String = "") -> void:
+func __craft_item(item: StaticBody2D, recipe: Dictionary, key: String = "") -> void:
 	# Get all the keys so we can populate item
 	if key == "":
 		# Color it
