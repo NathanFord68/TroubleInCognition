@@ -18,7 +18,7 @@
 					"type": "PRIMARY",
 					"damage_type": "MELEE",
 					"damage": 10,
-					"can_action_with": ["Harvest", "Hatchet", "Melee", "Attack"],
+					"can_action_with": ["Harvest", "Hatchet", "Melee", "Attack", "Building"],
 					"min_damage": 1,
 					"is_two_handed": false,
 					"stack_size":1,
@@ -135,6 +135,32 @@
 				"attributes": {
 					"health": 20,
 					"object_name": "wood_wall",
+					"drop_table": []
+				}
+			}
+		},
+		{
+			"name": "stone_wall",
+			"color": {
+				"hex": "",
+				"sprites": []
+			},
+			"recipe": 
+			{
+				"rocks": 5,
+			},
+			"time_to_craft": 5,
+			"object_data": {
+				"base_info": {
+					"can_place": true,
+					"stack_size": 10
+				},
+				"engine_info": {
+					"asset_path": "res://assets/objects/stone_wall.tscn",
+				},
+				"attributes": {
+					"health": 50,
+					"object_name": "stone_wall",
 					"drop_table": []
 				}
 			}

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bau7vcuil3eje"]
+
+[ext_resource type="Script" path="res://scripts/harvest_node.gd" id="1_e2cwj"]
+[ext_resource type="Script" path="res://scripts/base_attributes.gd" id="2_ml1ly"]
+[ext_resource type="Script" path="res://scripts/engine_info.gd" id="3_osr7p"]
+[ext_resource type="Texture2D" uid="uid://bho4mjfjnnyxg" path="res://assets/resources/stone_wall.png" id="4_nxk3v"]
+
+[sub_resource type="Resource" id="Resource_lec1n"]
+script = ExtResource("2_ml1ly")
+health = 50
+drop_table = []
+object_name = "stone_wall"
+
+[sub_resource type="Resource" id="Resource_l8ux0"]
+script = ExtResource("3_osr7p")
+asset_path = "res://assets/objects/stone_wall.tscn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t7es"]
+size = Vector2(16, 15)
+
+[node name="StoneWall" type="StaticBody2D" groups=["Attack"]]
+script = ExtResource("1_e2cwj")
+attributes = SubResource("Resource_lec1n")
+engine_info = SubResource("Resource_l8ux0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_5t7es")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="stone_wall_icon" type="Sprite2D" parent="Sprite" groups=["Attack", "Building"]]
+texture_filter = 1
+texture = ExtResource("4_nxk3v")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "stone_wall",
+"o_ex_p": "",
+"o_folder": "res://assets/resources",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://static.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "deb2f2a42a46f49fa08c651319c2372e"
