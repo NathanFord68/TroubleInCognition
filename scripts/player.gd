@@ -82,6 +82,9 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
+	if Input.is_action_just_pressed("player_escape"):
+		handle_player_escape_input()
+	
 	if is_primary_action_pressed:
 		__handle_primary_mouse_pressed()
 	
@@ -230,6 +233,20 @@ func handle_place_build() -> void:
 	
 func can_handle_place_build() -> bool:
 	return true
+
+func handle_player_escape_input() -> void:
+	var mode = "continue"
+	for vp in $PlayerViewport.get_children():
+		if vp.visible:
+			vp.visible = false
+			mode = "finished"
+	if mode == "continue" and is_in_build_mode == true:
+		mode = "finished"
+		remove_child(building_to_place)
+		building_to_place = null
+		is_in_build_mode = false
+	if mode == "continue":
+		print_debug("Open the menu")
 
 func __get_weapon_reach() -> float:
 	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment:

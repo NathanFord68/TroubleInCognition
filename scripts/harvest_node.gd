@@ -11,8 +11,13 @@ var attributes: BaseAttributes
 @export
 var engine_info: EngineInfo
 
+## Tracks if this is a building
 @export
 var can_place: bool
+
+## Allows buildings to stack in inventory
+@export
+var stack_size: int
 
 ## Store the object path
 const object_path : String = "res://assets/objects/%s.tscn"

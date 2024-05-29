@@ -126,7 +126,8 @@
 			"time_to_craft": 3,
 			"object_data": {
 				"base_info": {
-					"can_place": true	
+					"can_place": true,
+					"stack_size": 10
 				},
 				"engine_info": {
 					"asset_path": "res://assets/objects/wood_wall.tscn",
