@@ -22,7 +22,6 @@ var owner: CharacterBody2D
 @export
 var direction_facing: Enums.DIRECTION_FACING
 
-var is_sprite_flipped : bool = false
 var playing_action_animation : bool = false
 
 ## Determines if we can handle calling the action of the target

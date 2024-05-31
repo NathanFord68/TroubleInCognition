@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=116 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Script" path="res://scripts/controller.gd" id="2_c112w"]
@@ -2135,7 +2135,7 @@ input_0/reset = true
 animation = &"Idle-Away"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m3x18"]
-animation = &"Idle-Torward"
+animation = &"Idle-Toward"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_axv6u"]
 animation = &"Idle-Left"
@@ -2176,19 +2176,68 @@ advance_expression = "controller.direction_facing==2"
 advance_mode = 2
 advance_expression = "controller.direction_facing==1"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_opafq"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==0
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1fc56"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nbx57"]
+advance_mode = 2
+advance_expression = "controller.direction_facing == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqdln"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bbajg"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u370o"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nebuf"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h14p5"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5al3p"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_85r2m"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1rtqa"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jh7k7"]
+advance_mode = 2
+advance_expression = "controller.direction_facing==1"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n3t0c"]
-states/End/position = Vector2(741, 137)
+states/End/position = Vector2(952, 137)
 states/Idle-Away/node = SubResource("AnimationNodeAnimation_vau7t")
-states/Idle-Away/position = Vector2(422, 92)
+states/Idle-Away/position = Vector2(591, 55)
 states/Idle-Forward/node = SubResource("AnimationNodeAnimation_m3x18")
-states/Idle-Forward/position = Vector2(422, 9)
+states/Idle-Forward/position = Vector2(322, -87)
 states/Idle-Left/node = SubResource("AnimationNodeAnimation_axv6u")
-states/Idle-Left/position = Vector2(422, 180)
+states/Idle-Left/position = Vector2(270, 197)
 states/Idle-Right/node = SubResource("AnimationNodeAnimation_vadfm")
-states/Idle-Right/position = Vector2(422, 266)
-states/Start/position = Vector2(130, 137)
-transitions = ["Start", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_umkk4"), "Idle-Forward", "End", SubResource("AnimationNodeStateMachineTransition_0asqb"), "Idle-Away", "End", SubResource("AnimationNodeStateMachineTransition_itw6p"), "Idle-Left", "End", SubResource("AnimationNodeStateMachineTransition_l4utq"), "Idle-Right", "End", SubResource("AnimationNodeStateMachineTransition_8onu7"), "Start", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_ahnm1"), "Start", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_sg188"), "Start", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_f7qg2")]
-graph_offset = Vector2(-73, -28)
+states/Idle-Right/position = Vector2(535, 374)
+states/Start/position = Vector2(-51, 86)
+transitions = ["Start", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_umkk4"), "Idle-Forward", "End", SubResource("AnimationNodeStateMachineTransition_0asqb"), "Idle-Away", "End", SubResource("AnimationNodeStateMachineTransition_itw6p"), "Idle-Left", "End", SubResource("AnimationNodeStateMachineTransition_l4utq"), "Idle-Right", "End", SubResource("AnimationNodeStateMachineTransition_8onu7"), "Start", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_ahnm1"), "Start", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_sg188"), "Start", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_f7qg2"), "Idle-Left", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_opafq"), "Idle-Away", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_1fc56"), "Idle-Right", "Idle-Forward", SubResource("AnimationNodeStateMachineTransition_nbx57"), "Idle-Forward", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_lqdln"), "Idle-Left", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_bbajg"), "Idle-Right", "Idle-Away", SubResource("AnimationNodeStateMachineTransition_u370o"), "Idle-Forward", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_nebuf"), "Idle-Away", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_h14p5"), "Idle-Right", "Idle-Left", SubResource("AnimationNodeStateMachineTransition_5al3p"), "Idle-Left", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_85r2m"), "Idle-Forward", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_1rtqa"), "Idle-Away", "Idle-Right", SubResource("AnimationNodeStateMachineTransition_jh7k7")]
+graph_offset = Vector2(-233, -196)
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0cuh5"]
 input_0/name = "Idle"
@@ -2438,10 +2487,10 @@ states/Walk-Right/position = Vector2(675, 23)
 states/Walk-Toward/node = SubResource("AnimationNodeAnimation_u3nlx")
 states/Walk-Toward/position = Vector2(502, -105)
 transitions = ["Start", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_gjngp"), "Start", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_7nwmo"), "Start", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_8mc8q"), "Start", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_d3nbj"), "Walk-Toward", "End", SubResource("AnimationNodeStateMachineTransition_32oog"), "Walk-Right", "End", SubResource("AnimationNodeStateMachineTransition_2w7al"), "Walk-Left", "End", SubResource("AnimationNodeStateMachineTransition_x4t77"), "Walk-Away", "End", SubResource("AnimationNodeStateMachineTransition_jw2ma"), "Walk-Toward", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_fxo0s"), "Walk-Toward", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_pto3w"), "Walk-Toward", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_ufd7u"), "Walk-Right", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_bhbqd"), "Walk-Right", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_srrwu"), "Walk-Right", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_32jjd"), "Walk-Left", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_qyjv4"), "Walk-Left", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_x7t8x"), "Walk-Left", "Walk-Away", SubResource("AnimationNodeStateMachineTransition_d83x7"), "Walk-Away", "Walk-Left", SubResource("AnimationNodeStateMachineTransition_6c41i"), "Walk-Away", "Walk-Right", SubResource("AnimationNodeStateMachineTransition_2vpr7"), "Walk-Away", "Walk-Toward", SubResource("AnimationNodeStateMachineTransition_g7r7t")]
-graph_offset = Vector2(-201, -75)
+graph_offset = Vector2(-221, -106)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
-graph_offset = Vector2(0, -169.686)
+graph_offset = Vector2(-191, -463)
 nodes/Action-Transitions/node = SubResource("AnimationNodeTransition_27dc0")
 nodes/Action-Transitions/position = Vector2(460, -20)
 nodes/Idle/node = SubResource("AnimationNodeStateMachine_n3t0c")
