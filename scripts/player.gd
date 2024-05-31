@@ -76,9 +76,7 @@ func _input(event) -> void:
 		
 	
 func _physics_process(delta) -> void:
-	if not can_physics_process():
-		return
-
+	$AnimationTree.advance(delta)
 	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
@@ -118,13 +116,6 @@ func handle_enter_build_mode(building: StaticBody2D):
 	
 	# Turn the viewport off
 	$PlayerViewport/InventoryViewport.visible = false
-	
-	
-## Checks to make sure everything the physics process will need has been instantiated
-func can_physics_process() -> bool:
-	if not is_instance_valid(attributes):
-		return false
-	return true
 
 ## Processes the action of this object
 func action(weapon: Node) -> void:
@@ -261,4 +252,5 @@ func __handle_primary_mouse_pressed() -> void:
 	var reach = __get_weapon_reach()
 	if reach == -1:
 		return
+
 	controller._handle_action(get_target(reach))

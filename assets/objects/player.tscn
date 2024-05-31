@@ -18,7 +18,7 @@
 [sub_resource type="Resource" id="Resource_838iy"]
 script = ExtResource("2_c112w")
 IDLE_LENGTH = 0.8
-WALK_LENGTH = 0.4
+WALK_LENGTH = 0.6
 direction_facing = 0
 
 [sub_resource type="Resource" id="Resource_hd5a7"]
@@ -2490,7 +2490,7 @@ transitions = ["Start", "Walk-Toward", SubResource("AnimationNodeStateMachineTra
 graph_offset = Vector2(-221, -106)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lud6u"]
-graph_offset = Vector2(-191, -463)
+graph_offset = Vector2(40.926, -310.472)
 nodes/Action-Transitions/node = SubResource("AnimationNodeTransition_27dc0")
 nodes/Action-Transitions/position = Vector2(460, -20)
 nodes/Idle/node = SubResource("AnimationNodeStateMachine_n3t0c")
@@ -2527,7 +2527,7 @@ texture_filter = 1
 texture = ExtResource("2_iqng6")
 hframes = 4
 vframes = 3
-frame = 6
+frame = 9
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2556,7 +2556,7 @@ texture_filter = 1
 texture = ExtResource("3_l7ogd")
 hframes = 3
 vframes = 3
-frame = 6
+frame = 2
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2585,6 +2585,7 @@ texture_filter = 1
 texture = ExtResource("4_3sqng")
 hframes = 7
 vframes = 6
+frame = 2
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2612,7 +2613,7 @@ texture_filter = 1
 texture = ExtResource("5_wlbna")
 hframes = 5
 vframes = 5
-frame = 6
+frame = 16
 metadata/_edit_lock_ = true
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -2648,9 +2649,11 @@ zoom = Vector2(3.955, 3.955)
 [node name="Equipment" type="Node2D" parent="."]
 
 [node name="5" type="Sprite2D" parent="Equipment"]
+z_index = 18
 texture_filter = 1
-position = Vector2(7, 4)
-skew = 0.523599
+position = Vector2(4, 8)
+rotation = -1.5708
+flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

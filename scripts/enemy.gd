@@ -25,12 +25,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta : float) -> void:
+	$AnimationTree.advance(delta)
 	if is_instance_valid(controller.detected_player):
 		var direction = global_position.direction_to(controller.detected_player.global_position)
 		controller._maneuver( direction * attributes.speed )
 	else:
 		controller._maneuver(Vector2())
-		
+	
 	controller._handle_attack_player()
 	
 	move_and_collide(velocity * delta)
