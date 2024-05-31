@@ -18,6 +18,8 @@ var backpack : Array[EquipmentSlot] = []
 
 var total_item_count : Dictionary = {}
 
+var slots_that_have_equipment: Array[int] = []
+
 signal send_item_did_equip
 signal send_item_did_remove_equip
 
@@ -63,17 +65,20 @@ func add_to_inventory(item : Node, index : int = -1) -> bool:
 	var _index : int = index
 	
 	if _index == -1:
+		for slot in slots_that_have_equipment:
+			# Set it to stack onto a slot if there is room
+			if (backpack[slot].item.attributes.object_name == item.attributes.object_name # Item in slot is of this items type
+				and backpack[slot].quantity < backpack[slot].item.stack_size ): # Stack is not full
+				_index = slot
+				break
 		# Find the lowest index and set i equal to
 		for i in range(0, max_backpack_size):
+			if _index >= 0:
+				break
 			# Set it to first empty slot if it does not have an index yet
 			if backpack[i].is_empty() and _index == -1:
 				_index = i
-			
-			# Set it to stack onto a slot if there is room
-			if (!backpack[i].is_empty() # Checks that this slot is not an empty slot
-				and backpack[i].item.attributes.object_name == item.attributes.object_name # Item in slot is of this items type
-				and backpack[i].quantity < backpack[i].item.stack_size ): # Stack is not full
-				_index = i
+				slots_that_have_equipment.push_back(i)
 				break
 	
 	if _index == -1: ## TODO test this
@@ -102,24 +107,24 @@ func remove_from_inventory(item_name: String, quantity: int, index: int = -1) ->
 	# Check if the quantity we need to remove is available
 	if total_item_count[item_name] < quantity:
 		return false
-		
+	
 	# Reduce count in total
 	total_item_count[item_name] -= quantity
 	
 	# Iterate through and reduce / delete from backback until we are done
-	for slot : EquipmentSlot in backpack:
-		quantity = __handle_remove_quantity_from_slot(slot, item_name, quantity)
+	for i in range(0, slots_that_have_equipment.size()):
+		quantity = __handle_remove_quantity_from_slot(backpack[slots_that_have_equipment[i]], item_name, quantity, i)
 	
 	return true
 	
 ## Determines if this slot has the item we are removing and calls process as necessary
-func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int) -> int:
+func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int, index_of_slot_tracker: int) -> int:
 	if is_instance_valid(slot.item) and slot.item.attributes.object_name == item_to_remove:
-		return __process_remove_quantity_from_slot(slot, quantity)
+		return __process_remove_quantity_from_slot(slot, quantity, index_of_slot_tracker)
 	return quantity
 
 ## Handle logic for removing quantity from a given slot
-func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> int:
+func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int, index_of_slot_tracker: int) -> int:
 	# EquipmentSlot < quantity
 	if slot.quantity < quantity:
 		var r_quantity = quantity - slot.quantity
@@ -133,6 +138,7 @@ func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> 
 	if slot.quantity == 0:
 		slot.item = null
 		slot.update_icon()
+		slots_that_have_equipment.remove_at(index_of_slot_tracker)
 	else:
 		slot.update_label()
 	return 0
