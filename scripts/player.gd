@@ -56,8 +56,8 @@ func _ready() -> void:
 	crafting_manager.owner = self
 	crafting_manager.initialize_crafting_manager()
 	
-	inventory_manager.send_item_equipped.connect(equipment_manager.set_equipment_item)
-	inventory_manager.send_item_unequpped.connect(equipment_manager.remove_equipment)
+	inventory_manager.send_item_did_equip.connect(equipment_manager.set_equipment_item)
+	inventory_manager.send_item_did_remove_equip.connect(equipment_manager.remove_equipment)
 	
 	$PlayerViewport/InventoryViewport.enter_build_mode.connect(handle_enter_build_mode)
 	

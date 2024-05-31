@@ -3,23 +3,23 @@ extends Resource
 ## Manage the inventory of the player
 class_name InventoryManager
 
+## Max slots the backpack allows
+@export
+var max_backpack_size : int
+
 ## Reference to our inventory viewport
 var inventory_viewport : Control
 
 ## Reference to the equipment node for the player
 var equipment : Node2D
 
-## Max slots the backpack allows
-@export
-var max_backpack_size : int
-
 ## Holds the items of the players backpack
 var backpack : Array[EquipmentSlot] = []
 
 var total_item_count : Dictionary = {}
 
-signal send_item_equipped
-signal send_item_unequpped
+signal send_item_did_equip
+signal send_item_did_remove_equip
 
 func initialize_backpack():
 	# Resize and populate the backpack with equipment slots
@@ -48,7 +48,7 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 	equipment.get_node(str(slot)).texture = Global.generate_image_texture_from_scene(data.item)
 	
 	# Signal the item that was added
-	send_item_equipped.emit(data.item)
+	send_item_did_equip.emit(data.item)
 
 ## Clears an equipment slot of the equipped item
 ##
@@ -56,7 +56,7 @@ func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
 ## Since this instance was a clone of the inventory item
 func remove_item_from_equipment_slot(slot: Enums.ITEM_TYPE):
 	equipment.get_node(str(slot)).texture = null
-	send_item_unequpped.emit(slot)
+	send_item_did_remove_equip.emit(slot)
 
 ## Adds an item to the inventory
 func add_to_inventory(item : Node, index : int = -1) -> bool:
