@@ -30,6 +30,7 @@ func initialize_backpack():
 	for a in range(0, max_backpack_size):
 		var n_equipment_slot := ( load("res://assets/objects/equipment_slot.tscn") as PackedScene ).instantiate() as EquipmentSlot
 		n_equipment_slot.inventory_root = inventory_viewport
+		n_equipment_slot.index_in_backpack = a
 		backpack[a] = n_equipment_slot
 		n_equipment_slot.viewport = inventory_viewport
 		bp_slots.add_child(n_equipment_slot)
@@ -37,12 +38,99 @@ func initialize_backpack():
 	inventory_viewport.item_dropped.connect(handle_item_dropped_into_slot)
 
 ## Handles the emission of the item_dropped signal from the viewport
-func handle_item_dropped_into_slot(t: Enums.ITEM_TYPE, data: EquipmentSlot):
-	if t == Enums.ITEM_TYPE.MAIN:
-		remove_item_from_equipment_slot(data.item.type)
-		return
+func handle_item_dropped_into_slot(from: EquipmentSlot, to: EquipmentSlot):
+	# Both main and no swap
+	if ( from.allowed_type == Enums.ITEM_TYPE.MAIN 
+		 and to.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and not is_instance_valid(to.item)
+	):
+		to.item = from.item
+		to.quantity = from.quantity
+		
+		from.item = null
+		from.quantity = 0
+		slots_that_have_equipment.remove_at(slots_that_have_equipment.find(from.index_in_backpack))
+		slots_that_have_equipment.push_back(to.index_in_backpack)
 	
-	add_to_equipment_slot(t, data)
+	# Both main and swapping
+	elif ( from.allowed_type == Enums.ITEM_TYPE.MAIN 
+		 and to.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and is_instance_valid(to.item)
+	):
+		# Update quantities
+		var to_old_quantity = to.quantity
+		var to_old_item = to.item
+		
+		to.quantity = from.quantity
+		to.item = from.item
+		
+		from.quantity = to_old_quantity
+		from.item = to_old_item
+	
+	# Main -> Equipment, no swap
+	elif ( from.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and to.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and not is_instance_valid(to.item)
+	):
+		to.item = from.item
+		to.quantity = from.quantity
+		add_to_equipment_slot(to.allowed_type, to)
+		
+		from.item = null
+		from.quantity = 0
+		
+		slots_that_have_equipment.remove_at(slots_that_have_equipment.find(from.index_in_backpack))
+	
+	# Main -> Equipment, swapping
+	elif ( from.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and to.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and is_instance_valid(to.item)
+	):
+		var to_old_quantity = to.quantity
+		var to_old_item = to.item
+		
+		to.quantity = from.quantity
+		to.item = from.item
+		
+		from.quantity = to_old_quantity
+		from.item = to_old_item
+		
+		remove_item_from_equipment_slot(to.allowed_type)
+		add_to_equipment_slot(to.allowed_type, to)
+		
+	# Equipment -> Main, no swap
+	elif ( from.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and to.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and not is_instance_valid(to.item)
+	):
+		to.item = from.item
+		to.quantity = from.quantity
+		
+		from.item = null
+		from.quantity = 0
+		
+		remove_item_from_equipment_slot(from.allowed_type)
+		slots_that_have_equipment.push_back(to.index_in_backpack)
+	
+	# Equipment -> Main, swapping
+	elif ( from.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and to.allowed_type == Enums.ITEM_TYPE.MAIN
+		 and is_instance_valid(to.item)
+	):
+		var to_old_quantity = to.quantity
+		var to_old_item = to.item
+		
+		to.quantity = from.quantity
+		to.item = from.item
+		
+		from.quantity = to_old_quantity
+		from.item = to_old_item
+		
+		remove_item_from_equipment_slot(from.allowed_type)
+		add_to_equipment_slot(from.allowed_type, to)
+	
+	to.update_icon()
+	from.update_icon()
 
 ## Move item from inventory to equipment slot
 func add_to_equipment_slot(slot: Enums.ITEM_TYPE, data: EquipmentSlot):
@@ -112,33 +200,43 @@ func remove_from_inventory(item_name: String, quantity: int, index: int = -1) ->
 	total_item_count[item_name] -= quantity
 	
 	# Iterate through and reduce / delete from backback until we are done
+	var list_of_value_to_pop : Array[int] = []
 	for i in range(0, slots_that_have_equipment.size()):
-		quantity = __handle_remove_quantity_from_slot(backpack[slots_that_have_equipment[i]], item_name, quantity, i)
+		var quantity_empty = __handle_remove_quantity_from_slot(backpack[slots_that_have_equipment[i]], item_name, quantity)
+		quantity = quantity_empty[0]
+		if quantity_empty[1]:
+			list_of_value_to_pop.push_back(backpack[slots_that_have_equipment[i]].index_in_backpack)
+		if quantity == 0:
+			break
+	
+	for pop_value in list_of_value_to_pop:
+		slots_that_have_equipment.remove_at(slots_that_have_equipment.find(pop_value))
 	
 	return true
 	
 ## Determines if this slot has the item we are removing and calls process as necessary
-func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int, index_of_slot_tracker: int) -> int:
+func __handle_remove_quantity_from_slot(slot: EquipmentSlot, item_to_remove: String, quantity: int) -> Array:
 	if is_instance_valid(slot.item) and slot.item.attributes.object_name == item_to_remove:
-		return __process_remove_quantity_from_slot(slot, quantity, index_of_slot_tracker)
-	return quantity
+		return __process_remove_quantity_from_slot(slot, quantity)
+	return [ quantity, false ]
 
 ## Handle logic for removing quantity from a given slot
-func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int, index_of_slot_tracker: int) -> int:
+func __process_remove_quantity_from_slot(slot: EquipmentSlot, quantity: int) -> Array:
 	# EquipmentSlot < quantity
 	if slot.quantity < quantity:
 		var r_quantity = quantity - slot.quantity
 		slot.quantity = 0
 		slot.item = null
 		slot.update_icon()
-		return r_quantity
+		return [ r_quantity, true ]
 	
 	# EquipmentSlot >= quantity
 	slot.quantity -= quantity
+	var is_slot_empty: bool = false
 	if slot.quantity == 0:
 		slot.item = null
 		slot.update_icon()
-		slots_that_have_equipment.remove_at(index_of_slot_tracker)
+		is_slot_empty = true
 	else:
 		slot.update_label()
-	return 0
+	return [0, is_slot_empty]

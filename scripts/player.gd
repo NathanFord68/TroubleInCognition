@@ -249,7 +249,7 @@ func handle_player_escape_input() -> void:
 		print_debug("Open the menu")
 
 func __get_weapon_reach() -> float:
-	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment:
+	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment and is_instance_valid(equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY]):
 		return equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY].weapon_reach
 	return -1
 

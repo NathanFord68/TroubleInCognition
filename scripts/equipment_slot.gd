@@ -19,7 +19,10 @@ var inventory_root : Control
 
 var viewport: Control
 
+# Used to track the mouse for interaction while in the viewport
 var is_active_equipment_slot: bool = false
+
+var index_in_backpack: int
 
 #@onready
 #var viewport: Control = %InventoryViewportRootChild.get_parent()
@@ -68,15 +71,24 @@ func _get_drag_data(_at_position: Vector2):
 	set_drag_preview(make_drag_preview())
 	return self
 
+# Data is the from, we are the to
 func _can_drop_data(_at_position, data):
-	if allowed_type == Enums.ITEM_TYPE.MAIN:
-		return true
+	# Main -> Equipment
+	if ( data.allowed_type == Enums.ITEM_TYPE.MAIN 
+		 and self.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and data.item.type != allowed_type
+	):
+		return false
 	
-	if not data.item is ItemBase:
-		return false
+	# Equipment -> Main
+	if ( self.allowed_type == Enums.ITEM_TYPE.MAIN 
+		 and data.allowed_type != Enums.ITEM_TYPE.MAIN
+		 and is_instance_valid(self.item)
+		 and self.item.type != data.allowed_type
 		
-	if allowed_type != data.item.type:
+	):
 		return false
+	
 	return true
 	
 func _drop_data(_at_position : Vector2, data : Variant) -> void:
@@ -86,24 +98,9 @@ func _drop_data(_at_position : Vector2, data : Variant) -> void:
 		and item.type != data.allowed_type ):
 		return
 	
-	# Update quantities
-	var our_old_quantity = quantity
-	quantity = data.quantity
-	data.quantity = our_old_quantity
-	
-	# Update the items
-	var our_old_item = item
-	item = data.item
-	data.item = our_old_item
-	
-	# Update icons
-	update_icon()
-	data.update_icon()
 	
 	
-	# Signal that the item has been dropped in this slot
-	if not (allowed_type == Enums.ITEM_TYPE.MAIN and data.allowed_type == Enums.ITEM_TYPE.MAIN):
-		inventory_root.item_dropped.emit(allowed_type, self)
+	inventory_root.item_dropped.emit(data, self)
 
 ## Updates the icon for this slot
 func update_icon():
