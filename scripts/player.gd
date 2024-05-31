@@ -75,7 +75,7 @@ func _input(event) -> void:
 		$Camera2D.zoom = Vector2(zoom, zoom)
 		
 	
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	if not can_physics_process():
 		return
 
@@ -101,7 +101,8 @@ func _physics_process(_delta) -> void:
 	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
 		crafting_manager.handle_craft_item()
 
-	move_and_slide()
+	move_and_collide(velocity * delta)
+	#move_and_slide()
 
 func handle_enter_build_mode(building: StaticBody2D):
 	# Enter build mode

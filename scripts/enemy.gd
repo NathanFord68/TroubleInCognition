@@ -24,7 +24,7 @@ func _ready():
 	controller.owner = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta : float) -> void:
+func _physics_process(delta : float) -> void:
 	if is_instance_valid(controller.detected_player):
 		var direction = global_position.direction_to(controller.detected_player.global_position)
 		controller._maneuver( direction * attributes.speed )
@@ -33,7 +33,7 @@ func _physics_process(_delta : float) -> void:
 		
 	controller._handle_attack_player()
 	
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 func action(weapon : Weapon ) -> void:
 	attributes.health -= weapon.damage
