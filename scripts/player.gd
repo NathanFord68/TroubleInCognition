@@ -132,6 +132,8 @@ func action(weapon: Node) -> void:
 	# Apply the damage
 	attributes.health -= weapon.damage
 	
+	$PlayerHud.health_change.emit(-weapon.damage)
+	
 	if attributes.health <= 0:
 		queue_free()
 

@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgcluu4a5d0y2"]
+
+[sub_resource type="GDScript" id="GDScript_txxnn"]
+resource_name = "player_hud"
+script/source = "extends CanvasLayer
+
+signal health_change
+signal add_message
+
+func _ready():
+	health_change.connect(handle_health_change)
+	add_message.connect(handle_add_message)
+	
+func handle_health_change(delta: int):
+	$StatBars/Health.value += delta
+
+func handle_add_message(message: String):
+	# Create and attatch the label
+	var l = Label.new()
+	l.text = message
+	$PanelContainer/ScrollContainer/MessageContainer.add_child(l)
+	
+	# Wait desired time for player to read the message
+	await get_tree().create_timer(2).timeout
+	
+	# Tween the alpha
+	var tween := create_tween()
+	tween.tween_property(l, \"modulate:a\", 0, 3)
+	tween.tween_callback(l.queue_free)
+"
+
+[sub_resource type="Gradient" id="Gradient_j82sv"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxvwv"]
+gradient = SubResource("Gradient_j82sv")
+width = 120
+height = 30
+
+[sub_resource type="Gradient" id="Gradient_gd6ae"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l670a"]
+gradient = SubResource("Gradient_gd6ae")
+width = 120
+height = 30
+
+[sub_resource type="Gradient" id="Gradient_a2t1n"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y85lf"]
+gradient = SubResource("Gradient_a2t1n")
+width = 120
+height = 30
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = SubResource("GDScript_txxnn")
+
+[node name="StatBars" type="VBoxContainer" parent="."]
+offset_right = 120.0
+offset_bottom = 69.0
+
+[node name="Health" type="TextureProgressBar" parent="StatBars"]
+layout_mode = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_dxvwv")
+
+[node name="Stamina" type="TextureProgressBar" parent="StatBars"]
+layout_mode = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_l670a")
+
+[node name="Mana" type="TextureProgressBar" parent="StatBars"]
+layout_mode = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_y85lf")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 100.0
+grow_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MessageContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
