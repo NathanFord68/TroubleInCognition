@@ -144,6 +144,7 @@ func interact() -> void:
 
 ## Gets the target the player is trying to interact with
 func get_target(reach_range : float) -> Node:
+	var s_hit = shape_to_reach(reach_range)
 	var p_hit = point_to_mouse()
 	
 	if Env.mode == Enums.MODE.DEV:
@@ -154,10 +155,11 @@ func get_target(reach_range : float) -> Node:
 	if not is_instance_valid(p_hit):
 		return null
 		
-	if global_position.distance_to(p_hit.global_position) > reach_range:
-		return null
+	for s_target in s_hit:
+		if s_target.collider == p_hit:
+			return p_hit
 		
-	return p_hit
+	return null
 
 ## Ray traces to the mouse position from the player
 func trace_to_mouse(reach_range: float) -> Node:
@@ -203,6 +205,26 @@ func point_to_mouse() -> Node:
 		return hit[0].collider
 	
 	return null
+
+func shape_to_reach(reach_range: float) -> Array[Dictionary]:
+	# Get world space physics
+	var space = get_world_2d().direct_space_state
+	
+	# Create query
+	var query = PhysicsShapeQueryParameters2D.new()
+	var shape = CircleShape2D.new()
+	
+	shape.radius = reach_range
+	
+	query.exclude = [self]
+	query.shape = shape
+	query.margin = reach_range
+	query.transform = transform
+	
+	# Cast the query
+	var hit = space.intersect_shape(query)
+	
+	return hit
 
 ## Handle the placement of the building in the world
 func handle_place_build() -> void:
