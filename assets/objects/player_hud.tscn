@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgcluu4a5d0y2"]
+[gd_scene load_steps=9 format=3 uid="uid://bgcluu4a5d0y2"]
 
 [sub_resource type="GDScript" id="GDScript_txxnn"]
 resource_name = "player_hud"
@@ -6,10 +6,16 @@ script/source = "extends CanvasLayer
 
 signal health_change
 signal add_message
+signal update_craft_percentage
+signal remove_top_of_queue
+signal add_item_to_queue
 
 func _ready():
 	health_change.connect(handle_health_change)
 	add_message.connect(handle_add_message)
+	update_craft_percentage.connect(handle_update_craft_percentage)
+	remove_top_of_queue.connect(handle_remove_top_of_queue)
+	add_item_to_queue.connect(handle_add_item_to_queue)
 	
 func handle_health_change(delta: int):
 	$StatBars/Health.value += delta
@@ -27,6 +33,18 @@ func handle_add_message(message: String):
 	var tween := create_tween()
 	tween.tween_property(l, \"modulate:a\", 0, 3)
 	tween.tween_callback(l.queue_free)
+
+func handle_update_craft_percentage(percent: float):
+	$CraftingViewport/VBoxContainer/CraftingProgress.value = percent
+
+func handle_remove_top_of_queue():
+	$CraftingViewport/VBoxContainer/ScrollContainer/CraftingQueue.get_child(0).queue_free()
+	$CraftingViewport/VBoxContainer/CraftingProgress.value = 0
+
+func handle_add_item_to_queue(item_name: String):
+	var l = Label.new()
+	l.text = item_name
+	$CraftingViewport/VBoxContainer/ScrollContainer/CraftingQueue.add_child(l)
 "
 
 [sub_resource type="Gradient" id="Gradient_j82sv"]
@@ -52,6 +70,9 @@ colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
 gradient = SubResource("Gradient_a2t1n")
 width = 120
 height = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krft3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = SubResource("GDScript_txxnn")
@@ -89,4 +110,34 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="MessageContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="CraftingViewport" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingViewport"]
+layout_mode = 2
+
+[node name="CraftingProgress" type="ProgressBar" parent="CraftingViewport/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_krft3")
+show_percentage = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CraftingViewport/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="CraftingQueue" type="VBoxContainer" parent="CraftingViewport/VBoxContainer/ScrollContainer"]
 layout_mode = 2

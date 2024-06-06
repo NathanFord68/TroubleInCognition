@@ -54,8 +54,8 @@ func can_craft() -> bool:
 	# For each mat, check the inventory
 	for mat in mats: 
 		if mat.name not in inventory.total_item_count or inventory.total_item_count[mat.name] < mat.required:
+			$"../../PlayerHud".add_message.emit("Not enout materials to craft %s" % craft_order.item.name.capitalize())
 			return false # short the method out and return false
-	
 	# Return true by default
 	return true
 

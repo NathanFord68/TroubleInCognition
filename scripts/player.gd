@@ -57,6 +57,7 @@ func _ready() -> void:
 	crafting_manager.crafting_viewport = $PlayerViewport/CraftingViewport
 	crafting_manager.owner = self
 	crafting_manager.initialize_crafting_manager()
+	crafting_manager.player_hud = $PlayerHud
 	
 	inventory_manager.send_item_did_equip.connect(equipment_manager.set_equipment_item)
 	inventory_manager.send_item_did_remove_equip.connect(equipment_manager.remove_equipment)
@@ -111,6 +112,9 @@ func _physics_process(delta) -> void:
 	if not crafting_manager.is_crafting and crafting_manager.orders.size() > 0:
 		crafting_manager.handle_craft_item()
 
+	if crafting_manager.is_crafting:
+		$PlayerHud.update_craft_percentage.emit(100 * (crafting_manager.timer.time_left / crafting_manager.orders[0].item.time_to_craft))
+		
 	move_and_collide(velocity * delta)
 
 func handle_enter_build_mode(building: StaticBody2D):

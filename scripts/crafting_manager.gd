@@ -11,11 +11,17 @@ var owner : CharacterBody2D
 ## Reference to the crafting viewport
 var crafting_viewport : CraftingViewport
 
+## Reference the player hud so we can push craft orders
+var player_hud : CanvasLayer
+
 ## Keeps the queue of crafting orders
 var orders : Array[Dictionary] = []
 
 ## Prevents the system from crafting the next order until the current one is done
 var is_crafting: bool = false
+
+## Holds a reference to the scene tree timer so we can access this from the player
+var timer: SceneTreeTimer
 
 func initialize_crafting_manager() -> void:
 	crafting_viewport.send_order.connect(add_to_order)
@@ -33,14 +39,16 @@ func handle_craft_item() -> void:
 	
 	# Loop through quantity and start crafting
 	for i in range(0, order.quantity):
-		await owner.get_tree().create_timer(order.item.time_to_craft).timeout
-				
+		timer = owner.get_tree().create_timer(order.item.time_to_craft)
+		await timer.timeout
+		
 		# craft item
 		var item = load(order.item.object_data.engine_info.asset_path).instantiate()
 		__craft_item(item, order.item)
 		
 		# Add to inventory
 		inventory.add_to_inventory(item)
+		player_hud.remove_top_of_queue.emit()
 	
 	# Pop order off array
 	orders.pop_front()
@@ -48,6 +56,8 @@ func handle_craft_item() -> void:
 	
 func add_to_order(order: Dictionary) -> void:
 	orders.push_back(order)
+	for i in range(0, order.quantity):
+		player_hud.add_item_to_queue.emit(order.item.name.capitalize())
 
 func __craft_item(item: StaticBody2D, recipe: Dictionary, key: String = "") -> void:
 	# Get all the keys so we can populate item

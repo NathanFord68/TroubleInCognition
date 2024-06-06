@@ -101,8 +101,6 @@ func _drop_data(_at_position : Vector2, data : Variant) -> void:
 		and item.type != data.allowed_type ):
 		return
 	
-	
-	
 	inventory_root.item_dropped.emit(data, self)
 
 ## Updates the icon for this slot
