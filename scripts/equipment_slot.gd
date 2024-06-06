@@ -130,6 +130,7 @@ func update_label():
 
 func interact() -> void:
 	viewport.enter_build_mode.emit(item)
+	get_tree().paused = false
 
 func _on_mouse_entered():
 	is_active_equipment_slot = true

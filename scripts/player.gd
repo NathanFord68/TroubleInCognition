@@ -90,6 +90,7 @@ func _physics_process(delta) -> void:
 	
 	if is_in_build_mode and Input.is_action_pressed("player_override_snap_to_grid"):
 		building_to_place.global_position = get_global_mouse_position()
+	
 	if is_in_build_mode and not Input.is_action_pressed("player_override_snap_to_grid"):
 		# Get the location of the tile my mouse is on
 		var tm := get_tree().root.get_node(tile_map_path) as TileMap
