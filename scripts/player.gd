@@ -88,7 +88,9 @@ func _physics_process(delta) -> void:
 	if is_primary_action_pressed:
 		__handle_primary_mouse_pressed()
 	
-	if is_in_build_mode:
+	if is_in_build_mode and Input.is_action_pressed("player_override_snap_to_grid"):
+		building_to_place.global_position = get_global_mouse_position()
+	if is_in_build_mode and not Input.is_action_pressed("player_override_snap_to_grid"):
 		# Get the location of the tile my mouse is on
 		var tm := get_tree().root.get_node(tile_map_path) as TileMap
 		var map_position = tm.local_to_map(tm.to_local(get_global_mouse_position()))
@@ -240,11 +242,14 @@ func handle_place_build() -> void:
 	var building_that_can_place = load(building_to_place.engine_info.asset_path).instantiate()
 	
 	# Get the location of the tile my mouse is on
-	var tm := get_tree().root.get_node(tile_map_path) as TileMap
-	var map_position = tm.local_to_map(tm.to_local(get_global_mouse_position()))
-	var local_position = tm.map_to_local(map_position)
-	
-	building_that_can_place.position = tm.to_global(local_position)
+	if Input.is_action_pressed("player_override_snap_to_grid"):
+		building_that_can_place.position = get_global_mouse_position()
+	else:
+		var tm := get_tree().root.get_node(tile_map_path) as TileMap
+		var map_position = tm.local_to_map(tm.to_local(get_global_mouse_position()))
+		var local_position = tm.map_to_local(map_position)
+		
+		building_that_can_place.position = tm.to_global(local_position)
 	
 	# Attach to tree
 	get_tree().root.add_child(building_that_can_place)
