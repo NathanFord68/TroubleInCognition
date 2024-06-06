@@ -41,6 +41,8 @@ var building_to_place: StaticBody2D
 ## Tracks external forces being applied to us
 var acting_force : Vector2
 
+const tile_map_path : String = "Main/TileMap"
+
 func _ready() -> void:
 	controller.animation_tree = $AnimationTree
 	controller.animation_player = $AnimationPlayer
@@ -87,7 +89,14 @@ func _physics_process(delta) -> void:
 		__handle_primary_mouse_pressed()
 	
 	if is_in_build_mode:
-		building_to_place.global_position = get_global_mouse_position()
+		# Get the location of the tile my mouse is on
+		var tm := get_tree().root.get_node(tile_map_path) as TileMap
+		var map_position = tm.local_to_map(tm.to_local(get_global_mouse_position()))
+		var local_position = tm.map_to_local(map_position)
+		
+		# Set the building global location to the global location of the tile
+		building_to_place.global_position = tm.to_global(local_position)
+	
 	
 	# Movement
 	controller._maneuver(Vector2(
@@ -100,7 +109,6 @@ func _physics_process(delta) -> void:
 		crafting_manager.handle_craft_item()
 
 	move_and_collide(velocity * delta)
-	#move_and_slide()
 
 func handle_enter_build_mode(building: StaticBody2D):
 	# Enter build mode
@@ -230,7 +238,14 @@ func shape_to_reach(reach_range: float) -> Array[Dictionary]:
 func handle_place_build() -> void:
 	# Instantiate new instance of the thing we are crafting
 	var building_that_can_place = load(building_to_place.engine_info.asset_path).instantiate()
-	building_that_can_place.global_position = get_global_mouse_position()
+	
+	# Get the location of the tile my mouse is on
+	var tm := get_tree().root.get_node(tile_map_path) as TileMap
+	var map_position = tm.local_to_map(tm.to_local(get_global_mouse_position()))
+	var local_position = tm.map_to_local(map_position)
+	
+	building_that_can_place.position = tm.to_global(local_position)
+	
 	# Attach to tree
 	get_tree().root.add_child(building_that_can_place)
 	

@@ -73,8 +73,11 @@ func _get_drag_data(_at_position: Vector2):
 
 # Data is the from, we are the to
 func _can_drop_data(_at_position, data):
+	
+	
 	# Main -> Equipment
-	if ( data.allowed_type == Enums.ITEM_TYPE.MAIN 
+	if data.item is HarvestNode or ( 
+		 data.allowed_type == Enums.ITEM_TYPE.MAIN 
 		 and self.allowed_type != Enums.ITEM_TYPE.MAIN
 		 and data.item.type != allowed_type
 	):
