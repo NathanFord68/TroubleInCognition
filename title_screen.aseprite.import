@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cmp1ikvvui62t"
+path="res://.godot/imported/title_screen.aseprite-7f744557ec2b090e94b358e75ba2b137.res"
+
+[deps]
+
+source_file="res://title_screen.aseprite"
+dest_files=["res://.godot/imported/title_screen.aseprite-7f744557ec2b090e94b358e75ba2b137.res"]
+
+[params]
+
