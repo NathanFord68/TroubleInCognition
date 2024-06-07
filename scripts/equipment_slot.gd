@@ -73,8 +73,6 @@ func _get_drag_data(_at_position: Vector2):
 
 # Data is the from, we are the to
 func _can_drop_data(_at_position, data):
-	
-	
 	# Main -> Equipment
 	if data.item is HarvestNode or ( 
 		 data.allowed_type == Enums.ITEM_TYPE.MAIN 
@@ -95,12 +93,6 @@ func _can_drop_data(_at_position, data):
 	return true
 	
 func _drop_data(_at_position : Vector2, data : Variant) -> void:
-	# If the slot has something not allowed in our slot return
-	if ( data.allowed_type != Enums.ITEM_TYPE.MAIN 
-		and is_instance_valid(item)
-		and item.type != data.allowed_type ):
-		return
-	
 	inventory_root.item_dropped.emit(data, self)
 
 ## Updates the icon for this slot

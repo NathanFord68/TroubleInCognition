@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://u0jbn08337i4"]
+[gd_scene load_steps=4 format=3 uid="uid://u0jbn08337i4"]
 
-[ext_resource type="PackedScene" uid="uid://ddyx1h3b4l0" path="res://scenes/title_background.tscn" id="1_el2f3"]
-[ext_resource type="Texture2D" uid="uid://fmiu1srqwg8f" path="res://scenes/title.png" id="2_sqvxh"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_02xk5"]
+[ext_resource type="PackedScene" uid="uid://ddyx1h3b4l0" path="res://assets/objects/title_background.tscn" id="1_el2f3"]
+[ext_resource type="Texture2D" uid="uid://fmiu1srqwg8f" path="res://assets/resources/title.png" id="2_sqvxh"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_02xk5")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_el2f3")]
 
@@ -73,19 +76,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Continue" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+text = "Continue"
 
-[node name="Button" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+[node name="New Game" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start"
+text = "New Game
+"
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Load" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
+[node name="Exit" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
@@ -93,3 +97,6 @@ text = "Exit"
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

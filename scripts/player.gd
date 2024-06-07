@@ -48,9 +48,10 @@ func _ready() -> void:
 	controller.animation_player = $AnimationPlayer
 	controller.owner = self
 	
-	inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
-	inventory_manager.equipment = $Equipment
-	inventory_manager.initialize_backpack()
+	if inventory_manager.backpack.size() == 0:
+		inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
+		inventory_manager.equipment = $Equipment
+		inventory_manager.initialize_backpack()
 	
 	( $PlayerViewport/CraftingViewport as CraftingViewport).inventory = inventory_manager
 	crafting_manager.inventory = inventory_manager
@@ -80,6 +81,10 @@ func _input(event) -> void:
 	
 func _physics_process(delta) -> void:
 	$AnimationTree.advance(delta)
+	
+	if Input.is_action_pressed("player_quick_save"):
+		Global.save_game("Quicksave")
+	
 	if Input.is_action_pressed("player_interact"):
 		controller.handle_interact(get_target(attributes.base_reach))
 	
@@ -303,3 +308,82 @@ func __handle_primary_mouse_pressed() -> void:
 		return
 
 	controller._handle_action(get_target(reach))
+
+func save_data() -> Dictionary:
+	var backpack = []
+	for slot_that_has_equipment in inventory_manager.slots_that_have_equipment:
+		backpack.push_back({
+			"index": slot_that_has_equipment,
+			"quantity": inventory_manager.backpack[slot_that_has_equipment].quantity,
+			"item_path": inventory_manager.backpack[slot_that_has_equipment].item.engine_info.asset_path
+		})
+	var equipment = []
+	for key in equipment_manager.equipment.keys():
+		if not is_instance_valid(equipment_manager.equipment[key]):
+			continue
+		equipment.push_back({
+			"key": key,
+			"item_path": equipment_manager.equipment[key].engine_info.asset_path
+		})
+		
+	return {
+		"filename": engine_info.asset_path,
+		"health": attributes.health,
+		"stamina": attributes.stamina,
+		"mana": attributes.mana,
+		"backpack": backpack,
+		"equipment": equipment,
+		"position": position
+	}
+
+func load_data(data: Dictionary) -> void:
+	var equipment_slots = {
+		Enums.ITEM_TYPE.CAPE: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/Cape,
+		Enums.ITEM_TYPE.HEAD: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/Head,
+		Enums.ITEM_TYPE.AMMO: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/Ammo,
+		Enums.ITEM_TYPE.SECONDARY: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Secondary,
+		Enums.ITEM_TYPE.CHEST: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Chest,
+		Enums.ITEM_TYPE.PRIMARY: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Primary,
+		Enums.ITEM_TYPE.LEGS: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3/Legs,
+		Enums.ITEM_TYPE.RING: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4/Ring,
+		Enums.ITEM_TYPE.FEET: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4/Feet,
+		Enums.ITEM_TYPE.GLOVES: $PlayerViewport/InventoryViewport/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4/Gloves
+	}
+	# Set the attributes
+	attributes.health = data.health
+	attributes.stamina = data.stamina
+	attributes.mana = data.mana
+	
+	# Set engine properties
+	position = data.position
+	
+	# Populate the inventory
+	if inventory_manager.backpack.size() == 0:
+		inventory_manager.inventory_viewport = $PlayerViewport/InventoryViewport
+		inventory_manager.equipment = $Equipment
+		inventory_manager.initialize_backpack()
+	for equipment_data in data.backpack:
+		var item = load(equipment_data["item_path"]).instantiate()
+		inventory_manager.backpack[equipment_data["index"]].quantity = equipment_data.quantity
+		inventory_manager.backpack[equipment_data["index"]].item = item
+		inventory_manager.backpack[equipment_data["index"]].update_icon()
+		inventory_manager.slots_that_have_equipment.push_back(int(equipment_data["index"]))
+		if not inventory_manager.total_item_count.has(item.attributes.object_name):
+			inventory_manager.total_item_count[item.attributes.object_name] = 0
+		inventory_manager.total_item_count[item.attributes.object_name] += equipment_data.quantity
+	
+	# Populate the equipment
+	for equipment in data.equipment:
+		# instanitate
+		var item = load(equipment.item_path).instantiate()
+		# Set the euqipment in our manager
+		equipment_manager.equipment[int(equipment.key)] = item
+		
+		# Set the sprite
+		$Equipment.get_node(str(equipment.key)).texture = Global.generate_image_texture_from_scene(item)
+		
+		# Update the inventory viewport
+		equipment_slots[int(equipment.key)].item = item
+		equipment_slots[int(equipment.key)].quantity = 1
+		equipment_slots[int(equipment.key)].update_icon()
+		

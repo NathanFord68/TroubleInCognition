@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdf80kp56we2u"
-path="res://.godot/imported/title_dead_tree.png-8662e92637beff4027f2d98af982013e.ctex"
+uid="uid://e63nypbfh56s"
+path="res://.godot/imported/title_moon.png-260cc0262798d4c772c6303c86ed44ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/title_dead_tree.png"
-dest_files=["res://.godot/imported/title_dead_tree.png-8662e92637beff4027f2d98af982013e.ctex"]
+source_file="res://assets/resources/title_moon.png"
+dest_files=["res://.godot/imported/title_moon.png-260cc0262798d4c772c6303c86ed44ad.ctex"]
 
 [params]
 

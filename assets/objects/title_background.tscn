@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ddyx1h3b4l0"]
 
-[ext_resource type="Texture2D" uid="uid://b4x22jl0ofaox" path="res://scenes/title_background.png" id="1_br13p"]
-[ext_resource type="Texture2D" uid="uid://geq35etkiix4" path="res://scenes/title_foreground.png" id="2_oy3oa"]
-[ext_resource type="Texture2D" uid="uid://e63nypbfh56s" path="res://scenes/title_moon.png" id="3_vdwwb"]
-[ext_resource type="Texture2D" uid="uid://cjm3ch4cg7lse" path="res://scenes/title_live_tree.png" id="4_ojqgn"]
-[ext_resource type="Texture2D" uid="uid://cdf80kp56we2u" path="res://scenes/title_dead_tree.png" id="5_1v0ot"]
+[ext_resource type="Texture2D" uid="uid://b4x22jl0ofaox" path="res://assets/resources/title_background.png" id="1_br13p"]
+[ext_resource type="Texture2D" uid="uid://geq35etkiix4" path="res://assets/resources/title_foreground.png" id="2_oy3oa"]
+[ext_resource type="Texture2D" uid="uid://e63nypbfh56s" path="res://assets/resources/title_moon.png" id="3_vdwwb"]
+[ext_resource type="Texture2D" uid="uid://cjm3ch4cg7lse" path="res://assets/resources/title_live_tree.png" id="4_ojqgn"]
+[ext_resource type="Texture2D" uid="uid://cdf80kp56we2u" path="res://assets/resources/title_dead_tree.png" id="5_1v0ot"]
 
 [sub_resource type="GDScript" id="GDScript_vsmcp"]
 resource_name = "title_background"
@@ -14,22 +14,17 @@ script/source = "extends ParallaxBackground
 var scroll_speed : float
 var time : float = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
 	scroll_offset.x -= scroll_speed * delta
-	scroll_offset.y = cos(time * .1) * -400
+	scroll_offset.y = 350 - cos(time * .3)  * 350
 
 "
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = SubResource("GDScript_vsmcp")
-scroll_speed = 100.0
+scroll_speed = 200.0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 z_as_relative = false
@@ -37,7 +32,7 @@ motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(4080, 0)
 
 [node name="Background" type="Sprite2D" parent="ParallaxLayer"]
-scale = Vector2(1, 1.5)
+scale = Vector2(1, 0.7)
 texture = ExtResource("1_br13p")
 centered = false
 metadata/_edit_lock_ = true
@@ -49,7 +44,8 @@ motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(3000, 0)
 
 [node name="TitleMoon" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(883, 712)
+position = Vector2(-203, 150)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_vdwwb")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
@@ -58,8 +54,7 @@ motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(4080, 0)
 
 [node name="Foreground" type="Sprite2D" parent="ParallaxLayer3"]
-position = Vector2(0, 150)
-scale = Vector2(1, 1.5)
+scale = Vector2(1, 0.75)
 texture = ExtResource("2_oy3oa")
 centered = false
 
@@ -69,47 +64,47 @@ motion_mirroring = Vector2(4080, 0)
 
 [node name="TitleLiveTree3" type="Sprite2D" parent="ParallaxLayer4"]
 z_index = 1
-position = Vector2(1923, 1022)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1778.25, 346.375)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_ojqgn")
 
 [node name="TitleLiveTree6" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(3016, 834)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2907, 468)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_ojqgn")
 
 [node name="TitleLiveTree4" type="Sprite2D" parent="ParallaxLayer4"]
 z_index = 1
-position = Vector2(461, 1079)
-scale = Vector2(0.5, 0.5)
+position = Vector2(316.25, 403.375)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_ojqgn")
 
 [node name="TitleDeadTree2" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(3446, 1190)
-scale = Vector2(0.5, 0.5)
+position = Vector2(3301.25, 514.375)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")
 
 [node name="TitleDeadTree3" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(1596, 1156)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1451.25, 480.375)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")
 
 [node name="TitleDeadTree6" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(2372, 713)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2139, 367)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")
 
 [node name="TitleDeadTree8" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(2627, 1151)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2482.25, 475.375)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")
 
 [node name="TitleDeadTree7" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(3822, 806)
-scale = Vector2(0.5, 0.5)
+position = Vector2(3713, 392)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")
 
 [node name="TitleDeadTree4" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(1018, 854)
-scale = Vector2(0.5, 0.5)
+position = Vector2(800, 395)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_1v0ot")

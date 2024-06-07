@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjm3ch4cg7lse"
-path="res://.godot/imported/title_live_tree.png-0413247b8aaa8a6f49e86edfd0c59107.ctex"
+uid="uid://fmiu1srqwg8f"
+path="res://.godot/imported/title.png-868508e18a68f81e55335b884c2ac81c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/title_live_tree.png"
-dest_files=["res://.godot/imported/title_live_tree.png-0413247b8aaa8a6f49e86edfd0c59107.ctex"]
+source_file="res://assets/resources/title.png"
+dest_files=["res://.godot/imported/title.png-868508e18a68f81e55335b884c2ac81c.ctex"]
 
 [params]
 

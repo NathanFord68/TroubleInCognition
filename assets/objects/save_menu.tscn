@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://1g17jlwlggr8"]
+
+[ext_resource type="Script" path="res://assets/objects/save_menu.gd" id="1_gei82"]
+
+[node name="SaveMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gei82")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 58.0
+offset_right = 505.0
+offset_bottom = 89.0
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 59.0
+offset_right = 598.0
+offset_bottom = 90.0
+text = "Save"
+
+[node name="SaveFiles" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 127.0
+offset_right = 248.0
+offset_bottom = 167.0
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]

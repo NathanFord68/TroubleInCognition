@@ -61,3 +61,6 @@ text = "Quit To Desktop
 "
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="QuitToMainMenu" to="." method="_on_quit_to_main_menu_pressed"]
+[connection signal="pressed" from="QuitToDesktop" to="." method="_on_quit_to_desktop_pressed"]
