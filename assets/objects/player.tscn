@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://r3l7flnqb5wq"]
+[gd_scene load_steps=118 format=3 uid="uid://r3l7flnqb5wq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ni8o"]
 [ext_resource type="Script" path="res://scripts/controller.gd" id="2_c112w"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/equipment_manager.gd" id="8_6pmr1"]
 [ext_resource type="PackedScene" uid="uid://xrdvhuuqpbdf" path="res://assets/objects/inventory_viewport.tscn" id="8_rq083"]
 [ext_resource type="PackedScene" uid="uid://co1a7qwaj0vt2" path="res://assets/objects/crafting_viewport.tscn" id="11_oxgf1"]
+[ext_resource type="PackedScene" uid="uid://bjpasjbr8s0sr" path="res://assets/objects/pause_menu.tscn" id="15_1lr64"]
 [ext_resource type="PackedScene" uid="uid://bgcluu4a5d0y2" path="res://assets/objects/player_hud.tscn" id="15_hg25j"]
 
 [sub_resource type="Resource" id="Resource_838iy"]
@@ -2684,5 +2685,8 @@ visible = false
 
 [node name="CraftingViewport" parent="PlayerViewport" instance=ExtResource("11_oxgf1")]
 visible = false
+
+[node name="PauseMenu" parent="PlayerViewport" instance=ExtResource("15_1lr64")]
+process_mode = 3
 
 [node name="PlayerHud" parent="." instance=ExtResource("15_hg25j")]

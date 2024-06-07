@@ -287,7 +287,7 @@ func handle_player_escape_input() -> void:
 		building_to_place = null
 		is_in_build_mode = false
 	if mode == "continue":
-		print_debug("Open the menu")
+		$PlayerViewport/PauseMenu.pause_game()
 
 func __get_weapon_reach() -> float:
 	if Enums.ITEM_TYPE.PRIMARY in equipment_manager.equipment and is_instance_valid(equipment_manager.equipment[Enums.ITEM_TYPE.PRIMARY]):
