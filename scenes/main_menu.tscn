@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://u0jbn08337i4"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_02xk5"]
 [ext_resource type="PackedScene" uid="uid://ddyx1h3b4l0" path="res://assets/objects/title_background.tscn" id="1_el2f3"]
-[ext_resource type="Texture2D" uid="uid://fmiu1srqwg8f" path="res://assets/resources/title.png" id="2_sqvxh"]
+[ext_resource type="PackedScene" uid="uid://ctgwsvl5ehs8x" path="res://assets/objects/start_menu.tscn" id="3_11kgm"]
+[ext_resource type="PackedScene" uid="uid://cikmu7lvd86nu" path="res://assets/objects/load_menu.tscn" id="4_ebuax"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -12,91 +12,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_02xk5")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_el2f3")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="StartMenu" parent="." instance=ExtResource("3_11kgm")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="TitleRoot" type="HBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpacingLeft" type="PanelContainer" parent="HBoxContainer/TitleRoot"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TitleRoot"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpacingTop" type="PanelContainer" parent="HBoxContainer/TitleRoot/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TitleRoot/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_sqvxh")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="SpacingBotton" type="PanelContainer" parent="HBoxContainer/TitleRoot/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="SpacingRight" type="PanelContainer" parent="HBoxContainer/TitleRoot"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpacingLeft" type="PanelContainer" parent="HBoxContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Continue" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Continue"
-
-[node name="New Game" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "New Game
-"
-
-[node name="Load" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Load"
-
-[node name="Exit" type="Button" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
-[node name="SpacingRight" type="PanelContainer" parent="HBoxContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="pressed" from="HBoxContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="HBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="LoadMenu" parent="." instance=ExtResource("4_ebuax")]
+visible = false
+layout_mode = 1

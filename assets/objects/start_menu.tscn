@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctgwsvl5ehs8x"]
+
+[ext_resource type="Texture2D" uid="uid://fmiu1srqwg8f" path="res://assets/resources/title.png" id="1_i8gsg"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_wujwr"]
+
+[node name="StartMenu" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wujwr")
+
+[node name="TitleRoot" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpacingLeft" type="PanelContainer" parent="TitleRoot"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleRoot"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpacingTop" type="PanelContainer" parent="TitleRoot/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="TitleRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_i8gsg")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SpacingBotton" type="PanelContainer" parent="TitleRoot/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpacingRight" type="PanelContainer" parent="TitleRoot"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpacingLeft" type="PanelContainer" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="New Game" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game
+"
+
+[node name="Load" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="SpacingRight" type="PanelContainer" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

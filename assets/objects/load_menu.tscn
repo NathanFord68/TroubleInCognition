@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cikmu7lvd86nu"]
+
+[ext_resource type="Script" path="res://scripts/load_menu.gd" id="1_xo3dl"]
+
+[node name="LoadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xo3dl")
+
+[node name="FileLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 640.0
+offset_top = 137.0
+offset_right = 840.0
+offset_bottom = 160.0
+text = "Some File
+"
+
+[node name="LoadButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 580.0
+offset_top = 195.0
+offset_right = 780.0
+offset_bottom = 226.0
+text = "Load"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(200, 400)
+layout_mode = 0
+offset_left = 215.0
+offset_top = 124.0
+offset_right = 415.0
+offset_bottom = 424.0
+
+[node name="SavedFiles" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]

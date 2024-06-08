@@ -101,7 +101,7 @@ func save_game(override_name: String = "") -> void:
 
 		
 func load_game() -> void:
-	if not FileAccess.file_exists("user://saves/test.save"):
+	if not FileAccess.file_exists("user://saves/%s.save" % save_file_name):
 		return # Error! We don't have a save to load.
 
 	var main_scene_loaded_error = get_tree().change_scene_to_file("res://scenes/game_root.tscn")
@@ -113,7 +113,7 @@ func load_game() -> void:
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_game = FileAccess.open("user://saves/test.save", FileAccess.READ)
+	var save_game = FileAccess.open("user://saves/%s.save" % save_file_name, FileAccess.READ)
 	while save_game.get_position() < save_game.get_length():
 		var object_data = save_game.get_var()
 
