@@ -15,11 +15,12 @@ func _ready():
 			break
 		var b := Button.new()
 		b.text = filename.trim_suffix(".save")
-		b.pressed.connect(handle_save_file_clicked)
+		b.pressed.connect(handle_save_file_clicked.bind(b.text))
 		$SaveFiles.add_child(b)
 	
-func handle_save_file_clicked(data = null):
-	print(data)
+func handle_save_file_clicked(file_name: String):
+	Global.save_file_name = file_name
+	$LineEdit.text = file_name
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
